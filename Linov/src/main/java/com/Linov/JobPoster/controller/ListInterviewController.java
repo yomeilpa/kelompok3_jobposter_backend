@@ -11,18 +11,18 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Linov.JobPoster.model.JobApplyModel;
-import com.Linov.JobPoster.service.JobApplyService;
+import com.Linov.JobPoster.model.ListofInterviewModel;
+import com.Linov.JobPoster.service.ListInterviewService;
 
 @RestController
 @Controller
-public class JobApplyController {
+public class ListInterviewController {
 	
 	@Autowired
-	JobApplyService eds;
+	ListInterviewService eds;
 
-	@PostMapping("/jobapply")
-	public ResponseEntity<?> insertModel(@RequestBody JobApplyModel education){
+	@PostMapping("interview")
+	public ResponseEntity<?> insertModel(@RequestBody ListofInterviewModel education){
 		try {
 			eds.insertModel(education);
 		} catch (Exception e) {
@@ -31,7 +31,7 @@ public class JobApplyController {
 		return ResponseEntity.ok(education);
 	}
 	
-	@DeleteMapping("/jobapply/{id}")
+	@DeleteMapping("interview/{id}")
 	public ResponseEntity<?> deleteModel(@PathVariable("id") String id){
 		
 		try {			
@@ -43,13 +43,13 @@ public class JobApplyController {
 		return ResponseEntity.ok("DELETE SUCCES");
 	}
 	
-	@GetMapping("/jobapply/{id}")
+	@GetMapping("interview/{id}")
 	public ResponseEntity<?> findByid(@PathVariable("id") String id){
 		return ResponseEntity.ok(eds.findById(id));
 	}
 	
-	@PutMapping("/jobapply/{id}")
-	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody JobApplyModel ed){
+	@PutMapping("interview/{id}")
+	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody ListofInterviewModel ed){
 		try {
 			
 			ed.setId(id);
@@ -61,5 +61,8 @@ public class JobApplyController {
 		return ResponseEntity.ok(eds);
 		
 	}
-	
+
+
+
+
 }
