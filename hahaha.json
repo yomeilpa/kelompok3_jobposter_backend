@@ -1,0 +1,11 @@
+{
+	"name" : "Afdhalul Ihsan",
+	"gender" : "Laki-Laki",
+	"dob" : "1998-04-07",
+	"addres" : "Kramat jaya Baru III no 27",
+	"city" : {
+		"id" : "fa0284ab-ca9b-400c-b928-d45b8ba25c0e"
+	},
+	"phone" : "08814508109",
+	"email" : "afdhalulhsn74@gmail.com"
+}
