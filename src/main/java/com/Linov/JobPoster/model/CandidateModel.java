@@ -174,6 +174,4 @@ public class CandidateModel {
 		this.id = id;
 	}
 	
-	
-
 }

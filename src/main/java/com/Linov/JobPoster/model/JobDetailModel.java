@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
@@ -15,7 +16,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "job_detail")
+@Table(name = "job_detail",uniqueConstraints = @UniqueConstraint(columnNames = {"idjob","description"}))
 public class JobDetailModel {
 	
 	public JobDetailModel() {
@@ -23,11 +24,10 @@ public class JobDetailModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public JobDetailModel(JobPostingModel job, String description, String code) {
+	public JobDetailModel(JobPostingModel job, String description) {
 		super();
 		this.job = job;
 		this.description = description;
-		this.code = code;
 	}
 
 	@Id
@@ -45,8 +45,6 @@ public class JobDetailModel {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "code")
-	private String code;
 
 	public String getId() {
 		return id;
@@ -72,14 +70,5 @@ public class JobDetailModel {
 		this.description = description;
 	}
 
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-	
-	
 
 }

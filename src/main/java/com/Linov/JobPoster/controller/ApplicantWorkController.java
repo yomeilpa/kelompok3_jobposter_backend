@@ -19,6 +19,7 @@ import com.Linov.JobPoster.service.WorkExperienceService;
 @RestController
 @Controller
 public class ApplicantWorkController {
+	
 
 	@Autowired
 	WorkExperienceService cands;

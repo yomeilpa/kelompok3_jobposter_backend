@@ -40,5 +40,8 @@ public class CandiateService {
 	public void deleteModel(String id) {
 		candidate.deleteCandidate(id);
 	}
-
+	
+	public List<CandidateModel> valid(CandidateModel candidate) {
+		return this.candidate.validasi(candidate);
+	}
 }

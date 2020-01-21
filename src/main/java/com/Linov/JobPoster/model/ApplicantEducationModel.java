@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
@@ -17,7 +18,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "applicant_education")
+@Table(name = "applicant_education",uniqueConstraints = {@UniqueConstraint(columnNames = {"idcandidate","ideducation"})})
 public class ApplicantEducationModel {
 	
 	public ApplicantEducationModel(CandidateModel candidate, EducationModel education, String name, String gpa,
@@ -56,16 +57,16 @@ public class ApplicantEducationModel {
 		@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 		private EducationModel education;
 	 
-	 @Column(name ="nameedu")
+	 @Column(name ="nameedu",nullable = false)
 	 private String name;
 	 
-	 @Column(name ="gpa")
+	 @Column(name ="gpa",nullable = false)
 	 private String gpa;
 	 
-	 @Column(name = "mulai")
+	 @Column(name = "mulai",nullable = false)
 	 private Date mulai;
 	 
-	 @Column(name = "berakhir")
+	 @Column(name = "berakhir",nullable = false)
 	 private Date berakhir;
 
 	public CandidateModel getCandidate() {

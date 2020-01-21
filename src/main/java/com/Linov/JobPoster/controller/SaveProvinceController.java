@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +20,7 @@ import com.Linov.JobPoster.model.ProvinceModel;
 import com.Linov.JobPoster.service.ProvinceService;
 
 @RestController
+@CrossOrigin("*")
 public class SaveProvinceController {
 	private final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 
@@ -77,6 +81,11 @@ public class SaveProvinceController {
 
 		return province;
 
+	}
+	
+	@GetMapping("/province")
+	public ResponseEntity<?> getProvince(){
+		return ResponseEntity.ok(posr.find());
 	}
 
 	private ProvinceModel createBook(String[] metadata,String code) {

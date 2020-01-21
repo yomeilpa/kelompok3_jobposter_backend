@@ -33,7 +33,7 @@ public class CityDao extends CommonDao {
 
 	@SuppressWarnings("unchecked")
 	public List<CityModel> findbyProvince(String name) {
-		List<CityModel> list = super.entityManager.createQuery("From CityModel where province.name =:name")
+		List<CityModel> list = super.entityManager.createQuery("From CityModel where province.province =:name")
 				.setParameter("name", name).getResultList();
 		return list;
 	}

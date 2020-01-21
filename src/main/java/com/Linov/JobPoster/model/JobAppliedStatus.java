@@ -37,7 +37,7 @@ public class JobAppliedStatus {
 	private String id;
 	
 	@OneToOne(optional = false)
-	@JoinColumn(name = "idjobapply", nullable = false)
+	@JoinColumn(name = "idjobapply", nullable = false,unique = true)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private JobApplyModel jobapply;

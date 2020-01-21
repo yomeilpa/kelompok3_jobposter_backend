@@ -29,7 +29,7 @@ public class JobKategoriModel {
 	@GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
 	private String id;
 	
-	@Column(name = "code",nullable = false)
+	@Column(name = "code",nullable = false,unique = true)
 	private String code;
 	
 	@Column(name = "kategori",nullable = false)

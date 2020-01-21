@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.Linov.JobPoster.Validasi.CandidateValidation;
 import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.UserModel;
 import com.Linov.JobPoster.service.AccountService;
@@ -22,10 +24,13 @@ import com.Linov.JobPoster.service.CandiateService;
 import com.Linov.JobPoster.service.EmailService;
 
 @RestController
+@CrossOrigin("*")
 public class RegistrationController {
 	
 	private final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 
+	@Autowired
+	CandidateValidation cd;
 
 	@Autowired
 	AccountService account;
@@ -37,6 +42,7 @@ public class RegistrationController {
 	CandiateService candidate;
 	
 	
+
 	
 	
 
@@ -46,6 +52,7 @@ public class RegistrationController {
 		String password = randomAlphaNumeric(10);
 		
 		try {
+			cd.idValid(cand);
 			CandidateModel cant = candidate.insertModel(cand);
 			UserModel users = new UserModel(password, cant,"HR");
 			account.insertModel(users);
@@ -59,10 +66,12 @@ public class RegistrationController {
 	}
 	
 	@PostMapping("/register")
-	public ResponseEntity<?> registerUser(@RequestBody CandidateModel cand){
+	public ResponseEntity<?> registerUser(@RequestBody CandidateModel cand) throws Exception{
 		String password = randomAlphaNumeric(10);
 		
 		try {
+			cd.idValid(cand);
+			cd.validasiBk(cand);
 			CandidateModel cant = candidate.insertModel(cand);
 			UserModel users = new UserModel(password, cant,"applicant");
 			account.insertModel(users);
@@ -74,8 +83,7 @@ public class RegistrationController {
 		
 		return ResponseEntity.ok(cand);
 	}
-	
-	
+		
 	
 	@PutMapping("/uploadphoto/{id}")
 	public ResponseEntity<?> uploadiProfile(@RequestPart MultipartFile[] upload,CandidateModel candidate,@PathVariable("id") String id){

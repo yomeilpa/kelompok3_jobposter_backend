@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +22,7 @@ import com.Linov.JobPoster.service.CityService;
 import com.Linov.JobPoster.service.ProvinceService;
 
 @RestController
+@CrossOrigin("*")
 public class saveCityController {
 	
 	@Autowired
@@ -47,6 +52,11 @@ public class saveCityController {
 		return builder.toString();
 	}
 
+	
+	@GetMapping("/prov/city/{name}")
+	public ResponseEntity<?> findPro(@PathVariable("name") String pro){
+		return ResponseEntity.ok(citys.citis(pro));
+	}
 	private List<CityModel> readProvinceFromCSV(String fileName) {
 		List<CityModel> province = new ArrayList<CityModel>();
 		Path pathToFile = Paths.get(fileName);

@@ -1,5 +1,6 @@
 package com.Linov.JobPoster.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -34,6 +35,19 @@ public class CandidateDao extends CommonDao {
 				.setParameter("name","%"+name.toLowerCase()+"%").getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return null;
+		} else
+			return lstCandidateModels;
+	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<CandidateModel> validasi(CandidateModel candidate) {
+		List<CandidateModel> lstCandidateModels = super.entityManager
+				.createQuery("From CandidateModel where lower(email) =:name or  lower(phone) =:phone")
+				.setParameter("name",candidate.getEmail().toLowerCase())
+				.setParameter("phone", candidate.getPhone().toLowerCase()).getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return new ArrayList<CandidateModel>();
 		} else
 			return lstCandidateModels;
 	}

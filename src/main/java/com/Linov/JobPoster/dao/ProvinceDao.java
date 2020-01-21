@@ -1,5 +1,7 @@
 package com.Linov.JobPoster.dao;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -16,6 +18,13 @@ public class ProvinceDao extends CommonDao {
 	
 	public ProvinceModel findbyprovince(String name) {
 		return (ProvinceModel) super.entityManager.createQuery("From ProvinceModel where code =:pro").setParameter("pro", name).getResultList().get(0);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
+	public  List<ProvinceModel> find() {
+		List<ProvinceModel> pros = super.entityManager.createQuery("From ProvinceModel").getResultList();
+		return pros;
 	}
 
 }

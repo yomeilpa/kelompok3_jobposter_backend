@@ -30,7 +30,7 @@ public class SkillLevelModel {
 	@GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
 	private String id;
 	
-	@Column(name = "code")
+	@Column(name = "code",unique = true)
 	private String code;
 	
 	@Column(name = "level")

@@ -1,5 +1,7 @@
 package com.Linov.JobPoster.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +20,9 @@ public class ProvinceService {
 
 	public ProvinceModel findByprovince(String name) {
 		return prov.findbyprovince(name);
+	}
+	
+	public List<ProvinceModel> find(){
+		return prov.find();
 	}
 }

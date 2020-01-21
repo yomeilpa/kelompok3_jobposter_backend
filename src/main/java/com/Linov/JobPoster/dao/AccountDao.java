@@ -52,7 +52,7 @@ public class AccountDao extends CommonDao {
 	@SuppressWarnings("unchecked")
 	public List<UserModel> findAll() {
 		List<UserModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "SELECT us.candidate, us.candidate.city  From UserModel us").getResultList();
+				.createQuery("" + "From UserModel us").getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return null;
 		} else

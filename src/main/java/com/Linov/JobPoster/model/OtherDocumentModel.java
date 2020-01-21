@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
@@ -16,7 +17,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "document")
+@Table(name = "document",uniqueConstraints = @UniqueConstraint(columnNames = {"idcandidate","idtypedoc"}))
 public class OtherDocumentModel {
 
 
@@ -70,8 +71,7 @@ public class OtherDocumentModel {
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private DocumentTypeModel doctype;
-	  
-	 
+	  	 
 
 	public String getId() {
 		return id;

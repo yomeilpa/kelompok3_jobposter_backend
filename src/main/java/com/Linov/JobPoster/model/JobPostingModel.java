@@ -46,19 +46,19 @@ public class JobPostingModel {
 	@GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
 	private String id;
 	
-	@ManyToOne(optional = true)
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "idjobposition", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private JobPosition jobposotion;
 	
-	@ManyToOne(optional = true)
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "idcnadidate", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private CandidateModel candidate;
 	
-	@Column(name = "title")
+	@Column(name = "title",nullable = false)
 	private String title;
 	
 	@Column(name = "start_date")
@@ -69,13 +69,13 @@ public class JobPostingModel {
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	private CityModel city;
 	
-	@Column(name = "end_date")
+	@Column(name = "end_date",nullable = false)
 	private Date end;
 	
-	@Column(name = "salary")
+	@Column(name = "salary",nullable = false)
 	private Double salary;
 	
-	@Column(name = "active_state")
+	@Column(name = "active_state",nullable = false)
 	private Boolean active;
 	
 	

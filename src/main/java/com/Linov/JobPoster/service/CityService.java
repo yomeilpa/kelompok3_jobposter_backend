@@ -1,5 +1,7 @@
 package com.Linov.JobPoster.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,10 @@ public class CityService {
 	public CityModel save(CityModel citys) {
 		return city.saveCity(citys);
 		
+	}
+	
+	public List<CityModel> citis(String prov){
+		return city.findbyProvince(prov);
 	}
 
 }
