@@ -43,11 +43,6 @@ public class RegistrationController {
 	CandiateService candidate;
 	
 	
-
-	
-	
-
-	
 	@PostMapping("/register/admin")
 	public ResponseEntity<?> registerUserAdmin(@RequestBody CandidateModel cand){
 		String password = randomAlphaNumeric(10);
@@ -87,12 +82,12 @@ public class RegistrationController {
 		
 	
 	@PutMapping("/uploadphoto/{id}")
-	public ResponseEntity<?> uploadiProfile(@RequestParam("upload") MultipartFile[] upload,CandidateModel candidate,@PathVariable("id") String id){
+	public ResponseEntity<?> uploadiProfile(@RequestParam("upload") MultipartFile upload,CandidateModel candidate,@PathVariable("id") String id){
 		candidate = this.candidate.findById(id);
 		try {
-			candidate.setFilename(upload[0].getOriginalFilename());
-			candidate.setType(upload[0].getContentType());
-			byte[] byteArr = upload[0].getBytes();
+			candidate.setFilename(upload.getOriginalFilename());
+			candidate.setType(upload.getContentType());
+			byte[] byteArr = upload.getBytes();
 			candidate.setPic(byteArr);
 			this.candidate.updateModel(candidate);
 		} catch (Exception e) {
