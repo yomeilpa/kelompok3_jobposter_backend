@@ -87,7 +87,7 @@ public class RegistrationController {
 		
 	
 	@PutMapping("/uploadphoto/{id}")
-	public ResponseEntity<?> uploadiProfile(@RequestParam MultipartFile[] upload,CandidateModel candidate,@PathVariable("id") String id){
+	public ResponseEntity<?> uploadiProfile(@RequestParam("upload") MultipartFile[] upload,CandidateModel candidate,@PathVariable("id") String id){
 		candidate = this.candidate.findById(id);
 		try {
 			candidate.setFilename(upload[0].getOriginalFilename());
