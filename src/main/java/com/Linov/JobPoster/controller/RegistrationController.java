@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -86,7 +87,7 @@ public class RegistrationController {
 		
 	
 	@PutMapping("/uploadphoto/{id}")
-	public ResponseEntity<?> uploadiProfile(@RequestPart MultipartFile[] upload,CandidateModel candidate,@PathVariable("id") String id){
+	public ResponseEntity<?> uploadiProfile(@RequestParam MultipartFile[] upload,CandidateModel candidate,@PathVariable("id") String id){
 		candidate = this.candidate.findById(id);
 		try {
 			candidate.setFilename(upload[0].getOriginalFilename());
