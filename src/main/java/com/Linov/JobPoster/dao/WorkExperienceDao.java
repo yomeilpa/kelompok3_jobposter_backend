@@ -33,7 +33,7 @@ public class WorkExperienceDao extends CommonDao {
 	@SuppressWarnings("unchecked")
 	public List<WorkExperienceHeader> findCan(String id) {
 		List<WorkExperienceHeader> lstCandidateModels = super.entityManager
-				.createQuery("" + "From WorkExperienceHeader where id=:id").setParameter("id", id).getResultList();
+				.createQuery("" + "From WorkExperienceHeader where candidate.id=:id").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return lstCandidateModels;
 		} else
