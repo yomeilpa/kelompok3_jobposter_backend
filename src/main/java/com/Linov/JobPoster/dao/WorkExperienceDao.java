@@ -28,6 +28,17 @@ public class WorkExperienceDao extends CommonDao {
 		} else
 			return (WorkExperienceHeader) lstCandidateModels.get(0);
 	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<WorkExperienceHeader> findCan(String id) {
+		List<WorkExperienceHeader> lstCandidateModels = super.entityManager
+				.createQuery("" + "From WorkExperienceHeader where id=:id").setParameter("id", id).getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return lstCandidateModels;
+		} else
+			return lstCandidateModels;
+	}
 
 	@Transactional
 	public void deleteCandidate(String id) {

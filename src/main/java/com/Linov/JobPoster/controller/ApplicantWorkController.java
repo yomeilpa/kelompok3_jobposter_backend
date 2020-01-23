@@ -58,6 +58,11 @@ public class ApplicantWorkController {
 		return ResponseEntity.ok(cands.findById(id));
 	}
 	
+	@GetMapping("/experience/candidate/get/{id}")
+	public ResponseEntity<?> findBCandidate(@PathVariable("id") String id){
+		return ResponseEntity.ok(cands.findCandidate(id));
+	}
+	
 	@PutMapping("/experience/candidate/{id}")
 	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody WorkExperienceHeader ed){
 		try {

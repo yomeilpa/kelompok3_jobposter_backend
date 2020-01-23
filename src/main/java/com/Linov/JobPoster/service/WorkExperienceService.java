@@ -33,6 +33,10 @@ public class WorkExperienceService {
 		WorkExperienceHeader model = acc.findbyid(id);
 		return model;
 	}
+	public List<WorkExperienceHeader> findCandidate(String id) {
+		return acc.findCan(id);
+	}
+	
 	public List<WorkExperienceHeader> findAll() {
 		return acc.findAll();
 	}
