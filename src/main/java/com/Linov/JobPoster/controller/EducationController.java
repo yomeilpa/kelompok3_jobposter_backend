@@ -47,6 +47,11 @@ public class EducationController {
 		return ResponseEntity.ok(eds.findById(id));
 	}
 	
+	@GetMapping("/education")
+	public ResponseEntity<?> findByid(){
+		return ResponseEntity.ok(eds.findAll());
+	}
+	
 	@PutMapping("/education/{id}")
 	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody EducationModel ed){
 		try {
