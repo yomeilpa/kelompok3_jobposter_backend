@@ -49,6 +49,9 @@ public class RegistrationController {
 		
 		try {
 			cd.idValid(cand);
+			cd.validasiNonBk(cand);
+			cd.validasiBk(cand);
+			cd.validasiFK(cand);
 			CandidateModel cant = candidate.insertModel(cand);
 			UserModel users = new UserModel(password, cant,"HR");
 			account.insertModel(users);
@@ -67,7 +70,9 @@ public class RegistrationController {
 		
 		try {
 			cd.idValid(cand);
+			cd.validasiNonBk(cand);
 			cd.validasiBk(cand);
+			cd.validasiFK(cand);
 			CandidateModel cant = candidate.insertModel(cand);
 			UserModel users = new UserModel(password, cant,"applicant");
 			account.insertModel(users);
@@ -75,8 +80,6 @@ public class RegistrationController {
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		
-		
 		return ResponseEntity.ok(cand);
 	}
 		
@@ -85,6 +88,9 @@ public class RegistrationController {
 	public ResponseEntity<?> uploadiProfile(@RequestParam("upload") MultipartFile upload,CandidateModel candidate,@PathVariable("id") String id){
 		candidate = this.candidate.findById(id);
 		try {
+			cd.idValidnotNull(candidate);
+			cd.validasiNonBk(candidate);
+			cd.validasiFK(candidate);
 			candidate.setFilename(upload.getOriginalFilename());
 			candidate.setType(upload.getContentType());
 			byte[] byteArr = upload.getBytes();
@@ -100,12 +106,16 @@ public class RegistrationController {
 	@PutMapping("/update/{id}")
 	public ResponseEntity<?> uploadiProfile(@RequestBody CandidateModel candidate,@PathVariable("id") String id){
 		CandidateModel set = this.candidate.findById(id);
+		
 		candidate.setId(id);
 		candidate.setFilename(set.getFilename());
 		candidate.setPic(set.getPic());
 		candidate.setType(set.getType());
 		try {
-		
+			cd.idValidnotNull(candidate);	
+			cd.validasiNonBk(candidate);
+			cd.bkNotchange(candidate, set);
+			cd.validasiFK(candidate);
 			this.candidate.updateModel(candidate);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -130,6 +140,8 @@ public class RegistrationController {
 	@DeleteMapping("/candidate/{id}")
 	public ResponseEntity<?> deleteCandidate(@PathVariable("id") String id){
 		try {
+			CandidateModel cda = this.candidate.findById(id);
+			cd.idValidnotNull(cda);
 			candidate.deleteModel(id);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -204,6 +216,5 @@ public class RegistrationController {
 			// TODO: handle exception
 		}
 		return ResponseEntity.ok(user);
-	}
-	
+	}	
 }

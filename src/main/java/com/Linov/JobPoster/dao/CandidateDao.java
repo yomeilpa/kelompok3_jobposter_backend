@@ -1,6 +1,5 @@
 package com.Linov.JobPoster.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -23,7 +22,7 @@ public class CandidateDao extends CommonDao {
 		List<CandidateModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From CandidateModel where id=:id").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return new CandidateModel();
+			return null;
 		} else
 			return (CandidateModel) lstCandidateModels.get(0);
 	}
@@ -34,7 +33,7 @@ public class CandidateDao extends CommonDao {
 				.createQuery("From CandidateModel where lower(name) like:name")
 				.setParameter("name","%"+name.toLowerCase()+"%").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
@@ -47,7 +46,7 @@ public class CandidateDao extends CommonDao {
 				.setParameter("name",candidate.getEmail().toLowerCase())
 				.setParameter("phone", candidate.getPhone().toLowerCase()).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return new ArrayList<CandidateModel>();
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}

@@ -21,7 +21,7 @@ public class CityDao extends CommonDao {
 		List<CityModel> list = super.entityManager.createQuery("From CityModel where id=:id").setParameter("id", id)
 				.getResultList();
 		if (list.size() == 0)
-			return new CityModel();
+			return null;
 		else
 			return list.get(0);
 	}

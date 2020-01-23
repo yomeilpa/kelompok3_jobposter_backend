@@ -22,5 +22,9 @@ public class CityService {
 	public List<CityModel> citis(String prov){
 		return city.findbyProvince(prov);
 	}
+	
+	public CityModel findbyid(String id) {
+		return city.findbyid(id);
+	}
 
 }

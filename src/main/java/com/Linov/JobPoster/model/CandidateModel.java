@@ -44,6 +44,7 @@ public class CandidateModel {
 		// TODO Auto-generated constructor stub
 	}
 
+	
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(generator = "UUID")
