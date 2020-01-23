@@ -34,5 +34,9 @@ public class AppEducationService {
 	public List<ApplicantEducationModel> findAll() {
 		return acc.findAll();
 	}
+	
+	public List<ApplicantEducationModel> finCd(String id) {
+		return acc.findcandidate(id);
+	}
 
 }
