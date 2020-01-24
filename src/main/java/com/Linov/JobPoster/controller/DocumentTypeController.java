@@ -65,7 +65,7 @@ public class DocumentTypeController {
 			return ResponseEntity.badRequest().body("Update Gagal");
 			// TODO: handle exception
 		}
-		return ResponseEntity.ok(cands);
+		return ResponseEntity.ok(ed);
 		
 	}
 
