@@ -32,6 +32,9 @@ public class WorkExperienceHeader {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Column(name ="position")
+	 private String position;
 
 
 	@ManyToOne(optional = false)
@@ -104,6 +107,14 @@ public class WorkExperienceHeader {
 
 	public void setBerakhir(Date berakhir) {
 		this.berakhir = berakhir;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
 	}
 
 
