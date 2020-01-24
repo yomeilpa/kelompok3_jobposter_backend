@@ -41,10 +41,22 @@ public class CandidateSkillDao extends CommonDao {
 		List<CandidateSkillModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From CandidateSkillModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<CandidateSkillModel> findByCandidate(String id) {
+		List<CandidateSkillModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From CandidateSkillModel where candidate.id=:id").setParameter("id",id).getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return lstCandidateModels;
+		} else
+			return lstCandidateModels;
+	}
+
 
 
 }

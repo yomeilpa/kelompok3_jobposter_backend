@@ -57,6 +57,11 @@ public class CandidateSkillController {
 		return ResponseEntity.ok(cands.findById(id));
 	}
 	
+	@GetMapping("/skill/candidate/get/{id}")
+	public ResponseEntity<?> findByCand(@PathVariable("id") String id){
+		return ResponseEntity.ok(cands.findCandidate(id));
+	}
+	
 	@PutMapping("/skill/candidate/{id}")
 	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody CandidateSkillModel ed){
 		try {

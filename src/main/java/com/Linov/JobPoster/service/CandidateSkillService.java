@@ -34,5 +34,9 @@ public class CandidateSkillService {
 	public List<CandidateSkillModel> findAll() {
 		return acc.findAll();
 	}
+	
+	public List<CandidateSkillModel> findCandidate(String id) {
+		return acc.findByCandidate(id);
+	}
 
 }
