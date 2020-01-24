@@ -18,13 +18,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "document",uniqueConstraints = @UniqueConstraint(columnNames = {"idcandidate","idtypedoc"}))
-public class OtherDocumentModel {
+public class CandidateDocument {
 
 
 
 
 
-	public OtherDocumentModel(CandidateModel candidate, String filename, String type, byte[] pic,
+	public CandidateDocument(CandidateModel candidate, String filename, String type, byte[] pic,
 			DocumentTypeModel doctype) {
 		super();
 		this.candidate = candidate;
@@ -36,7 +36,7 @@ public class OtherDocumentModel {
 
 
 
-	public OtherDocumentModel() {
+	public CandidateDocument() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

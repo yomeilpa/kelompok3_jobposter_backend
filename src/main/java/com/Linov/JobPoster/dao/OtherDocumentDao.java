@@ -6,39 +6,39 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.Linov.JobPoster.model.OtherDocumentModel;
+import com.Linov.JobPoster.model.CandidateDocument;
 
 @Repository
 @Transactional
 public class OtherDocumentDao extends CommonDao {
 
 	@Transactional
-	public OtherDocumentModel saveAccount(OtherDocumentModel account) {
+	public CandidateDocument saveAccount(CandidateDocument account) {
 		return super.entityManager.merge(account);
 
 	}
 
 	@Transactional
 	@SuppressWarnings("unchecked")
-	public OtherDocumentModel findbyid(String id) {
-		List<OtherDocumentModel> lstCandidateModels = super.entityManager
+	public CandidateDocument findbyid(String id) {
+		List<CandidateDocument> lstCandidateModels = super.entityManager
 				.createQuery("" + "From OtherDocumentModel where id=:id").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return new OtherDocumentModel();
+			return new CandidateDocument();
 		} else
-			return (OtherDocumentModel) lstCandidateModels.get(0);
+			return (CandidateDocument) lstCandidateModels.get(0);
 	}
 
 	@Transactional
 	public void deleteCandidate(String id) {
-		OtherDocumentModel candidate = findbyid(id);
+		CandidateDocument candidate = findbyid(id);
 		super.entityManager.remove(candidate);
 	}
 
 	@Transactional
 	@SuppressWarnings("unchecked")
-	public List<OtherDocumentModel> findAll() {
-		List<OtherDocumentModel> lstCandidateModels = super.entityManager
+	public List<CandidateDocument> findAll() {
+		List<CandidateDocument> lstCandidateModels = super.entityManager
 				.createQuery("" + "From OtherDocumentModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return null;

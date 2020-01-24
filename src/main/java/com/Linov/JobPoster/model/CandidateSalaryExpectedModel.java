@@ -22,16 +22,18 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class CandidateSalaryExpectedModel {
 	
 	
+	public CandidateSalaryExpectedModel(CandidateModel candidate, Double salary) {
+		super();
+		this.candidate = candidate;
+		this.salary = salary;
+	}
+
 	public CandidateSalaryExpectedModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CandidateSalaryExpectedModel(CandidateModel candidate, Number salary) {
-		super();
-		this.candidate = candidate;
-		this.salary = salary;
-	}
+	
 
 	@Id
 	@Column(name = "id")
@@ -46,7 +48,7 @@ public class CandidateSalaryExpectedModel {
 	private CandidateModel candidate;
 	
 	@Column(name = "salary")
-	private Number salary;
+	private Double salary;
 
 	public String getId() {
 		return id;
@@ -64,12 +66,14 @@ public class CandidateSalaryExpectedModel {
 		this.candidate = candidate;
 	}
 
-	public Number getSalary() {
+	public Double getSalary() {
 		return salary;
 	}
 
-	public void setSalary(Number salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
+
+
 	
 }

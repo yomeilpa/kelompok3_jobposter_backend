@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.Linov.JobPoster.model.OtherDocumentModel;
+import com.Linov.JobPoster.model.CandidateDocument;
 import com.Linov.JobPoster.service.CandiateService;
 import com.Linov.JobPoster.service.DocumentTypeService;
 import com.Linov.JobPoster.service.OtherDocumentService;
@@ -36,7 +36,7 @@ public class CandidateDocumentController {
 	public ResponseEntity<?> addDocumentCandidate(@PathVariable("id") String id,@RequestPart MultipartFile[] docx,
 			@RequestPart String iddoctype){
 		try {
-			OtherDocumentModel cddoc = new OtherDocumentModel();
+			CandidateDocument cddoc = new CandidateDocument();
 			cddoc.setFilename(docx[0].getOriginalFilename());
 			cddoc.setDoctype(type.findById(iddoctype));
 			cddoc.setType(docx[0].getContentType());
