@@ -52,7 +52,7 @@ public class CandidateDocumentController {
 		return ResponseEntity.ok("OK");
 	}
 	
-	@GetMapping("/doc/{iddt}/{idcd}")
+	@GetMapping("/doc/{id}/{iddt}")
 	public ResponseEntity<?> getDocTypebyId(@PathVariable("id") String idcd,@PathVariable("iddt") String iddt){
 		return ResponseEntity.ok(docs.findTrue(iddt, idcd));
 	}
