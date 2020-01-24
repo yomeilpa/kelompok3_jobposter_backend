@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.OnDelete;
@@ -16,7 +15,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table(name = "candidate_skill",uniqueConstraints = {@UniqueConstraint(columnNames = {"idcandidate"})})
+@Table(name = "candidate_skill")
 public class CandidateSkillModel {
 
 	public CandidateSkillModel(CandidateModel candidate, SkillLevelModel level, String skillname) {
