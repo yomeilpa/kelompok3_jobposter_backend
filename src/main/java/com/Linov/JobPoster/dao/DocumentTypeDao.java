@@ -39,7 +39,7 @@ public class DocumentTypeDao extends CommonDao {
 	@SuppressWarnings("unchecked")
 	public List<DocumentTypeModel> findAll() {
 		List<DocumentTypeModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From DocumentTypeModel").getResultList();
+				.createQuery("" + "From DocumentTypeModel where flag = false").getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return lstCandidateModels;
 		} else
