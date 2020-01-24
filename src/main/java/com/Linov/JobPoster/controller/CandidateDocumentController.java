@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -49,5 +50,10 @@ public class CandidateDocumentController {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 		return ResponseEntity.ok("OK");
+	}
+	
+	@GetMapping("/doc/{iddt}/{idcd}")
+	public ResponseEntity<?> getDocTypebyId(@PathVariable("id") String idcd,@PathVariable("iddt") String iddt){
+		return ResponseEntity.ok(docs.findTrue(iddt, idcd));
 	}
 }
