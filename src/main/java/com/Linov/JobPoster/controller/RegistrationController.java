@@ -203,7 +203,7 @@ public class RegistrationController {
 			if(user != null) {
 				String password = user.getPassword();
 				if(password.equals(sign.get("password"))) {
-					return ResponseEntity.ok("Hahah");
+					return ResponseEntity.ok(user);
 				}
 				else {
 					return ResponseEntity.badRequest().body("Password Salah");
