@@ -50,6 +50,11 @@ public class DocumentTypeController {
 		return ResponseEntity.ok(cands.findById(id));
 	}
 	
+	@GetMapping("/doctype")
+	public ResponseEntity<?> findByid(){
+		return ResponseEntity.ok(cands.findAll());
+	}
+	
 	@PutMapping("/doctype/{id}")
 	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody DocumentTypeModel ed){
 		try {

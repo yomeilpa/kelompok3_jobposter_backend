@@ -41,7 +41,18 @@ public class OtherDocumentDao extends CommonDao {
 		List<CandidateDocument> lstCandidateModels = super.entityManager
 				.createQuery("" + "From OtherDocumentModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
+		} else
+			return lstCandidateModels;
+	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<CandidateDocument> findTrue() {
+		List<CandidateDocument> lstCandidateModels = super.entityManager
+				.createQuery("" + "From OtherDocumentModel where doctype.flag = true").getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}

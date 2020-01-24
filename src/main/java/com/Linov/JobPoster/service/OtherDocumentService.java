@@ -34,5 +34,12 @@ public class OtherDocumentService {
 	public List<CandidateDocument> findAll() {
 		return acc.findAll();
 	}
+	
+	public List<CandidateDocument> findTrue() {
+		return acc.findTrue();
+	}
+	
+	
+	
 
 }
