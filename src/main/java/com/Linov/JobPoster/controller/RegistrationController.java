@@ -152,7 +152,6 @@ public class RegistrationController {
 		return ResponseEntity.ok(account.findAll());
 	}
 	
-	
 	@GetMapping("/candidate")
 	public ResponseEntity<?> getCand(){
 		return ResponseEntity.ok(candidate.findAll());
