@@ -35,7 +35,7 @@ public class OtherDocumentService {
 		return acc.findAll();
 	}
 	
-	public List<CandidateDocument> findTrue(String id,String as) {
+	public CandidateDocument findTrue(String id,String as) {
 		return acc.findbyIdDocType(id, as);
 	}
 	
