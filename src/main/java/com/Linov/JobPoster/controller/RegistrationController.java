@@ -122,17 +122,36 @@ public class RegistrationController {
 	}
 	
 	@PutMapping("/update/password/{id}")
-	public ResponseEntity<?> updatePassword(@RequestBody UserModel users,@PathVariable("id") String id){
+	public ResponseEntity<?> updatePassword(@RequestBody Map<String, String> data,@PathVariable("id") String id){
 		UserModel us = account.findById(id);
-		users.setCandidate(us.getCandidate());
-		users.setId(id);
-		users.setRole(us.getRole());
+		String oldPassword = us.getPassword();
+		
 		try {
-			account.insertModel(users);
+			if(us.getCandidate() == null) {
+				return ResponseEntity.badRequest().body("Not Find");
+			}
+			else {
+			if(oldPassword.equals(data.get("old")))
+			{
+				String np1 = data.get("newPas1");
+				String np2 = data.get("newPas2");
+				if(np1.equals(np2)) {
+					us.setPassword(np1);
+				}
+				else {
+					return ResponseEntity.badRequest().body("Password did not match");
+				}
+			}
+			else {
+				return ResponseEntity.badRequest().body("Old Password incorrect");
+			}
+			}
+			
+			account.insertModel(us);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		return ResponseEntity.ok(users);
+		return ResponseEntity.ok(us);
 	}
 	
 	@DeleteMapping("/candidate/{id}")
