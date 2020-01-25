@@ -36,8 +36,9 @@ public class CandidateDocumentController {
 	@PostMapping("/doc/{id}")
 	public ResponseEntity<?> addDocumentCandidate(@PathVariable("id") String id,@RequestPart MultipartFile[] docx,
 			@RequestPart String iddoctype){
+		CandidateDocument cddoc = new CandidateDocument();
+
 		try {
-			CandidateDocument cddoc = new CandidateDocument();
 			cddoc.setFilename(docx[0].getOriginalFilename());
 			cddoc.setDoctype(type.findById(iddoctype));
 			cddoc.setType(docx[0].getContentType());
@@ -49,7 +50,7 @@ public class CandidateDocumentController {
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		return ResponseEntity.ok("OK");
+		return ResponseEntity.ok(cddoc);
 	}
 	
 	@GetMapping("/doc/{id}/{iddt}")
