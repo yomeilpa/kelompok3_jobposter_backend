@@ -38,4 +38,8 @@ public class DocumentTypeService {
 	public List<DocumentTypeModel> findTrue() {
 		return acc.findTrue();
 	}
+	
+	public Long countDoctye() {
+		return acc.countDocTypeTrue();
+	}
 }

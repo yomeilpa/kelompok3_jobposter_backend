@@ -39,4 +39,8 @@ public class AccountService {
 		UserModel model = acc.findusername(id);
 		return model;
 	}
+	
+	public Long countCand() {
+		return acc.countCandidate();
+	}
 }

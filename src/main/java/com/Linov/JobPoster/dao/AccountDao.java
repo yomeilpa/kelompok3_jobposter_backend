@@ -40,6 +40,13 @@ public class AccountDao extends CommonDao {
 			return (UserModel) lstCandidateModels.get(0);
 	}
 	
+	@Transactional
+	public Long countCandidate() {
+		Long lstCandidateModels =  (Long) super.entityManager
+				.createQuery("" + "Select count(*) From UserModel").getSingleResult();	
+			return lstCandidateModels;
+	}
+	
 	
 	
 	@Transactional

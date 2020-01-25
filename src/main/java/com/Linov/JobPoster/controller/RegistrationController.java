@@ -154,6 +154,11 @@ public class RegistrationController {
 		return ResponseEntity.ok(us);
 	}
 	
+	@GetMapping("count")
+	public ResponseEntity<?> count(){
+		return ResponseEntity.ok(account.countCand());
+	}
+	
 	@DeleteMapping("/candidate/{id}")
 	public ResponseEntity<?> deleteCandidate(@PathVariable("id") String id){
 		try {

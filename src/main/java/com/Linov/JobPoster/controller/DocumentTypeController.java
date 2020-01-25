@@ -50,6 +50,11 @@ public class DocumentTypeController {
 		return ResponseEntity.ok(cands.findById(id));
 	}
 	
+	@GetMapping("count/doctype")
+	public ResponseEntity<?> countDoc(){
+		return ResponseEntity.ok(cands.countDoctye());
+	}
+	
 	@GetMapping("/doctype")
 	public ResponseEntity<?> findByid(){
 		return ResponseEntity.ok(cands.findAll());

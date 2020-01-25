@@ -59,6 +59,12 @@ public class CandidateDocumentController {
 		return ResponseEntity.ok(docs.findTrue(iddt, idcd));
 	}
 	
+	
+	@GetMapping("cd/doc/{id}")
+	public ResponseEntity<?> getDocTypebyId(@PathVariable("id") String idcd){
+		return ResponseEntity.ok(docs.countCandidateDoc(idcd));
+	}
+	
 	@DeleteMapping("/doc/{id}/{iddt}")
 	public ResponseEntity<?> delete(@PathVariable("id") String idcd,@PathVariable("iddt") String iddt){
 		try {			

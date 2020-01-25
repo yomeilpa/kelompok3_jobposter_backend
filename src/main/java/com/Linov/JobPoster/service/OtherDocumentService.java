@@ -39,6 +39,10 @@ public class OtherDocumentService {
 		return acc.findbyIdDocType(id, as);
 	}
 	
+	public Long countCandidateDoc(String id) {
+		return acc.countCandidateDocType(id);
+	}
+	
 	
 	
 

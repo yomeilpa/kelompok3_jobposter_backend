@@ -56,4 +56,11 @@ public class DocumentTypeDao extends CommonDao {
 		} else
 			return lstCandidateModels;
 	}
+	
+	@Transactional
+	public Long countDocTypeTrue() {
+		Long lstCandidateModels =  (Long) super.entityManager
+				.createQuery("" + "Select count(*) From DocumentTypeModel where flag = true").getSingleResult();	
+			return lstCandidateModels;
+	}
 }

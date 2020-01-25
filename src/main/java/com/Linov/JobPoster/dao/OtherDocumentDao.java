@@ -57,4 +57,11 @@ public class OtherDocumentDao extends CommonDao {
 			return lstCandidateModels.get(0);
 	}
 	
+	@Transactional
+	public Long countCandidateDocType(String id) {
+		Long lstCandidateModels =  (Long) super.entityManager
+				.createQuery("" + "Select count(*) From CandidateDocument  where doctype.flag = true and id=:id").setParameter("id", id).getSingleResult();	
+			return lstCandidateModels;
+	}
+	
 }
