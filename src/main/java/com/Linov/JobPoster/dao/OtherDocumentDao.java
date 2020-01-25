@@ -30,8 +30,8 @@ public class OtherDocumentDao extends CommonDao {
 	}
 
 	@Transactional
-	public void deleteCandidate(String id) {
-		CandidateDocument candidate = findbyid(id);
+	public void deleteCandidate(String id,String as) {
+		CandidateDocument candidate = findbyIdDocType(id, as);
 		super.entityManager.remove(candidate);
 	}
 

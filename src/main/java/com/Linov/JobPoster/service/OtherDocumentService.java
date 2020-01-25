@@ -23,8 +23,8 @@ public class OtherDocumentService {
 		;
 	}
 
-	public void deleteModel(String id) {
-		acc.deleteCandidate(id);
+	public void deleteModel(String id,String as) {
+		acc.deleteCandidate(id,as);
 	}
 	
 	public CandidateDocument findById(String id) {
