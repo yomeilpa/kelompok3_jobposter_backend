@@ -64,12 +64,17 @@ public class CandidateValidation {
 	}
 
 	public void validasiNonBk(CandidateModel candidate) throws Exception {
+		
+		if (candidate.getName() == null) {
+			throw new Exception("Name Must Be Filled");
+		}
+		
 		if (candidate.getDob() == null) {
 			throw new Exception("Date of Birth Must Be Filled");
 		}
-
-		if (candidate.getName() == null) {
-			throw new Exception("Name Must Be Filled");
+		
+		if (candidate.getSalary() == null) {
+			throw new Exception("Salary  Must Be Filled");
 		}
 
 		if (candidate.getGender() == null) {
