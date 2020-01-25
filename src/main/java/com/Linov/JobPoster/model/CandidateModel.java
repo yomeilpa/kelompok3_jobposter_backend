@@ -24,9 +24,12 @@ public class CandidateModel {
 	
 	
 
-	public CandidateModel(String gender, String name, Date dob, String addres, String phone, String email,
-			String filename, String type, byte[] pic, CityModel city) {
+	
+
+	public CandidateModel(Double salary, String gender, String name, Date dob, String addres, String phone,
+			String email, String filename, String type, byte[] pic, CityModel city) {
 		super();
+		this.salary = salary;
 		this.gender = gender;
 		this.name = name;
 		this.dob = dob;
@@ -50,6 +53,10 @@ public class CandidateModel {
 	@GeneratedValue(generator = "UUID")
 	@GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
 	private String id;
+	
+	
+	@Column(name = "salary",nullable = false)
+	private Double salary;
 	
 	
 	@Column(name = "gender",nullable = false)
@@ -173,6 +180,14 @@ public class CandidateModel {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public Double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Double salary) {
+		this.salary = salary;
 	}
 	
 }
