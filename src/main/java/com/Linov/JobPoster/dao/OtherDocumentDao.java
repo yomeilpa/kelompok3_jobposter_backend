@@ -52,7 +52,9 @@ public class OtherDocumentDao extends CommonDao {
 		List<CandidateDocument> lstCandidateModels = super.entityManager
 				.createQuery("" + "From CandidateDocument where doctype.id=:id and candidate.id =:as").setParameter("id",id).setParameter("as",as).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return new CandidateDocument();
+			CandidateDocument cds = new CandidateDocument();
+			cds.setId("1");
+			return cds;
 		} else
 			return lstCandidateModels.get(0);
 	}
