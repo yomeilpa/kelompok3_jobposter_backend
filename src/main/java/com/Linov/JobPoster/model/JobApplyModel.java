@@ -48,6 +48,13 @@ public class JobApplyModel {
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private JobPostingModel job;
 
+	
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "idstate", nullable = false)
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	private State_AppliedModel state;
+	
 	public String getId() {
 		return id;
 	}
@@ -70,6 +77,14 @@ public class JobApplyModel {
 
 	public void setJob(JobPostingModel job) {
 		this.job = job;
+	}
+
+	public State_AppliedModel getState() {
+		return state;
+	}
+
+	public void setState(State_AppliedModel state) {
+		this.state = state;
 	}
 	
 	
