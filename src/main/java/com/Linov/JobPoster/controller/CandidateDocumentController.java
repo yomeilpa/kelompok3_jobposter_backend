@@ -68,7 +68,7 @@ public class CandidateDocumentController {
 			// TODO: handle exception
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		return ResponseEntity.ok("Succes");
+		return ResponseEntity.ok(cds);
 	}
 	
 	@GetMapping("/doc/{id}/{iddt}")
