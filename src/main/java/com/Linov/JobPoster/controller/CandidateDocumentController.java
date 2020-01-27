@@ -62,6 +62,7 @@ public class CandidateDocumentController {
 	@PostMapping("add/del")
 	public ResponseEntity<?> addAfterDelete(@RequestBody CandidateDocument cds){
 		try {
+			cds.setId(null);
 			docs.insertModel(cds);
 		} catch (Exception e) {
 			// TODO: handle exception
