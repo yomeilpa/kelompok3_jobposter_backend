@@ -90,11 +90,9 @@ public void validasiNonBkAdmin(CandidateModel candidate) throws Exception {
 		if (candidate.getName() == null) {
 			throw new Exception("Name Must Be Filled");
 		}
-		
 		if (candidate.getDob() == null) {
 			throw new Exception("Date of Birth Must Be Filled");
 		}
-		
 		if (candidate.getGender() == null) {
 			throw new Exception("Gender Must Be Filled");
 		}
