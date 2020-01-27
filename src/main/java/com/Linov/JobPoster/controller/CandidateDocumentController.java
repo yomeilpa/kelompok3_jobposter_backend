@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.Linov.JobPoster.Validasi.FileValidation;
 import com.Linov.JobPoster.model.CandidateDocument;
 import com.Linov.JobPoster.service.CandiateService;
 import com.Linov.JobPoster.service.DocumentTypeService;
@@ -32,6 +33,8 @@ public class CandidateDocumentController {
 	@Autowired
 	DocumentTypeService type;
 	
+	@Autowired
+	FileValidation ses;
 	
 	
 	@PostMapping("/doc/{id}")
@@ -40,6 +43,7 @@ public class CandidateDocumentController {
 		CandidateDocument cddoc = new CandidateDocument();
 
 		try {
+			ses.fileSizeCheck(docx);
 			cddoc.setFilename(docx[0].getOriginalFilename());
 			cddoc.setDoctype(type.findById(iddoctype));
 			cddoc.setType(docx[0].getContentType());

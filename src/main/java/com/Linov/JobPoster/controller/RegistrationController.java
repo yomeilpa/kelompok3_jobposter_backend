@@ -50,7 +50,6 @@ public class RegistrationController {
 			cd.validasiNonBkAdmin(cand);
 			cd.validasiBk(cand);
 			cd.validasiFK(cand);
-		
 			CandidateModel cant = candidate.insertModel(cand);
 			UserModel users = new UserModel(password, cant,"HR");
 			account.insertModel(users);
