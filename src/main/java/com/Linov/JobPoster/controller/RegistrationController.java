@@ -47,7 +47,7 @@ public class RegistrationController {
 		
 		try {
 			cd.idValid(cand);
-			cd.validasiNonBk(cand);
+			cd.validasiNonBkAdmin(cand);
 			cd.validasiBk(cand);
 			cd.validasiFK(cand);
 			CandidateModel cant = candidate.insertModel(cand);
