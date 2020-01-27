@@ -1,5 +1,7 @@
 package com.Linov.JobPoster.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -132,12 +134,13 @@ public class JobController {
 	
 	@PostMapping("/jobposting")
 	public ResponseEntity<?> insertModel(@RequestBody JobPostingModel education){
+		JobPostingModel jb = new JobPostingModel();
 		try {
-			jobs.insertModel(education);
+			jb =jobs.insertModel(education);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		return ResponseEntity.ok(education);
+		return ResponseEntity.ok(jb);
 	}
 	
 	@DeleteMapping("/jobposting/{id}")
@@ -183,6 +186,21 @@ public class JobController {
 		return ResponseEntity.ok(education);
 	}
 	
+	@PostMapping("/jobdetail/{idJb}")
+	public ResponseEntity<?> insertModel(@RequestBody List<JobDetailModel> education,@PathVariable("IdJb") String idJb){
+		try {
+			JobPostingModel jb = jobs.findById(idJb);
+			for(JobDetailModel as:education) {
+				as.setJob(jb);
+				jobdetails.insertModel(as);
+			}
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok(education);
+	}
+	
+	
 	@DeleteMapping("/jobdetail/{id}")
 	public ResponseEntity<?> deleteModelsss(@PathVariable("id") String id){
 		
@@ -220,6 +238,20 @@ public class JobController {
 	public ResponseEntity<?> insertModel(@RequestBody JobRecruitmentModel education){
 		try {
 			jobrecs.insertModel(education);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok(education);
+	}
+	
+	@PostMapping("/jobrecruitment/{idJb}")
+	public ResponseEntity<?> insertModelNe(@RequestBody List<JobRecruitmentModel> education,@PathVariable("IdJb") String idJb){
+		try {
+			JobPostingModel jb = jobs.findById(idJb);
+			for(JobRecruitmentModel as:education) {
+				as.setJob(jb);
+				jobrecs.insertModel(as);
+			}
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
