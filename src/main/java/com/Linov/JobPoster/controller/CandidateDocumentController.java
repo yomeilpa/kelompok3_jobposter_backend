@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -56,6 +57,17 @@ public class CandidateDocumentController {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 		return ResponseEntity.ok(cddoc);
+	}
+	
+	@PostMapping("add/del")
+	public ResponseEntity<?> addAfterDelete(@RequestBody CandidateDocument cds){
+		try {
+			docs.insertModel(cds);
+		} catch (Exception e) {
+			// TODO: handle exception
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok("Succes");
 	}
 	
 	@GetMapping("/doc/{id}/{iddt}")
