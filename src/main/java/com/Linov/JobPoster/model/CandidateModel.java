@@ -55,7 +55,7 @@ public class CandidateModel {
 	private String id;
 	
 	
-	@Column(name = "salary",nullable = false)
+	@Column(name = "salary",nullable = true)
 	private Double salary;
 	
 	
