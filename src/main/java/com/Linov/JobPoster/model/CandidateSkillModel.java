@@ -2,7 +2,6 @@ package com.Linov.JobPoster.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -37,13 +36,13 @@ public class CandidateSkillModel {
 	@GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
 	private String id;
 	
-	@ManyToOne(fetch = FetchType.EAGER,optional = false)
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "idcandidate", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private CandidateModel candidate;
 	
-	@ManyToOne(fetch = FetchType.EAGER,optional = false)
+	@ManyToOne(optional = false)
 	@JoinColumn(name = "idskillevel", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
