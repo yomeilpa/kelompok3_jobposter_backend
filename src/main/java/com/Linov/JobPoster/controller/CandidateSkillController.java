@@ -56,7 +56,9 @@ public class CandidateSkillController {
 	
 	@GetMapping("/skill/candidate/{id}")
 	public ResponseEntity<?> findByid(@PathVariable("id") String id){
-		return ResponseEntity.ok(cands.findById(id));
+		CandidateSkillModel cs = cands.findById(id);
+		cs.setCandidate(null);
+		return ResponseEntity.ok(cs);
 	}
 	
 	@GetMapping("/skill/candidate/get/{id}")

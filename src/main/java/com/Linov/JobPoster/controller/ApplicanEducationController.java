@@ -66,7 +66,9 @@ public class ApplicanEducationController {
 	
 	@GetMapping("/education/candidate/{id}")
 	public ResponseEntity<?> findByid(@PathVariable("id") String id){
-		return ResponseEntity.ok(cands.findById(id));
+		ApplicantEducationModel cs = cands.findById(id);
+		cs.setCandidate(null);
+		return ResponseEntity.ok(cs);
 	}
 	
 	@GetMapping("/education/candidate/get/{id}")

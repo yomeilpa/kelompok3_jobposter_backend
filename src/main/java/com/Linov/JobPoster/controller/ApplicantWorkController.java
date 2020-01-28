@@ -57,7 +57,9 @@ public class ApplicantWorkController {
 	
 	@GetMapping("/experience/candidate/{id}")
 	public ResponseEntity<?> findByid(@PathVariable("id") String id){
-		return ResponseEntity.ok(cands.findById(id));
+		WorkExperienceHeader cs = cands.findById(id);
+		cs.setCandidate(null);
+		return ResponseEntity.ok(cs);
 	}
 	
 	@GetMapping("/experience/candidate/get/{id}")
