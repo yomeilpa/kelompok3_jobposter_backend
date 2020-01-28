@@ -73,6 +73,11 @@ public class JobController {
 		return ResponseEntity.ok(jobkate.findById(id));
 	}
 	
+	@GetMapping("/jobkategori")
+	public ResponseEntity<?> findAll(){
+		return ResponseEntity.ok(jobkate.findAll());
+	}
+	
 	@PutMapping("/jobkategori/{id}")
 	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody JobKategoriModel ed){
 		try {
@@ -114,6 +119,11 @@ public class JobController {
 	@GetMapping("/jobposition/{id}")
 	public ResponseEntity<?> findByids(@PathVariable("id") String id){
 		return ResponseEntity.ok(jobpos.findById(id));
+	}
+	
+	@GetMapping("/jobposition")
+	public ResponseEntity<?> findAllPositon(){
+		return ResponseEntity.ok(jobpos.findAll());
 	}
 	
 	@PutMapping("/jobposition/{id}")
@@ -159,6 +169,13 @@ public class JobController {
 	public ResponseEntity<?> findByidss(@PathVariable("id") String id){
 		return ResponseEntity.ok(jobs.findById(id));
 	}
+	
+	@GetMapping("/jobposting")
+	public ResponseEntity<?> findAllJob(){
+		return ResponseEntity.ok(jobs.findAll());
+	}
+	
+	
 	
 	@PutMapping("/jobposting/{id}")
 	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody JobPostingModel ed){
@@ -218,6 +235,11 @@ public class JobController {
 		return ResponseEntity.ok(jobdetails.findById(id));
 	}
 	
+	@GetMapping("/jobdetail")
+	public ResponseEntity<?> findBAllDetail(){
+		return ResponseEntity.ok(jobdetails.findAll());
+	}
+	
 	@PutMapping("/jobdetail/{id}")
 	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody JobDetailModel ed){
 		try {
@@ -273,6 +295,11 @@ public class JobController {
 	@GetMapping("/jobrecruitment/{id}")
 	public ResponseEntity<?> findByidssss(@PathVariable("id") String id){
 		return ResponseEntity.ok(jobrecs.findById(id));
+	}
+	
+	@GetMapping("/jobrecruitment")
+	public ResponseEntity<?> findByAll(){
+		return ResponseEntity.ok(jobrecs.findAll());
 	}
 	
 	@PutMapping("/jobrecruitment/{id}")

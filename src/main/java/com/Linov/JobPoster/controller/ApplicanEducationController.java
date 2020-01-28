@@ -1,5 +1,7 @@
 package com.Linov.JobPoster.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -69,7 +71,11 @@ public class ApplicanEducationController {
 	
 	@GetMapping("/education/candidate/get/{id}")
 	public ResponseEntity<?> cand(@PathVariable("id") String id){
-		return ResponseEntity.ok(cands.finCd(id));
+		List<ApplicantEducationModel> cds = cands.finCd(id);
+		for(ApplicantEducationModel cs:cds) {
+			cs.setCandidate(null);
+		}
+		return ResponseEntity.ok(cds);
 	}
 	
 	@PutMapping("/education/candidate/{id}")
