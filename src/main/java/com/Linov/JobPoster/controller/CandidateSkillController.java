@@ -1,5 +1,7 @@
 package com.Linov.JobPoster.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -59,7 +61,11 @@ public class CandidateSkillController {
 	
 	@GetMapping("/skill/candidate/get/{id}")
 	public ResponseEntity<?> findByCand(@PathVariable("id") String id){
-		return ResponseEntity.ok(cands.findCandidate(id));
+		List<CandidateSkillModel> ok = cands.findCandidate(id);
+		for(CandidateSkillModel sa:ok) {
+			sa.setCandidate(null);
+		}
+		return ResponseEntity.ok(ok);
 	}
 	
 	@PutMapping("/skill/candidate/{id}")
