@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -39,7 +40,7 @@ public class ApplicantEducationModel {
 
 	
 
-	@ManyToOne(optional = false)
+	@ManyToOne(fetch = FetchType.LAZY,optional = false)
 	@JoinColumn(name = "idcandidate", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
@@ -51,7 +52,7 @@ public class ApplicantEducationModel {
 	@GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
 	private String id;
 	
-	 	@ManyToOne(optional = false)
+	 	@ManyToOne(fetch = FetchType.LAZY,optional = false)
 		@JoinColumn(name = "ideducation", nullable = false)
 		@OnDelete(action = OnDeleteAction.NO_ACTION)
 		@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
