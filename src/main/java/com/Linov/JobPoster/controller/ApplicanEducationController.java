@@ -36,6 +36,7 @@ public class ApplicanEducationController {
 			CandidateModel cs = cds.findById(id);
 			education.setCandidate(cs);
 			cands.insertModel(education);
+			education.setCandidate(null);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
@@ -88,11 +89,12 @@ public class ApplicanEducationController {
 			CandidateModel ccds = cands.findById(id).getCandidate();
 			ed.setCandidate(ccds);
 			cands.updateModel(ed);
+			ed.setCandidate(null);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 			// TODO: handle exception
 		}
-		return ResponseEntity.ok(cands);
+		return ResponseEntity.ok(ed);
 		
 	}
 }

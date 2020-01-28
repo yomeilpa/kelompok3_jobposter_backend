@@ -37,6 +37,7 @@ public class ApplicantWorkController {
 			CandidateModel cs = cds.findById(id);
 			education.setCandidate(cs);
 			cands.insertModel(education);
+			education.setCandidate(null);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
@@ -78,11 +79,12 @@ public class ApplicantWorkController {
 			ed.setId(id);
 			ed.setCandidate(cands.findById(id).getCandidate());
 			cands.updateModel(ed);
+			ed.setCandidate(null);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
 			// TODO: handle exception
 		}
-		return ResponseEntity.ok(cands);
+		return ResponseEntity.ok(ed);
 		
 	}
 }

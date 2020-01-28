@@ -51,6 +51,7 @@ public class CandidateDocumentController {
 			cddoc.setPic(docx[0].getBytes());
 			cddoc.setCandidate(cds.findById(id));
 			docs.insertModel(cddoc);
+			cddoc.setCandidate(null);
 		
 			
 		} catch (Exception e) {

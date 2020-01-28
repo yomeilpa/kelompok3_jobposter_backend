@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.service.JobApplyService;
 
@@ -25,12 +26,16 @@ public class JobApplyController {
 
 	@PostMapping("/jobapply")
 	public ResponseEntity<?> insertModel(@RequestBody JobApplyModel education){
+		CandidateModel cs = new CandidateModel();
 		try {
-			eds.insertModel(education);
+			JobApplyModel ss = eds.insertModel(education);
+			 cs = ss.getCandidate();
+			cs.setPic(null);
+			ss.setCandidate(cs);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		return ResponseEntity.ok(education);
+		return ResponseEntity.ok(cs);
 	}
 	
 	@DeleteMapping("/jobapply/{id}")
