@@ -44,6 +44,7 @@ public class CandidateDocumentController {
 		CandidateDocument cddoc = new CandidateDocument();
 
 		try {
+			ses.fileSizeCheck(docx);
 			cddoc.setFilename(docx[0].getOriginalFilename());
 			cddoc.setDoctype(type.findById(iddoctype));
 			cddoc.setType(docx[0].getContentType());

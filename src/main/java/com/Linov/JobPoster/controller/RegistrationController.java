@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Linov.JobPoster.Validasi.CandidateValidation;
+import com.Linov.JobPoster.Validasi.FileValidation;
 import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.UserModel;
 import com.Linov.JobPoster.service.AccountService;
@@ -39,6 +39,9 @@ public class RegistrationController {
 	
 	@Autowired
 	CandiateService candidate;
+	
+	@Autowired
+	FileValidation ses;
 	
 	
 	@PostMapping("/register/admin")
@@ -83,15 +86,16 @@ public class RegistrationController {
 		
 	
 	@PostMapping("/uploadphoto/{id}")
-	public ResponseEntity<?> uploadiProfile(@RequestParam("upload") MultipartFile upload,CandidateModel candidate,@PathVariable("id") String id){
+	public ResponseEntity<?> uploadiProfile(@RequestPart("upload") MultipartFile[] upload,CandidateModel candidate,@PathVariable("id") String id){
 		candidate = this.candidate.findById(id);
 		try {
+			ses.fileSizeCheck(upload);;
 			cd.idValidnotNull(candidate);
 			cd.validasiNonBk(candidate);
 			cd.validasiFK(candidate);
-			candidate.setFilename(upload.getOriginalFilename());
-			candidate.setType(upload.getContentType());
-			byte[] byteArr = upload.getBytes();
+			candidate.setFilename(upload[0].getOriginalFilename());
+			candidate.setType(upload[0].getContentType());
+			byte[] byteArr = upload[0].getBytes();
 			candidate.setPic(byteArr);
 			this.candidate.updateModel(candidate);
 		} catch (Exception e) {
