@@ -1,4 +1,4 @@
-package com.Linov.JobPoster.dao;
+	package com.Linov.JobPoster.dao;
 
 import java.util.List;
 
