@@ -1,5 +1,7 @@
 package com.Linov.JobPoster.model;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -55,6 +57,12 @@ public class JobApplyModel {
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private State_AppliedModel state;
 	
+	@Column(name = "dateApplied")
+	private Date appDate;
+	
+	@Column(name = "dateInvite")
+	private Date appHire;
+	
 	public String getId() {
 		return id;
 	}
@@ -85,6 +93,22 @@ public class JobApplyModel {
 
 	public void setState(State_AppliedModel state) {
 		this.state = state;
+	}
+
+	public Date getAppDate() {
+		return appDate;
+	}
+
+	public void setAppDate(Date appDate) {
+		this.appDate = appDate;
+	}
+
+	public Date getAppHire() {
+		return appHire;
+	}
+
+	public void setAppHire(Date appHire) {
+		this.appHire = appHire;
 	}
 	
 	
