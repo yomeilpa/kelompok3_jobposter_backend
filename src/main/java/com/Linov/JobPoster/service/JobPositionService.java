@@ -34,5 +34,8 @@ public class JobPositionService {
 	public List<JobPosition> findAll() {
 		return acc.findAll();
 	}
-
+	
+	public List<JobPosition> findbyKate(String id) {
+		return acc.findKategoribyid(id);
+	}
 }

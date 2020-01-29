@@ -81,7 +81,7 @@ public class JobController {
 	@PutMapping("/jobkategori/{id}")
 	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody JobKategoriModel ed){
 		try {
-			
+				
 			ed.setId(id);
 			jobkate.updateModel(ed);
 		} catch (Exception e) {
@@ -94,7 +94,7 @@ public class JobController {
 
 	//JobPostion Service
 
-	@PostMapping("/jobposition")
+	@PostMapping("/	")
 	public ResponseEntity<?> insertModel(@RequestBody JobPosition education){
 		try {
 			jobpos.insertModel(education);
@@ -124,6 +124,10 @@ public class JobController {
 	@GetMapping("/jobposition")
 	public ResponseEntity<?> findAllPositon(){
 		return ResponseEntity.ok(jobpos.findAll());
+	}
+	@GetMapping("/jobposition/kate/{id}")
+	public ResponseEntity<?> findAllPositonnyKate(@PathVariable("id") String id){
+		return ResponseEntity.ok(jobpos.findbyKate(id));
 	}
 	
 	@PutMapping("/jobposition/{id}")
