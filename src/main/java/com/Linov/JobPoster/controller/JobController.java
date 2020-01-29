@@ -150,11 +150,12 @@ public class JobController {
 	public ResponseEntity<?> insertModel(@RequestBody JobPostingModel education){
 		JobPostingModel jb = new JobPostingModel();
 		try {
-			jobs.insertModel(education);
+			jb =jobs.insertModel(education);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		return ResponseEntity.ok(education);
+		jb.setCandidate(null);
+		return ResponseEntity.ok(jb);
 	}
 	
 	@DeleteMapping("/jobposting/{id}")
