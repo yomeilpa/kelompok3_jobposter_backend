@@ -271,8 +271,8 @@ public class JobController {
 		return ResponseEntity.ok(education);
 	}
 	
-	@PostMapping("/jobrecruitment/{idJb}")
-	public ResponseEntity<?> insertModelNe(@RequestBody List<JobRecruitmentModel> education,@PathVariable("IdJb") String idJb){
+	@PostMapping("/jobrecruitment/{id}")
+	public ResponseEntity<?> insertModelNe(@RequestBody List<JobRecruitmentModel> education,@PathVariable("id") String idJb){
 		try {
 			JobPostingModel jb = jobs.findById(idJb);
 			for(JobRecruitmentModel as:education) {
