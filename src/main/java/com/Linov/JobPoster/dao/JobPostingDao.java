@@ -14,8 +14,7 @@ public class JobPostingDao  extends CommonDao{
 	
 	@Transactional
 	public JobPostingModel saveAccount(JobPostingModel account) {
-		return super.entityManager.merge(account);
-
+		return super.entityManager.merge(account);	
 	}
 
 	@Transactional
