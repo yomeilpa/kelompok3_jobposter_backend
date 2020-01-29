@@ -64,6 +64,10 @@ public class JobPostingModel {
 	@Column(name = "start_date")
 	private Date start;
 	
+	@Column(name = "job_desc",columnDefinition = "TEXT")
+	private String desc;
+	
+	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "idcity", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
@@ -149,6 +153,14 @@ public class JobPostingModel {
 
 	public void setCity(CityModel city) {
 		this.city = city;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 	
 }
