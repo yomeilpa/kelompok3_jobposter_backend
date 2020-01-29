@@ -24,10 +24,10 @@ public class JobRecruitmentModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public JobRecruitmentModel(JobPostingModel job, String description) {
+	public JobRecruitmentModel(JobPostingModel job, String recruitment) {
 		super();
 		this.job = job;
-		this.recruitment = description;
+		this.recruitment = recruitment;
 	}
 
 	@Id
@@ -61,13 +61,15 @@ public class JobRecruitmentModel {
 		this.job = job;
 	}
 
-	public String getDescription() {
+	public String getRecruitment() {
 		return recruitment;
 	}
 
-	public void setDescription(String description) {
-		this.recruitment = description;
+	public void setRecruitment(String recruitment) {
+		this.recruitment = recruitment;
 	}
+
+
 
 
 
