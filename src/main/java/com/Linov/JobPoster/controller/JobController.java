@@ -94,7 +94,7 @@ public class JobController {
 
 	//JobPostion Service
 
-	@PostMapping("/	")
+	@PostMapping("/jobposition")
 	public ResponseEntity<?> insertModel(@RequestBody JobPosition education){
 		try {
 			jobpos.insertModel(education);
