@@ -53,7 +53,7 @@ public class JobPostingModel {
 	private JobPosition jobposotion;
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "idcnadidate", nullable = false)
+	@JoinColumn(name = "idcandidate", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private CandidateModel candidate;
