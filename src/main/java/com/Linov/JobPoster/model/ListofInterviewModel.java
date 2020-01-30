@@ -53,6 +53,9 @@ public class ListofInterviewModel {
 	@Column(name = "time")
 	private Time time;
 	
+	@Column(name = "interview_result",columnDefinition = "TEXT")
+	private String resultInt;
+	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "idstatus", nullable = false)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
@@ -97,6 +100,14 @@ public class ListofInterviewModel {
 
 	public void setStatus(InterviewStatusModel status) {
 		this.status = status;
+	}
+
+	public String getResultInt() {
+		return resultInt;
+	}
+
+	public void setResultInt(String resultInt) {
+		this.resultInt = resultInt;
 	}
 
 }
