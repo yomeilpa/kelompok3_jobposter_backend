@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.Linov.JobPoster.Validasi.FileValidation;
 import com.Linov.JobPoster.model.CandidateDocument;
-import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.service.CandiateService;
 import com.Linov.JobPoster.service.DocumentTypeService;
 import com.Linov.JobPoster.service.OtherDocumentService;
@@ -76,9 +75,7 @@ public class CandidateDocumentController {
 	@GetMapping("/doc/{id}/{iddt}")
 	public ResponseEntity<?> getDocTypebyId(@PathVariable("id") String idcd,@PathVariable("iddt") String iddt){
 		CandidateDocument cs = docs.findTrue(iddt, idcd);
-		CandidateModel ls = cs.getCandidate();
-		ls.setPic(null);
-		cs.setCandidate(ls);
+		cs.setCandidate(null);
 		return ResponseEntity.ok(cs);
 	}
 	
