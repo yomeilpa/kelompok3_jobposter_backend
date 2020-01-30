@@ -77,7 +77,9 @@ public class CandidateDocumentController {
 	public ResponseEntity<?> getDocTypebyId(@PathVariable("id") String idcd,@PathVariable("iddt") String iddt){
 		CandidateDocument cs = docs.findTrue(iddt, idcd);
 		CandidateModel cd = cs.getCandidate();
-		cd.setPic(null);
+		if(cd!= null) {
+			cd.setPic(null);
+		}
 		cs.setCandidate(cd);
 		return ResponseEntity.ok(cs);
 	}
