@@ -174,7 +174,9 @@ public class JobController {
 	@GetMapping("/jobposting/{id}")
 	public ResponseEntity<?> findByidss(@PathVariable("id") String id){
 		JobPostingModel s = jobs.findById(id);
-		s.setCandidate(null);
+		CandidateModel k = s.getCandidate();
+		k.setPic(null);
+		s.setCandidate(k);
 		return ResponseEntity.ok(s);
 	}
 	
@@ -182,7 +184,9 @@ public class JobController {
 	public ResponseEntity<?> findAllJob(){
 		List<JobPostingModel> ls = jobs.findAll();
 		for(JobPostingModel l:ls) {
-			l.setCandidate(null);
+			CandidateModel s = l.getCandidate();
+			s.setPic(null);
+			l.setCandidate(s);
 		}
 		return ResponseEntity.ok(ls);
 	}
