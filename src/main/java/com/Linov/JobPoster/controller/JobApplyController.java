@@ -87,7 +87,7 @@ public class JobApplyController {
 		for(JobApplyModel js:ls) {
 			CandidateModel cs = js.getCandidate();
 			cs.setPic(null);
-			js.setCandidate(cs);
+			js.setCandidate(cs);	
 		}
 		return ResponseEntity.ok(ls);
 	}

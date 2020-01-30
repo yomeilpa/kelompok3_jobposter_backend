@@ -7,8 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileValidation {
 	
 	public void fileSizeCheck(MultipartFile[] file) throws Exception{
-		if(file[0].getSize() > 1048576) {
-			throw new Exception("File Maximum Size is 1MB");
+		if(file[0].getSize() > 2048576) {
+			throw new Exception("File Maximum Size is 2MB");
 		}
 		
 	}

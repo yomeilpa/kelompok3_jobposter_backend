@@ -27,7 +27,9 @@ import com.Linov.JobPoster.service.EmailService;
 public class RegistrationController {
 	
 	private final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
-
+	
+	
+	
 	@Autowired
 	CandidateValidation cd;
 
@@ -93,6 +95,7 @@ public class RegistrationController {
 			cd.idValidnotNull(candidate);
 			cd.validasiNonBk(candidate);
 			cd.validasiFK(candidate);
+			ses.fileSizeCheck(upload);
 			candidate.setFilename(upload[0].getOriginalFilename());
 			candidate.setType(upload[0].getContentType());
 			byte[] byteArr = upload[0].getBytes();
