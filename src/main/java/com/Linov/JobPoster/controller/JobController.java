@@ -275,6 +275,17 @@ public class JobController {
 		return ResponseEntity.ok(js);
 	}
 	
+	@GetMapping("/jobdetail/get/{id}")
+	public ResponseEntity<?> findByJob(@PathVariable("id") String id){
+		List<JobDetailModel> js = jobdetails.findbyJobP(id);
+		for(JobDetailModel s:js) {
+			JobPostingModel jb = s.getJob();
+			jb.setCandidate(null);
+			s.setJob(jb);
+		}
+		return ResponseEntity.ok(js);
+	}
+	
 	@PutMapping("/jobdetail/{id}")
 	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody JobDetailModel ed){
 		try {
@@ -347,6 +358,17 @@ public class JobController {
 	@GetMapping("/jobrecruitment")
 	public ResponseEntity<?> findByAll(){
 		List<JobRecruitmentModel> js = jobrecs.findAll();
+		for(JobRecruitmentModel s:js) {
+			JobPostingModel jb = s.getJob();
+			jb.setCandidate(null);
+			s.setJob(jb);
+		}
+		return ResponseEntity.ok(js);
+	}
+	
+	@GetMapping("/jobrecruitment/get/{id}")
+	public ResponseEntity<?> findByJobs(@PathVariable("id") String id){
+		List<JobRecruitmentModel> js = jobrecs.findbyJobPos(id);
 		for(JobRecruitmentModel s:js) {
 			JobPostingModel jb = s.getJob();
 			jb.setCandidate(null);

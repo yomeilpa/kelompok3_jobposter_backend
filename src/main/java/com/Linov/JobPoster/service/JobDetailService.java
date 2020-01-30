@@ -34,6 +34,10 @@ public class JobDetailService {
 	public List<JobDetailModel> findAll() {
 		return acc.findAll();
 	}
+	
+	public List<JobDetailModel> findbyJobP(String id) {
+		return acc.findbyIdjobPosting(id);
+	}
 
 
 }

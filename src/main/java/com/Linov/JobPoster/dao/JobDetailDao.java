@@ -45,6 +45,17 @@ public class JobDetailDao extends CommonDao{
 		} else
 			return lstCandidateModels;
 	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<JobDetailModel> findbyIdjobPosting(String id) {
+		List<JobDetailModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From JobDetailModel where job.id =:id").setParameter("id", id).getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return null;
+		} else
+			return lstCandidateModels;
+	}
 
 
 
