@@ -1,6 +1,6 @@
 package com.Linov.JobPoster.controller;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +30,8 @@ public class JobApplyController {
 	public ResponseEntity<?> insertModel(@RequestBody JobApplyModel education){
 		CandidateModel cs = new CandidateModel();
 		try {
-			education.setAppDate((Date) new java.util.Date());
+			
+			education.setAppDate(new Date());
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
 			cs.setPic(null);
