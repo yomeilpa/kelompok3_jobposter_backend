@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Linov.JobPoster.Validasi.ApplyValidation;
 import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.service.JobApplyService;
@@ -25,6 +26,9 @@ public class JobApplyController {
 	
 	@Autowired
 	JobApplyService eds;
+	
+	@Autowired
+	ApplyValidation val;
 
 	@PostMapping("/jobapply")
 	public ResponseEntity<?> insertModel(@RequestBody JobApplyModel education){
@@ -32,6 +36,7 @@ public class JobApplyController {
 		try {
 			
 			education.setAppDate(new Date());
+			val.cekDokumen(education.getCandidate());
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
 			cs.setPic(null);
