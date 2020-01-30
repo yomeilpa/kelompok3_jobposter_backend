@@ -1,6 +1,7 @@
 package com.Linov.JobPoster.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -62,7 +63,33 @@ public class JobApplyController {
 	
 	@GetMapping("/jobapply/{id}")
 	public ResponseEntity<?> findByid(@PathVariable("id") String id){
-		return ResponseEntity.ok(eds.findById(id));
+		JobApplyModel js = eds.findById(id);
+		CandidateModel cs = js.getCandidate();
+		cs.setPic(null);
+		js.setCandidate(cs);
+		return ResponseEntity.ok(js);
+	}
+	
+	@GetMapping("/jobapply/get/{id}")
+	public ResponseEntity<?> findByCandidate(@PathVariable("id") String id){
+		List<JobApplyModel> ls = eds.findbyCandidate(id);
+		for(JobApplyModel js:ls) {
+			CandidateModel cs = js.getCandidate();
+			cs.setPic(null);
+			js.setCandidate(cs);
+		}
+		return ResponseEntity.ok(ls);
+	}
+	
+	@GetMapping("/jobapply")
+	public ResponseEntity<?> findAll(){
+		List<JobApplyModel> ls = eds.findAll();
+		for(JobApplyModel js:ls) {
+			CandidateModel cs = js.getCandidate();
+			cs.setPic(null);
+			js.setCandidate(cs);
+		}
+		return ResponseEntity.ok(ls);
 	}
 	
 	@PutMapping("/jobapply/{id}")
