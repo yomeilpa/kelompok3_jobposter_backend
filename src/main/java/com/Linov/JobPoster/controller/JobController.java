@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.JobDetailModel;
 import com.Linov.JobPoster.model.JobKategoriModel;
 import com.Linov.JobPoster.model.JobPosition;
@@ -172,12 +173,18 @@ public class JobController {
 	
 	@GetMapping("/jobposting/{id}")
 	public ResponseEntity<?> findByidss(@PathVariable("id") String id){
-		return ResponseEntity.ok(jobs.findById(id));
+		JobPostingModel s = jobs.findById(id);
+		s.setCandidate(null);
+		return ResponseEntity.ok(s);
 	}
 	
 	@GetMapping("/jobposting")
 	public ResponseEntity<?> findAllJob(){
-		return ResponseEntity.ok(jobs.findAll());
+		List<JobPostingModel> ls = jobs.findAll();
+		for(JobPostingModel l:ls) {
+			l.setCandidate(null);
+		}
+		return ResponseEntity.ok(ls);
 	}
 	
 	
@@ -192,6 +199,9 @@ public class JobController {
 			return ResponseEntity.badRequest().body("Update Gagal");
 			// TODO: handle exception
 		}
+		CandidateModel cs = ed.getCandidate();
+		cs.setPic(null);
+		ed.setCandidate(cs);
 		return ResponseEntity.ok(ed);
 		
 	}
@@ -219,6 +229,11 @@ public class JobController {
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
+		for(JobDetailModel sk:education) {
+			JobPostingModel s = sk.getJob();
+			s.setCandidate(null);
+			sk.setJob(s);
+		}
 		return ResponseEntity.ok(education);
 	}
 	
@@ -237,12 +252,23 @@ public class JobController {
 	
 	@GetMapping("/jobdetail/{id}")
 	public ResponseEntity<?> findByidsss(@PathVariable("id") String id){
-		return ResponseEntity.ok(jobdetails.findById(id));
+		JobDetailModel s = jobdetails.findById(id);
+		JobPostingModel js = s.getJob();
+		js.setCandidate(null);
+		s.setJob(js);
+		
+		return ResponseEntity.ok(s);
 	}
 	
 	@GetMapping("/jobdetail")
 	public ResponseEntity<?> findBAllDetail(){
-		return ResponseEntity.ok(jobdetails.findAll());
+		List<JobDetailModel> js = jobdetails.findAll();
+		for(JobDetailModel s:js) {
+			JobPostingModel jb = s.getJob();
+			jb.setCandidate(null);
+			s.setJob(jb);
+		}
+		return ResponseEntity.ok(js);
 	}
 	
 	@PutMapping("/jobdetail/{id}")
@@ -255,6 +281,9 @@ public class JobController {
 			return ResponseEntity.badRequest().body("Update Gagal");
 			// TODO: handle exception
 		}
+		JobPostingModel jb = ed.getJob();
+		jb.setCandidate(null);
+		ed.setJob(jb);
 		return ResponseEntity.ok(ed);
 		
 	}
@@ -282,6 +311,11 @@ public class JobController {
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
+		for(JobRecruitmentModel s:education) {
+			JobPostingModel jb = s.getJob();
+			jb.setCandidate(null);
+			s.setJob(jb);
+		}
 		return ResponseEntity.ok(education);
 	}
 	
@@ -299,12 +333,22 @@ public class JobController {
 	
 	@GetMapping("/jobrecruitment/{id}")
 	public ResponseEntity<?> findByidssss(@PathVariable("id") String id){
-		return ResponseEntity.ok(jobrecs.findById(id));
+		JobRecruitmentModel s = jobrecs.findById(id);
+		JobPostingModel jb = s.getJob();
+		jb.setCandidate(null);
+		s.setJob(jb);
+		return ResponseEntity.ok(s);
 	}
 	
 	@GetMapping("/jobrecruitment")
 	public ResponseEntity<?> findByAll(){
-		return ResponseEntity.ok(jobrecs.findAll());
+		List<JobRecruitmentModel> js = jobrecs.findAll();
+		for(JobRecruitmentModel s:js) {
+			JobPostingModel jb = s.getJob();
+			jb.setCandidate(null);
+			s.setJob(jb);
+		}
+		return ResponseEntity.ok(js);
 	}
 	
 	@PutMapping("/jobrecruitment/{id}")
@@ -317,6 +361,9 @@ public class JobController {
 			return ResponseEntity.badRequest().body("Update Gagal");
 			// TODO: handle exception
 		}
+		JobPostingModel jb = ed.getJob();
+		jb.setCandidate(null);
+		ed.setJob(jb);
 		return ResponseEntity.ok(ed);
 		
 	}
