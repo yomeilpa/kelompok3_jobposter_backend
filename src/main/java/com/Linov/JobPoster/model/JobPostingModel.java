@@ -83,6 +83,10 @@ public class JobPostingModel {
 	private Boolean active;
 	
 	
+	@Column(name = "saldo")
+	private Double saldo;
+	
+	
 	public String getId() {
 		return id;
 	}
@@ -161,6 +165,14 @@ public class JobPostingModel {
 
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+
+	public Double getSaldo() {
+		return saldo;
+	}
+
+	public void setSaldo(Double saldo) {
+		this.saldo = saldo;
 	}
 	
 }
