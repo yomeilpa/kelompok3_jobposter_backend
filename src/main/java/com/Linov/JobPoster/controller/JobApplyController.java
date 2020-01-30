@@ -35,8 +35,9 @@ public class JobApplyController {
 		CandidateModel cs = new CandidateModel();
 		try {
 			
+			
+			val.cekDokumen(education.getCandidate().getId());
 			education.setAppDate(new Date());
-			val.cekDokumen(education.getCandidate());
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
 			cs.setPic(null);
