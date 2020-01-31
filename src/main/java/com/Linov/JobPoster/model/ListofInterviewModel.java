@@ -42,7 +42,7 @@ public class ListofInterviewModel {
 	private String id;
 	
 	@OneToOne(optional = true)
-	@JoinColumn(name = "idjob", nullable = false)
+	@JoinColumn(name = "idjob", nullable = false,unique = true)
 	@OnDelete(action = OnDeleteAction.NO_ACTION)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private JobApplyModel job;
