@@ -31,7 +31,7 @@ public class ApplyValidation {
 	public void cek(JobApplyModel js) throws Exception {
 		
 		JobApplyModel jk = jobs.findAppCd(js.getCandidate().getId(), js.getJob().getId());
-		if(jk == null) {
+		if(jk.getId() == null) {
 			throw new Exception("You Has Apllied for this Job");
 		}
 	}
