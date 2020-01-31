@@ -53,13 +53,13 @@ public class JobPostingDao  extends CommonDao{
 	public List<JobPostingModel> finByFilter(FilterJobPosting eg) {
 		StringBuilder query = new StringBuilder();
 		query.append("FROM JobPostingModel jp where 1=1");
-		if(!eg.getProvince().getProvince().equals(null)) {
+		if(eg.getProvince().getProvince() != null) {
 			query.append(" and lower(jp.city.province.province) like:f1");
 		}
-		if(!eg.getCity().getCity().equals(null)) {
+		if(eg.getCity().getCity() != null) {
 			query.append(" and lower(jp.city.city) like:f2");
 		}
-		if(!eg.getTitle().equals(null)) {
+		if(eg.getTitle() != null) {
 			query.append(" and lower(jp.title) like:f3");
 		}
 		if(eg.getMaxSalary() != null) {
@@ -70,14 +70,14 @@ public class JobPostingDao  extends CommonDao{
 		}
 		
 		Query exc = super.entityManager.createQuery(query.toString());
-		if(!eg.getProvince().getProvince().equals(null)) {
-			exc.setParameter("f1", (eg.getProvince().getProvince().toLowerCase()));
+		if(eg.getProvince().getProvince() != null) {
+			exc.setParameter("f1","%"+ eg.getProvince().getProvince().toLowerCase()+"%");
 		}
-		if(!eg.getCity().getCity().equals(null)) {
-			exc.setParameter("f2", eg.getCity().getCity().toLowerCase());
+		if(eg.getCity().getCity() != null) {
+			exc.setParameter("f2","%"+ eg.getCity().getCity().toLowerCase()+ "%");
 		}
-		if(!eg.getTitle().equals(null)) {
-			exc.setParameter("f3", eg.getTitle().toLowerCase());
+		if(eg.getTitle() != null) {
+			exc.setParameter("f3","%"+eg.getTitle().toLowerCase()+"%");
 		}
 		if(eg.getMaxSalary() != null) {
 			exc.setParameter("f4", eg.getMaxSalary());
