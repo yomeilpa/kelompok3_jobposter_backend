@@ -45,6 +45,4 @@ public class FilterJobPosting {
 		this.city = city;
 	}
 	
-	
-	
 }
