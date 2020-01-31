@@ -33,7 +33,9 @@ public class JobApplyDao  extends CommonDao{
 		List<JobApplyModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From JobApplyModel where job.id=:id and candidate.id=:cd").setParameter("cd", cd).setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return new JobApplyModel();
+			JobApplyModel sk = new JobApplyModel();
+			sk.setId("x");
+			return sk;
 		} else
 			return (JobApplyModel) lstCandidateModels.get(0);
 	}
