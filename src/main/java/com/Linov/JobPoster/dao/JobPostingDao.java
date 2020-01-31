@@ -53,9 +53,9 @@ public class JobPostingDao  extends CommonDao{
 	public List<JobPostingModel> finByFilter(FilterJobPosting eg) {
 		StringBuilder query = new StringBuilder();
 		query.append("FROM JobPostingModel where 1=1");
-		if(eg.getProvince()!= null) {
-			query.append(" and city.province =:f1");
-		}
+//		if(eg.getProvince()!= null) {
+//			query.append(" and city.province =:f1");
+//		}
 		if(eg.getCity() != null) {
 			query.append(" and city =:f2");
 		}
@@ -70,10 +70,10 @@ public class JobPostingDao  extends CommonDao{
 		}
 		
 		Query exc = super.entityManager.createQuery(query.toString());
-		if(eg.getProvince() != null) {
-			String prov = eg.getProvince().getProvince();
-			exc.setParameter("f1",eg.getProvince());
-		}
+//		if(eg.getProvince() != null) {
+//			String prov = eg.getProvince().getProvince();
+//			exc.setParameter("f1",eg.getProvince());
+//		}
 		if(eg.getCity() != null) {
 			String city = eg.getCity().getCity();
 			exc.setParameter("f2",eg.getCity());
