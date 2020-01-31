@@ -46,5 +46,9 @@ public class JobApplyService {
 	public Long countAcc(String id) {
 		return acc.countDocTypeTrue(id);
 	}
+	
+	
+	
+	
 
 }

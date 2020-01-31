@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Linov.JobPoster.dao.JobPostingDao;
+import com.Linov.JobPoster.model.FilterJobPosting;
 import com.Linov.JobPoster.model.JobPostingModel;
 
 @Service
@@ -33,6 +34,10 @@ public class JobPostingService {
 	}
 	public List<JobPostingModel> findAll() {
 		return acc.findAll();
+	}
+	
+	public List<JobPostingModel> findbyFiletr(FilterJobPosting fg) {
+		return acc.finByFilter(fg);
 	}
 
 }

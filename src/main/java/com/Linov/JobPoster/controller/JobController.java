@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Linov.JobPoster.model.CandidateModel;
+import com.Linov.JobPoster.model.FilterJobPosting;
 import com.Linov.JobPoster.model.JobDetailModel;
 import com.Linov.JobPoster.model.JobKategoriModel;
 import com.Linov.JobPoster.model.JobPosition;
@@ -183,6 +184,17 @@ public class JobController {
 	@GetMapping("/jobposting")
 	public ResponseEntity<?> findAllJob(){
 		List<JobPostingModel> ls = jobs.findAll();
+		for(JobPostingModel l:ls) {
+			CandidateModel s = l.getCandidate();
+			s.setPic(null);
+			l.setCandidate(s);
+		}
+		return ResponseEntity.ok(ls);
+	}
+	
+	@PostMapping("/jobposting/filter")
+	public ResponseEntity<?> finJobbyfilter(@RequestBody FilterJobPosting eg){
+		List<JobPostingModel> ls = jobs.findbyFiletr(eg);
 		for(JobPostingModel l:ls) {
 			CandidateModel s = l.getCandidate();
 			s.setPic(null);
