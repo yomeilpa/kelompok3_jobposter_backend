@@ -63,8 +63,9 @@ public class ListInterviewController {
 		return ResponseEntity.ok(eds);
 		
 	}
-
-
-
+	@GetMapping("interview/get/{id}")
+	public ResponseEntity<?> getIntCd(@PathVariable("id") String id){
+		return ResponseEntity.ok(eds.findIntCd(id));
+	}
 
 }

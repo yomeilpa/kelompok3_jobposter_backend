@@ -34,6 +34,10 @@ public class ListInterviewService {
 	public List<ListofInterviewModel> findAll() {
 		return acc.findAll();
 	}
+	
+	public List<ListofInterviewModel> findIntCd(String id) {
+		return acc.findInterviewCandidate(id);
+	}
 
 
 }

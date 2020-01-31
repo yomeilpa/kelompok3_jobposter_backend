@@ -44,4 +44,15 @@ public class ListInterviewDao extends CommonDao{
 		} else
 			return lstCandidateModels;
 	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<ListofInterviewModel> findInterviewCandidate(String id) {
+		List<ListofInterviewModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From ListofInterviewModel where job.candidate.id =:id").setParameter("id", id).getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return null;
+		} else
+			return lstCandidateModels;
+	}
 }
