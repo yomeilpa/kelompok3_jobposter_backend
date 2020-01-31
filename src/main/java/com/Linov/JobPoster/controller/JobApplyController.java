@@ -121,7 +121,7 @@ public class JobApplyController {
 		
 	}
 	
-	@GetMapping("a")
+	@GetMapping("a/{id}")
 	public ResponseEntity<?> countA(@PathVariable("id") String id){
 		return ResponseEntity.ok(eds.countAcc(id));
 	}
