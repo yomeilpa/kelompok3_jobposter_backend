@@ -194,12 +194,7 @@ public class JobController {
 	
 	@PostMapping("/jobposting/filter/get")
 	public ResponseEntity<?> finJobbyfilter(@RequestBody FilterJobPosting eg){
-		String provId = eg.getProvince().getId();
-		String cityId = eg.getCity().getId();
-		String title = eg.getTitle();
-		Double max = eg.getMaxSalary();
-		Double min = eg.getMinSalary();
-		List<JobPostingModel> ls = jobs.findbyFiletr(provId,cityId,title,max,min);
+		List<JobPostingModel> ls = jobs.findbyFiletr(eg);
 		for(JobPostingModel l:ls) {
 			CandidateModel s = l.getCandidate();
 			s.setPic(null);
