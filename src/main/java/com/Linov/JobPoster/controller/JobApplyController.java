@@ -53,6 +53,16 @@ public class JobApplyController {
 		}
 		return ResponseEntity.ok(cs);
 	}
+	public JobApplyController() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	@GetMapping("app/{id}/{cd}")
+	public ResponseEntity<?>getJobCd1(@PathVariable("id") String id,@PathVariable("cd") String cd){
+		return ResponseEntity.ok(eds.findAppCd(id, cd));
+	}
+		
+	
 	
 	@DeleteMapping("/jobapply/{id}")
 	public ResponseEntity<?> deleteModel(@PathVariable("id") String id){
