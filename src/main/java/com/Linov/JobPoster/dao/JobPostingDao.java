@@ -54,10 +54,10 @@ public class JobPostingDao  extends CommonDao{
 		StringBuilder query = new StringBuilder();
 		query.append("FROM JobPostingModel jp where 1=1");
 		if(eg.getProvince() != null) {
-			query.append(" and lower(jp.city.province.province) =:a");
+			query.append(" and jp.city.province.province =:a");
 		}
 		if(eg.getCity() != null) {
-			query.append(" and lower(jp.city.city) =:b");
+			query.append(" and jp.city.city =:b");
 		}
 		
 		if(eg.getTitle() != null) {
@@ -72,10 +72,10 @@ public class JobPostingDao  extends CommonDao{
 		
 		Query exc = super.entityManager.createQuery(query.toString());
 		if(eg.getProvince() != null) {
-			exc.setParameter("a",eg.getProvince().toLowerCase());
+			exc.setParameter("a",eg.getProvince());
 		}
 		if(eg.getCity() != null) {
-			exc.setParameter("b",eg.getCity().toLowerCase());
+			exc.setParameter("b",eg.getCity());
 		}
 		if(eg.getTitle() != null) {
 			exc.setParameter("f3","%"+ eg.getTitle().toLowerCase()+"%");
