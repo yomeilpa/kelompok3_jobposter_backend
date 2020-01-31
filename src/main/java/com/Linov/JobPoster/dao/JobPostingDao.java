@@ -53,12 +53,13 @@ public class JobPostingDao  extends CommonDao{
 	public List<JobPostingModel> finByFilter(FilterJobPosting eg) {
 		StringBuilder query = new StringBuilder();
 		query.append("FROM JobPostingModel jp where 1=1");
-		if(eg.getProvince() != null) {
+		if(!eg.getProvince().equals(null)) {
 			query.append(" and lower(jp.city.province.province) like:f1");
 		}
-		if(eg.getCity() != null) {
+		if(!eg.getCity().equals(null)) {
 			query.append(" and lower(jp.city.city) like:f2");
 		}
+		
 		if(eg.getTitle() != null) {
 			query.append(" and lower(jp.title) like:f3");
 		}
