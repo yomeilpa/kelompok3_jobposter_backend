@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import com.Linov.JobPoster.model.FilterJobPosting;
 import com.Linov.JobPoster.model.JobPostingModel;
 
 @Repository
@@ -50,40 +49,40 @@ public class JobPostingDao  extends CommonDao{
 	
 	@Transactional
 	@SuppressWarnings("unchecked")
-	public List<JobPostingModel> finByFilter(FilterJobPosting eg) {
+	public List<JobPostingModel> finByFilter(String provid,String cityId,String title,Double max,Double min) {
 		StringBuilder query = new StringBuilder();
 		query.append("FROM JobPostingModel jp where 1=1 ");
-		if(eg.getProvince() != null) {
-			query.append(" and lower(jp.city.province.province) like:f1");
+		if(provid != null) {
+			query.append(" and lower(jp.city.province.province) =:f1");
 		}
-		if(eg.getCity() != null) {
-			query.append(" and lower(jp.city.city) like:f2");
+		if(cityId != null) {
+			query.append(" and lower(jp.city.city) =:f2");
 		}
-		if(eg.getTitle() != null) {
-			query.append(" and lower(jp.title) like:f3");
+		if(title != null) {
+			query.append(" and lower(jp.title) =:f3");
 		}
-		if(eg.getMaxSalary() != null) {
+		if(max != null) {
 			query.append(" and jp.salary <=:f4");
 		}
-		if(eg.getMinSalary() != null) {
+		if(min != null) {
 			query.append(" and jp.salary >=:f5");
 		}
 		
 		Query exc = super.entityManager.createQuery(query.toString());
-		if(eg.getProvince().getId() != null) {
-			exc.setParameter("f1", (eg.getProvince().getProvince().toLowerCase()));
+		if(provid != null) {
+			exc.setParameter("f1", provid);
 		}
-		if(eg.getCity().getId() != null) {
-			exc.setParameter("f2", eg.getCity().getCity().toLowerCase());
+		if(cityId != null) {
+			exc.setParameter("f2", cityId);
 		}
-		if(eg.getTitle() != null) {
-			exc.setParameter("f3", eg.getTitle().toLowerCase()	);
+		if(title != null) {
+			exc.setParameter("f3",title);
 		}
-		if(eg.getMaxSalary() != null) {
-			exc.setParameter("f4", eg.getMaxSalary());
+		if(max != null) {
+			exc.setParameter("f4",max);
 		}
-		if(eg.getMinSalary() != null) {
-			exc.setParameter("f5", eg.getMinSalary());
+		if(min != null) {
+			exc.setParameter("f5", min);
 		}
 		
 		List<JobPostingModel> lstCandidateModels = exc.getResultList();

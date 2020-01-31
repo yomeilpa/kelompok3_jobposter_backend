@@ -36,8 +36,8 @@ public class JobPostingService {
 		return acc.findAll();
 	}
 	
-	public List<JobPostingModel> findbyFiletr(FilterJobPosting fg) {
-		return acc.finByFilter(fg);
+	public List<JobPostingModel> findbyFiletr(String provId,String cityId,String title,Double max, Double min) {
+		return acc.finByFilter(provId,cityId,title,max,min);
 	}
 
 }
