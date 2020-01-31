@@ -71,10 +71,12 @@ public class JobPostingDao  extends CommonDao{
 		
 		Query exc = super.entityManager.createQuery(query.toString());
 		if(eg.getProvince() != null) {
-			exc.setParameter("f1",eg.getProvince().getProvince());
+			String prov = eg.getProvince().getProvince();
+			exc.setParameter("f1",prov);
 		}
 		if(eg.getCity() != null) {
-			exc.setParameter("f2",eg.getCity().getCity());
+			String city = eg.getCity().getCity();
+			exc.setParameter("f2",city);
 		}
 		if(eg.getTitle() != null) {
 			exc.setParameter("f3","%"+ eg.getTitle().toLowerCase()+"%");
