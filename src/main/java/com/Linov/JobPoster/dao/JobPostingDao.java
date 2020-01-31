@@ -88,7 +88,7 @@ public class JobPostingDao  extends CommonDao{
 		
 		List<JobPostingModel> lstCandidateModels = exc.getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
