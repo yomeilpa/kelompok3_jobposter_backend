@@ -192,7 +192,7 @@ public class JobController {
 		return ResponseEntity.ok(ls);
 	}
 	
-	@PostMapping("/jobposting/filter/get")
+	@PostMapping("/jobposting/filter")
 	public ResponseEntity<?> finJobbyfilter(@RequestBody FilterJobPosting eg){
 		List<JobPostingModel> ls = jobs.findbyFiletr(eg);
 		for(JobPostingModel l:ls) {
