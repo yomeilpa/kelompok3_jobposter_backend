@@ -2,17 +2,20 @@ package com.Linov.JobPoster.model;
 
 public class FilterJobPosting {
 
-	public FilterJobPosting(String title, String province, Double minSalary, Double maxSalary, String city) {
+	public FilterJobPosting(String title, String provinsi, Double minSalary, Double maxSalary, String kota) {
 		super();
 		this.title = title;
+		this.provinsi = provinsi;
 		this.minSalary = minSalary;
 		this.maxSalary = maxSalary;
+		this.kota = kota;
 	}
+	
 	private String title;
-	private String province;
+	private String provinsi;
 	private Double minSalary;
 	private  Double maxSalary;
-	private String city;
+	private String kota;
 	public String getTitle() {
 		return title;
 	}
@@ -32,18 +35,19 @@ public class FilterJobPosting {
 	public void setMaxSalary(Double maxSalary) {
 		this.maxSalary = maxSalary;
 	}
-	public String getProvince() {
-		return province;
+	public String getProvinsi() {
+		return provinsi;
 	}
-	public void setProvince(String province) {
-		this.province = province;
+	public void setProvinsi(String provinsi) {
+		this.provinsi = provinsi;
 	}
-	public String getCity() {
-		return city;
+	public String getKota() {
+		return kota;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setKota(String kota) {
+		this.kota = kota;
 	}
+	
 	
 	
 }
