@@ -36,5 +36,14 @@ public class ApplyValidation {
 			throw new Exception("You Has Apllied for this Job");
 		}
 	}
+	
+	public void cekHired(JobApplyModel sk) throws Exception{
+		Long a = jobs.countAcc(sk.getJob().getId());
+		Double b = sk.getJob().getSaldo();
+		if(a>= b) {
+			throw new Exception("Job Quota Is Limited");
+		}
+		
+	}
 
 }
