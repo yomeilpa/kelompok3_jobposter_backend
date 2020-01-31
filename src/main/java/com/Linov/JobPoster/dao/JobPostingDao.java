@@ -92,5 +92,4 @@ public class JobPostingDao  extends CommonDao{
 		} else
 			return lstCandidateModels;
 	}
-
 }

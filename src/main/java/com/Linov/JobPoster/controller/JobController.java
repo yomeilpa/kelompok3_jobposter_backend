@@ -196,6 +196,7 @@ public class JobController {
 	public ResponseEntity<?> finJobbyfilter(@RequestBody FilterJobPosting eg){
 		List<JobPostingModel> ls = jobs.findbyFiletr(eg);
 		for(JobPostingModel l:ls) {
+		
 			CandidateModel s = l.getCandidate();
 			s.setPic(null);
 			l.setCandidate(s);
