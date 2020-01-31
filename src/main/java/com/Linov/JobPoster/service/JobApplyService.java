@@ -38,5 +38,9 @@ public class JobApplyService {
 	public List<JobApplyModel> findbyCandidate(String id) {
 		return acc.findByCandidateId(id);
 	}
+	
+	public JobApplyModel findAppCd(String id,String cd) {
+		return acc.CandidateApplierd(id, cd);
+	}
 
 }

@@ -42,6 +42,7 @@ public class JobApplyController {
 			
 			education.setState(st.findbyname("Not Reviewed"));
 			val.cekDokumen(education.getCandidate().getId());
+			val.cek(education);
 			education.setAppDate(new Date());
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
