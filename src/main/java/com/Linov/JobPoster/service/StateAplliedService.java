@@ -36,5 +36,9 @@ public class StateAplliedService {
 		return acc.findAll();
 	}
 	
+	public State_AppliedModel findbyname(String id) {
+		return acc.findbname(id);
+	}
+	
 	
 }

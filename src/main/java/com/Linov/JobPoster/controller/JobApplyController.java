@@ -19,6 +19,7 @@ import com.Linov.JobPoster.Validasi.ApplyValidation;
 import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.service.JobApplyService;
+import com.Linov.JobPoster.service.StateAplliedService;
 
 @RestController
 @Controller
@@ -31,12 +32,15 @@ public class JobApplyController {
 	@Autowired
 	ApplyValidation val;
 
+	@Autowired
+	StateAplliedService st;
+	
 	@PostMapping("/jobapply")
 	public ResponseEntity<?> insertModel(@RequestBody JobApplyModel education){
 		CandidateModel cs = new CandidateModel();
 		try {
 			
-			
+			education.setState(st.findbyname("Not Reviewed"));
 			val.cekDokumen(education.getCandidate().getId());
 			education.setAppDate(new Date());
 			JobApplyModel ss = eds.insertModel(education);

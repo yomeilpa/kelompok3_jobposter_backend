@@ -28,6 +28,17 @@ public class StateAppliedDao extends CommonDao {
 		} else
 			return (State_AppliedModel) lstCandidateModels.get(0);
 	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public State_AppliedModel findbname(String id) {
+		List<State_AppliedModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From State_AppliedModel where state=:id").setParameter("id", id).getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return new State_AppliedModel();
+		} else
+			return (State_AppliedModel) lstCandidateModels.get(0);
+	}
 
 	@Transactional
 	public void deleteCandidate(String id) {
