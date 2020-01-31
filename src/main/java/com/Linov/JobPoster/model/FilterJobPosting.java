@@ -9,10 +9,10 @@ public class FilterJobPosting {
 		this.maxSalary = maxSalary;
 	}
 	private String title;
-	private ProvinceModel province;
+	private String province;
 	private Double minSalary;
 	private  Double maxSalary;
-	private CityModel city;
+	private String city;
 	public String getTitle() {
 		return title;
 	}
@@ -32,17 +32,18 @@ public class FilterJobPosting {
 	public void setMaxSalary(Double maxSalary) {
 		this.maxSalary = maxSalary;
 	}
-	public ProvinceModel getProvince() {
+	public String getProvince() {
 		return province;
 	}
-	public void setProvince(ProvinceModel province) {
+	public void setProvince(String province) {
 		this.province = province;
 	}
-	public CityModel getCity() {
+	public String getCity() {
 		return city;
 	}
-	public void setCity(CityModel city) {
+	public void setCity(String city) {
 		this.city = city;
 	}
+	
 	
 }
