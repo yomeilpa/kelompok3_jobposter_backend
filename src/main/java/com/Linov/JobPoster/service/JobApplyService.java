@@ -42,5 +42,9 @@ public class JobApplyService {
 	public JobApplyModel findAppCd(String id,String cd) {
 		return acc.CandidateApplierd(id, cd);
 	}
+	
+	public Long countAcc(String id) {
+		return acc.countDocTypeTrue(id);
+	}
 
 }
