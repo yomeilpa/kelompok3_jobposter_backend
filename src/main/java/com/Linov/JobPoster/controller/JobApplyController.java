@@ -19,6 +19,7 @@ import com.Linov.JobPoster.Validasi.ApplyValidation;
 import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.EducationModel;
 import com.Linov.JobPoster.model.JobApplyModel;
+import com.Linov.JobPoster.model.State_AppliedModel;
 import com.Linov.JobPoster.service.JobApplyService;
 import com.Linov.JobPoster.service.StateAplliedService;
 
@@ -64,8 +65,9 @@ public class JobApplyController {
 		try {
 			
 			JobApplyModel education = eds.findById(id);
-			String b = education.getState().getState();
-			if(!b.equals("ON INVITATION") || !b.equals("Reviewed") || b.equals("Rejected") || b.equals("Accepted")) {
+			State_AppliedModel s = education.getState();
+			String b = s.getState();
+			if(!b.equals("ON INVITATION")|| b.equals("Rejected") || b.equals("Accepted")) {
 				education.setState(st.findbyname("Reviewed"));
 			}
 			JobApplyModel ss = eds.insertModel(education);
