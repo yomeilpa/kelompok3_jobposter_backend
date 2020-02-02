@@ -53,13 +53,13 @@ public class JobApplyController {
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		return ResponseEntity.ok(cs);
+		return ResponseEntity.ok(education);
 	}
 	public JobApplyController() {
 		// TODO Auto-generated constructor stub
 	}
 	@PutMapping("/jobapply/review")
-	public ResponseEntity<?> insertModel(@PathVariable("id") String id){
+	public ResponseEntity<?> stateReview(@PathVariable("id") String id){
 		CandidateModel cs = new CandidateModel();
 		try {
 			
@@ -71,9 +71,24 @@ public class JobApplyController {
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
-		return ResponseEntity.ok(cs);
+		return ResponseEntity.ok("Update Succes");
 	}
 	
+	@PutMapping("/jobapply/rejected")
+	public ResponseEntity<?> stateRejected(@PathVariable("id") String id){
+		CandidateModel cs = new CandidateModel();
+		try {
+			
+			JobApplyModel education = eds.findById(id); 
+			education.setState(st.findbyname("Rejected"));
+			JobApplyModel ss = eds.insertModel(education);
+			 cs = ss.getCandidate();
+			ss.setCandidate(cs);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok("Update Rejected");
+	}
 	@GetMapping("app/{id}/{cd}")
 	public ResponseEntity<?>getJobCd1(@PathVariable("id") String id,@PathVariable("cd") String cd){
 		return ResponseEntity.ok(eds.findAppCd(id, cd));
