@@ -67,6 +67,11 @@ public class JobApplyController {
 	public ResponseEntity<?>getCountCd(@PathVariable("id") String id){
 		return ResponseEntity.ok(eds.countCandidate(id));
 	}
+	
+	@GetMapping("job/app/{id}")
+	public ResponseEntity<?>getByJob(@PathVariable("id") String id){
+		return ResponseEntity.ok(eds.countCandidate(id));
+	}
 		
 	
 			
