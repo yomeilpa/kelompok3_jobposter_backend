@@ -1,5 +1,7 @@
 package com.Linov.JobPoster.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Linov.JobPoster.model.CandidateModel;
+import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.model.ListofInterviewModel;
 import com.Linov.JobPoster.service.ListInterviewService;
 
@@ -65,6 +69,14 @@ public class ListInterviewController {
 	}	
 	@GetMapping("interview/get/{id}")
 	public ResponseEntity<?> getIntCd(@PathVariable("id") String id){
+		List<ListofInterviewModel> js = eds.findIntCd(id);
+		for(ListofInterviewModel as:js) {
+			CandidateModel ss = as.getJob().getCandidate();
+			ss.setPic(null);
+			JobApplyModel ls = as.getJob();
+			ls.setCandidate(ss);
+			as.setJob(ls);
+		}
 		return ResponseEntity.ok(eds.findIntCd(id));
 	}
 

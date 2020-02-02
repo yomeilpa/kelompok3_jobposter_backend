@@ -1,6 +1,6 @@
-package com.Linov.JobPoster.model;
+	package com.Linov.JobPoster.model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Time;
 
 import javax.persistence.Column;
@@ -34,7 +34,6 @@ public class ListofInterviewModel {
 		this.time = time;
 		this.status = status;
 	}
-
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(generator = "UUID")
