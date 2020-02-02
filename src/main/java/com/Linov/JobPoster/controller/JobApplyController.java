@@ -70,7 +70,7 @@ public class JobApplyController {
 	
 	@GetMapping("job/app/{id}")
 	public ResponseEntity<?>getByJob(@PathVariable("id") String id){
-		return ResponseEntity.ok(eds.countCandidate(id));
+		return ResponseEntity.ok(eds.findByJob(id));
 	}
 		
 	
