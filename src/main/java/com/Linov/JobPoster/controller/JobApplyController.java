@@ -64,12 +64,12 @@ public class JobApplyController {
 	}
 	
 	@GetMapping("count/app/{id}")
-	public ResponseEntity<?>getCountCd(@PathVariable("id") String id,@PathVariable("cd") String cd){
+	public ResponseEntity<?>getCountCd(@PathVariable("id") String id){
 		return ResponseEntity.ok(eds.countCandidate(id));
 	}
 		
 	
-	
+			
 	@DeleteMapping("/jobapply/{id}")
 	public ResponseEntity<?> deleteModel(@PathVariable("id") String id){
 		
@@ -97,7 +97,7 @@ public class JobApplyController {
 		for(JobApplyModel js:ls) {
 			CandidateModel cs = js.getCandidate();
 			cs.setPic(null);
-			js.setCandidate(cs);
+					js.setCandidate(cs);
 		}
 		return ResponseEntity.ok(ls);
 	}
