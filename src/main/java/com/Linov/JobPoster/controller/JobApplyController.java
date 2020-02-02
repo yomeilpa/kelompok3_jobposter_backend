@@ -58,7 +58,7 @@ public class JobApplyController {
 	public JobApplyController() {
 		// TODO Auto-generated constructor stub
 	}
-	@PutMapping("/jobapply/review")
+	@PutMapping("/jobapply/review/{id}")
 	public ResponseEntity<?> stateReview(@PathVariable("id") String id){
 		CandidateModel cs = new CandidateModel();
 		try {
@@ -74,7 +74,7 @@ public class JobApplyController {
 		return ResponseEntity.ok("Update Succes");
 	}
 	
-	@PutMapping("/jobapply/rejected")
+	@PutMapping("/jobapply/rejected/{id}")
 	public ResponseEntity<?> stateRejected(@PathVariable("id") String id){
 		CandidateModel cs = new CandidateModel();
 		try {
