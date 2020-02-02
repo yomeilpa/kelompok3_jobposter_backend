@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Linov.JobPoster.Validasi.ApplyValidation;
 import com.Linov.JobPoster.model.CandidateModel;
+import com.Linov.JobPoster.model.EducationModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.service.JobApplyService;
 import com.Linov.JobPoster.service.StateAplliedService;
@@ -56,6 +57,21 @@ public class JobApplyController {
 	}
 	public JobApplyController() {
 		// TODO Auto-generated constructor stub
+	}
+	@PutMapping("/jobapply/review")
+	public ResponseEntity<?> insertModel(@PathVariable("id") String id){
+		CandidateModel cs = new CandidateModel();
+		try {
+			
+			JobApplyModel education = eds.findById(id); 
+			education.setState(st.findbyname("Reviewed"));
+			JobApplyModel ss = eds.insertModel(education);
+			 cs = ss.getCandidate();
+			ss.setCandidate(cs);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok(cs);
 	}
 	
 	@GetMapping("app/{id}/{cd}")
