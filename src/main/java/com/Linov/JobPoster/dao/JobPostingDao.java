@@ -74,7 +74,7 @@ public class JobPostingDao  extends CommonDao{
 		if(eg.getProvinsi() != null) {
 			exc.setParameter("a",eg.getProvinsi());
 		}
-		if(eg.getKota() != null) {
+		if(eg.getKota() != null) {	
 			exc.setParameter("b",eg.getKota());
 		}
 		if(eg.getTitle() != null) {

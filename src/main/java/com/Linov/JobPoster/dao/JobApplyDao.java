@@ -74,5 +74,12 @@ public class JobApplyDao  extends CommonDao{
 				.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id and state.state = 'Accepted'").setParameter("id", id).getSingleResult();	
 			return lstCandidateModels;
 	}
+	
+	public Long countCandidate(String id) {
+		Long lstCandidateModels =  (Long) super.entityManager
+				.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id").setParameter("id", id).getSingleResult();	
+			return lstCandidateModels;
+	}
+	
 
-}
+}	
