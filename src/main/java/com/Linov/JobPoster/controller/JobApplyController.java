@@ -63,8 +63,11 @@ public class JobApplyController {
 		CandidateModel cs = new CandidateModel();
 		try {
 			
-			JobApplyModel education = eds.findById(id); 
-			education.setState(st.findbyname("Reviewed"));
+			JobApplyModel education = eds.findById(id);
+			String b = education.getState().getState();
+			if(!b.equals("ON INVITATION") || !b.equals("Reviewed") || b.equals("Rejected") || b.equals("Accepted")) {
+				education.setState(st.findbyname("Reviewed"));
+			}
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
 			ss.setCandidate(cs);
@@ -78,8 +81,8 @@ public class JobApplyController {
 	public ResponseEntity<?> stateRejected(@PathVariable("id") String id){
 		CandidateModel cs = new CandidateModel();
 		try {
-			
-			JobApplyModel education = eds.findById(id); 
+		
+			JobApplyModel education = eds.findById(id);
 			education.setState(st.findbyname("Rejected"));
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
