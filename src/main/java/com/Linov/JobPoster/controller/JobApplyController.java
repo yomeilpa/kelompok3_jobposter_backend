@@ -89,6 +89,22 @@ public class JobApplyController {
 		}
 		return ResponseEntity.ok("Update Rejected");
 	}
+	
+	@GetMapping("/jobapply/invitation/{id}")
+	public ResponseEntity<?> oninvt(@PathVariable("id") String id){
+		CandidateModel cs = new CandidateModel();
+		try {
+			
+			JobApplyModel education = eds.findById(id); 
+			education.setState(st.findbyname("ON INVITATION"));
+			JobApplyModel ss = eds.insertModel(education);
+			 cs = ss.getCandidate();
+			ss.setCandidate(cs);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok("Update Rejected");
+	}
 	@GetMapping("app/{id}/{cd}")
 	public ResponseEntity<?>getJobCd1(@PathVariable("id") String id,@PathVariable("cd") String cd){
 		return ResponseEntity.ok(eds.findAppCd(id, cd));
