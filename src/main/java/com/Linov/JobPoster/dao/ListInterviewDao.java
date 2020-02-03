@@ -49,7 +49,7 @@ public class ListInterviewDao extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<ListofInterviewModel> findAllAttend() {
 		List<ListofInterviewModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From ListofInterviewModel where status.name ='WILL ATTEND' and status.name ='Attend'").getResultList();
+				.createQuery("" + "From ListofInterviewModel where status.name ='WILL ATTEND' or status.name ='Attend'").getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return lstCandidateModels;
 		} else
