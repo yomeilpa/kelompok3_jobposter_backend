@@ -143,5 +143,17 @@ public class ListInterviewController {
 		}
 		return ResponseEntity.ok(js);
 	}
+	@GetMapping("/interview/{id}")
+	public ResponseEntity<?> getIntbyPoster(@PathVariable("id") String id){
+		List<ListofInterviewModel> js = eds.findAllbyPoster(id);
+		for(ListofInterviewModel as:js) {
+			CandidateModel ss = as.getJob().getCandidate();
+			ss.setPic(null);
+			JobApplyModel ls = as.getJob();
+			ls.setCandidate(ss);
+			as.setJob(ls);
+		}
+		return ResponseEntity.ok(js);
+	}
 
 }
