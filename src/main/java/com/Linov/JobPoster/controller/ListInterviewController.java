@@ -129,7 +129,19 @@ public class ListInterviewController {
 			ls.setCandidate(ss);
 			as.setJob(ls);
 		}
-		return ResponseEntity.ok(eds.findIntCd(id));
+		return ResponseEntity.ok(js);
+	}
+	@GetMapping("/interview")
+	public ResponseEntity<?> getInt(){
+		List<ListofInterviewModel> js = eds.findAll();
+		for(ListofInterviewModel as:js) {
+			CandidateModel ss = as.getJob().getCandidate();
+			ss.setPic(null);
+			JobApplyModel ls = as.getJob();
+			ls.setCandidate(ss);
+			as.setJob(ls);
+		}
+		return ResponseEntity.ok(js);
 	}
 
 }

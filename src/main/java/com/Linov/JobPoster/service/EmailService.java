@@ -41,5 +41,7 @@ public class EmailService {
 				"Time  : "+eg.getTime());	
 		javaMailSender.send(mail);
 	}
+	
+	
 
 }
