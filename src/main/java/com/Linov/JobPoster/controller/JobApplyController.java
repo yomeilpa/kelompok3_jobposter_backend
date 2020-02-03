@@ -65,10 +65,14 @@ public class JobApplyController {
 			
 			JobApplyModel education = eds.findById(id);
 			State_AppliedModel s = education.getState();
-			if(s!= st.findbyname("Rejected")){
-				education.setState(st.findbyname("Reviewed"));
+			if(s == st.findbyname("Rejected")){
+				return ResponseEntity.ok(education);
 			}
-			if(education.getState()!= st.findbyname("Accepted")) {
+			if(education.getState().equals(st.findbyname("Accepted"))){
+				return ResponseEntity.ok(education);
+
+			}
+			else {
 				education.setState(st.findbyname("Reviewed"));
 
 			}
