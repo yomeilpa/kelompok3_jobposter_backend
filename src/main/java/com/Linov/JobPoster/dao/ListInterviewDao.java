@@ -49,7 +49,7 @@ public class ListInterviewDao extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<ListofInterviewModel> findAllAttend() {
 		List<ListofInterviewModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From ListofInterviewModel where status.name ='WILL ATTEND'").getResultList();
+				.createQuery("" + "From ListofInterviewModel where status.name ='WILL ATTEND' and status.name ='Attend'").getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return lstCandidateModels;
 		} else
@@ -60,7 +60,7 @@ public class ListInterviewDao extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<ListofInterviewModel> findAllbyPoster(String id) {
 		List<ListofInterviewModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From ListofInterviewModel ba where ba.job.job.candidate.id=:id and status.name != 'WILL ATTEND'").setParameter("id", id).getResultList();
+				.createQuery("" + "From ListofInterviewModel ba where ba.job.job.candidate.id=:id and status.name != 'WILL ATTEND' and status.name !='Attend'").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return lstCandidateModels;
 		} else
