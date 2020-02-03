@@ -52,7 +52,7 @@ public class JobApplyDao  extends CommonDao{
 		List<JobApplyModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From JobApplyModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
@@ -63,7 +63,7 @@ public class JobApplyDao  extends CommonDao{
 		List<JobApplyModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From JobApplyModel where candidate.id=:id").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
@@ -74,7 +74,7 @@ public class JobApplyDao  extends CommonDao{
 		List<JobApplyModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From JobApplyModel where job.id=:id").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
@@ -83,9 +83,9 @@ public class JobApplyDao  extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<JobApplyModel> findBAcc() {
 		List<JobApplyModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobApplyModel where state.state='Accepted").getResultList();
+				.createQuery("" + "From JobApplyModel where state.state='Accepted'").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
