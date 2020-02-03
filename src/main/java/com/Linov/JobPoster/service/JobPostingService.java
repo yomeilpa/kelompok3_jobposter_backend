@@ -36,6 +36,9 @@ public class JobPostingService {
 		return acc.findAll();
 	}
 	
+	public List<JobPostingModel> findAllbyPopster(String id) {
+		return acc.findBycandidateid(id);
+	}
 	public List<JobPostingModel> findbyFiletr(FilterJobPosting fg) {
 		return acc.finByFilter(fg);
 	}

@@ -192,6 +192,17 @@ public class JobController {
 		return ResponseEntity.ok(ls);
 	}
 	
+	@GetMapping("/jobposting/poster/{id}")
+	public ResponseEntity<?> findbyPoster(@PathVariable("id") String id){
+		List<JobPostingModel> ls = jobs.findAllbyPopster(id);
+		for(JobPostingModel l:ls) {
+			CandidateModel s = l.getCandidate();
+			s.setPic(null);
+			l.setCandidate(s);
+		}
+		return ResponseEntity.ok(ls);
+	}
+	
 	@PostMapping("/jobposting/filter")
 	public ResponseEntity<?> finJobbyfilter(@RequestBody FilterJobPosting eg){
 		List<JobPostingModel> ls = jobs.findbyFiletr(eg);
