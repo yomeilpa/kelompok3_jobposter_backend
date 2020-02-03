@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.model.ListofInterviewModel;
+import com.Linov.JobPoster.service.EmailService;
 import com.Linov.JobPoster.service.ListInterviewService;
 
 @RestController
@@ -26,11 +27,15 @@ public class ListInterviewController {
 	
 	@Autowired
 	ListInterviewService eds;
+	
+	@Autowired
+	EmailService ems;
 
 	@PostMapping("interview")
 	public ResponseEntity<?> insertModel(@RequestBody ListofInterviewModel education){
 		try {
 			eds.insertModel(education);
+			ems.sendInvitation(education);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}

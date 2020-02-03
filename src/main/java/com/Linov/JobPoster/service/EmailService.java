@@ -6,6 +6,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.Linov.JobPoster.model.ListofInterviewModel;
+
 
 @Service
 public class EmailService {
@@ -23,6 +25,17 @@ public class EmailService {
 		mail.setSubject(subject);
 		mail.setText("Your username is : "+username+" \n"
 				+ "Your Password is : "+password);	
+		javaMailSender.send(mail);
+	}
+	
+	public void sendInvitation(ListofInterviewModel eg) throws MailException {
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(eg.getJob().getCandidate().getEmail());
+		mail.setSubject("Interview Invitation");
+		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ "\n"
+				+ "We Invited you to attend on interview for  : "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
+				+"Date : "+eg.getDate()+"/n"+
+				"Time  : "+eg.getTime());	
 		javaMailSender.send(mail);
 	}
 
