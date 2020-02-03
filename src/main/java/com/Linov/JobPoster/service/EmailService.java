@@ -31,7 +31,7 @@ public class EmailService {
 	public void sendInvitation(ListofInterviewModel eg) throws MailException {
 		SimpleMailMessage mail = new SimpleMailMessage();
 		String date = eg.getDate().toString();
-		date.replaceAll("[0-9]", "");
+		date.replaceAll("[\\d]", "");
 		mail.setTo(eg.getJob().getCandidate().getEmail());
 		mail.setSubject("Interview Invitation");
 		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
