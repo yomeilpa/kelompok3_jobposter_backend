@@ -40,7 +40,7 @@ public class ListInterviewDao extends CommonDao{
 		List<ListofInterviewModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From ListofInterviewModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
@@ -51,7 +51,7 @@ public class ListInterviewDao extends CommonDao{
 		List<ListofInterviewModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From ListofInterviewModel as where as.job.job.candidate.id=:id").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
