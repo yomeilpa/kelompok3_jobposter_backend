@@ -75,7 +75,7 @@ public class EmailService {
 		mail.setText("Hello,"+ eg.getJob().getJob().getCandidate().getName()+ " \n"
 				+ "I will be Attend the invitation  for : \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
 				+"Date : "+date+"\n"+
-				"Time  : "+eg.getTime()+"\n\n"+"Can i request a Reschedule ?"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
+				"Time  : "+eg.getTime()+"\n\n"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
 		javaMailSender.send(mail);
 	}
 
