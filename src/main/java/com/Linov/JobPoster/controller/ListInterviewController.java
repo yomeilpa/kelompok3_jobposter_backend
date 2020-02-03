@@ -84,6 +84,7 @@ public class ListInterviewController {
 			ListofInterviewModel ed = eds.findById(id);
 			ed.setStatus(ints.findByName("WILL ATTEND"));
 			eds.updateModel(ed);
+			ems.sendAcc(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
 			// TODO: handle exception
@@ -98,6 +99,7 @@ public class ListInterviewController {
 			ListofInterviewModel ed = eds.findById(id);
 			ed.setStatus(ints.findByName("Rejected"));
 			eds.updateModel(ed);
+			ems.sendInvReject(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
 			// TODO: handle exception
@@ -112,6 +114,7 @@ public class ListInterviewController {
 			ListofInterviewModel ed = eds.findById(id);
 			ed.setStatus(ints.findByName("Request New Schedule"));
 			eds.updateModel(ed);
+			ems.sendReschedule(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
 			// TODO: handle exception

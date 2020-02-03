@@ -38,10 +38,45 @@ public class EmailService {
 		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
 				+ "We Invited you to attend on interview \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
 				+"Date : "+date+"\n"+
-				"Time  : "+eg.getTime());	
+				"Time  : "+eg.getTime()+"\n\n\n"+"Best Regards, "+eg.getJob().getJob().getCandidate());	
 		javaMailSender.send(mail);
 	}
 	
 	
+	public void sendInvReject(ListofInterviewModel eg) throws MailException {
+		SimpleMailMessage mail = new SimpleMailMessage();
+		Date date = eg.getDate();
+		mail.setTo(eg.getJob().getJob().getCandidate().getEmail());
+		mail.setSubject("Rejected Invitation");
+		mail.setText("Hello,"+ eg.getJob().getJob().getCandidate().getName()+ " \n"
+				+ "I'm sorry I did not plan to attend to meet the interview invitation for : \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
+				+"Date : "+date+"\n"+
+				"Time  : "+eg.getTime()+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
+		javaMailSender.send(mail);
+	}
+	
+	public void sendReschedule(ListofInterviewModel eg) throws MailException {
+		SimpleMailMessage mail = new SimpleMailMessage();
+		Date date = eg.getDate();
+		mail.setTo(eg.getJob().getJob().getCandidate().getEmail());
+		mail.setSubject("Request New Schedule Invitation");
+		mail.setText("Hello,"+ eg.getJob().getJob().getCandidate().getName()+ " \n"
+				+ "Sorry I could not be present to fulfill the interview call for : \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
+				+"Date : "+date+"\n"+
+				"Time  : "+eg.getTime()+"\n\n"+"Can i request a Reschedule ?"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
+		javaMailSender.send(mail);
+	}
+	
+	public void sendAcc(ListofInterviewModel eg) throws MailException {
+		SimpleMailMessage mail = new SimpleMailMessage();
+		Date date = eg.getDate();
+		mail.setTo(eg.getJob().getJob().getCandidate().getEmail());
+		mail.setSubject("Accepted Invitation");
+		mail.setText("Hello,"+ eg.getJob().getJob().getCandidate().getName()+ " \n"
+				+ "I will be Attend the invitation  for : \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
+				+"Date : "+date+"\n"+
+				"Time  : "+eg.getTime()+"\n\n"+"Can i request a Reschedule ?"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
+		javaMailSender.send(mail);
+	}
 
 }
