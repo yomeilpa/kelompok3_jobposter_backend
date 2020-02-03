@@ -68,7 +68,7 @@ public class JobApplyController {
 			if(s!= st.findbyname("Rejected")){
 				education.setState(st.findbyname("Reviewed"));
 			}
-			else if(s!= st.findbyname("Accepted")) {
+			if(s!= st.findbyname("Accepted")) {
 				education.setState(st.findbyname("Reviewed"));
 
 			}
