@@ -72,6 +72,10 @@ public class JobApplyController {
 				return ResponseEntity.ok(education);
 
 			}
+			if(education.getState().equals(st.findbyname("ON INVITATION"))){
+				return ResponseEntity.ok(education);
+
+			}
 			else {
 				education.setState(st.findbyname("Reviewed"));
 
