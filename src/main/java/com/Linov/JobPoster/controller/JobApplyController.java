@@ -138,7 +138,11 @@ public class JobApplyController {
 	}
 	@GetMapping("app/{id}/{cd}")
 	public ResponseEntity<?>getJobCd1(@PathVariable("id") String id,@PathVariable("cd") String cd){
-		return ResponseEntity.ok(eds.findAppCd(id, cd));
+		JobApplyModel jos = eds.findAppCd(id, cd);
+		CandidateModel cs = jos.getCandidate();
+		cs.setPic(null);
+		jos.setCandidate(cs);
+		return ResponseEntity.ok(jos);
 	}
 	
 	@GetMapping("count/app/{id}")
@@ -148,7 +152,9 @@ public class JobApplyController {
 	
 	@GetMapping("job/app/{id}")
 	public ResponseEntity<?>getByJob(@PathVariable("id") String id){
-		return ResponseEntity.ok(eds.findByJob(id));
+		JobApplyModel ss = eds.findById(id);
+		ss.setCandidate(null);
+		return ResponseEntity.ok(ss);
 	}
 		
 	
@@ -168,8 +174,6 @@ public class JobApplyController {
 	@GetMapping("/jobapply/{id}")
 	public ResponseEntity<?> findByid(@PathVariable("id") String id){
 		JobApplyModel js = eds.findById(id);
-		CandidateModel cs = js.getCandidate();
-		js.setCandidate(cs);
 		return ResponseEntity.ok(js);
 	}
 	
