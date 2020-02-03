@@ -32,9 +32,9 @@ public class EmailService {
 		SimpleMailMessage mail = new SimpleMailMessage();
 		mail.setTo(eg.getJob().getCandidate().getEmail());
 		mail.setSubject("Interview Invitation");
-		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ "\n"
-				+ "We Invited you to attend on interview for  : "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
-				+"Date : "+eg.getDate()+"/n"+
+		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
+				+ "We Invited you to attend on interview \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
+				+"Date : "+eg.getDate()+"\n"+
 				"Time  : "+eg.getTime());	
 		javaMailSender.send(mail);
 	}
