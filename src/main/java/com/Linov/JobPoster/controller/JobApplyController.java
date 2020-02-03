@@ -153,7 +153,9 @@ public class JobApplyController {
 	@GetMapping("job/app/{id}")
 	public ResponseEntity<?>getByJob(@PathVariable("id") String id){
 		JobApplyModel ss = eds.findById(id);
-		ss.setCandidate(null);
+		CandidateModel sa = ss.getCandidate();
+		sa.setPic(null);
+		ss.setCandidate(sa);
 		return ResponseEntity.ok(ss);
 	}
 		
