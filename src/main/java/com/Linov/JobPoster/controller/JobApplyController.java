@@ -169,7 +169,6 @@ public class JobApplyController {
 	public ResponseEntity<?> findByid(@PathVariable("id") String id){
 		JobApplyModel js = eds.findById(id);
 		CandidateModel cs = js.getCandidate();
-		cs.setPic(null);
 		js.setCandidate(cs);
 		return ResponseEntity.ok(js);
 	}
