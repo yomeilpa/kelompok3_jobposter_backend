@@ -45,6 +45,17 @@ public class ListInterviewController {
 		}
 		return ResponseEntity.ok(education);
 	}
+	@PostMapping("interview/result")
+	public ResponseEntity<?> insertModelUpdate(@RequestBody ListofInterviewModel education){
+		try {
+			education.setStatus(ints.findByName("Attend"));
+			eds.insertModel(education);
+			ems.sendResult(education);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok(education);
+	}
 	
 	@DeleteMapping("interview/{id}")
 	public ResponseEntity<?> deleteModel(@PathVariable("id") String id){

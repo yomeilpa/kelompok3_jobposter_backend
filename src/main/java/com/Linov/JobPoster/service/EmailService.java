@@ -78,5 +78,16 @@ public class EmailService {
 				"Time  : "+eg.getTime()+"\n\n"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
 		javaMailSender.send(mail);
 	}
+	
+	public void sendResult(ListofInterviewModel eg) throws MailException {
+		SimpleMailMessage mail = new SimpleMailMessage();
+		mail.setTo(eg.getJob().getCandidate().getEmail());
+		mail.setSubject("Result for Your Invitattion : ");
+		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
+				+ "This is a result for your interview for " +": \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
+				+"Result :" +""+ eg.getResultInt()+"\n"+
+				"\n\n"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getJob().getCandidate().getName());	
+		javaMailSender.send(mail);
+	}
 
 }
