@@ -77,7 +77,7 @@ public class ListInterviewController {
 		
 	}
 	
-	@GetMapping("interview/accepted/{id}")
+	@GetMapping("/interview/accepted/{id}")
 	public ResponseEntity<?> updateAcc(@PathVariable("id") String id){
 		try {
 			
@@ -91,7 +91,7 @@ public class ListInterviewController {
 		return ResponseEntity.ok("Update Succes");
 	}
 	
-	@GetMapping("interview/rejected/{id}")
+	@GetMapping("/interview/rejected/{id}")
 	public ResponseEntity<?> updateReject(@PathVariable("id") String id){
 		try {
 			
@@ -105,7 +105,7 @@ public class ListInterviewController {
 		return ResponseEntity.ok("Update Succes");
 	}
 	
-	@GetMapping("interview/request/{id}")
+	@GetMapping("/interview/request/{id}")
 	public ResponseEntity<?> updateRequest(@PathVariable("id") String id){
 		try {
 			
