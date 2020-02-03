@@ -47,6 +47,17 @@ public class ListInterviewDao extends CommonDao{
 	
 	@Transactional
 	@SuppressWarnings("unchecked")
+	public List<ListofInterviewModel> findAllAttend() {
+		List<ListofInterviewModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From ListofInterviewModel where status.name ='WILL ATTEND'").getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return lstCandidateModels;
+		} else
+			return lstCandidateModels;
+	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
 	public List<ListofInterviewModel> findAllbyPoster(String id) {
 		List<ListofInterviewModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From ListofInterviewModel ba where ba.job.job.candidate.id=:id").setParameter("id", id).getResultList();
