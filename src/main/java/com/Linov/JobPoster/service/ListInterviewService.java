@@ -31,6 +31,9 @@ public class ListInterviewService {
 		return acc.findbyid(id);
 	
 	}
+	
+	
+	
 	public List<ListofInterviewModel> findAll() {
 		return acc.findAll();
 	}

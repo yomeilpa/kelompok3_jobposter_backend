@@ -31,6 +31,12 @@ public class InterviewStatusService {
 		InterviewStatusModel model = acc.findbyid(id);
 		return model;
 	}
+	
+	public InterviewStatusModel findByName(String id) {
+		InterviewStatusModel model = acc.findbyname(id);
+		return model;
+	}
+	
 	public List<InterviewStatusModel> findAll() {
 		return acc.findAll();
 	}

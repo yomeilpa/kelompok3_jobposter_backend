@@ -18,6 +18,7 @@ import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.model.ListofInterviewModel;
 import com.Linov.JobPoster.service.EmailService;
+import com.Linov.JobPoster.service.InterviewStatusService;
 import com.Linov.JobPoster.service.ListInterviewService;
 
 @RestController
@@ -30,6 +31,9 @@ public class ListInterviewController {
 	
 	@Autowired
 	EmailService ems;
+	
+	@Autowired
+	InterviewStatusService ints;
 
 	@PostMapping("interview")
 	public ResponseEntity<?> insertModel(@RequestBody ListofInterviewModel education){
@@ -71,7 +75,50 @@ public class ListInterviewController {
 		}
 		return ResponseEntity.ok(eds);
 		
-	}	
+	}
+	
+	@GetMapping("interview/accepted/{id}")
+	public ResponseEntity<?> updateAcc(@PathVariable("id") String id){
+		try {
+			
+			ListofInterviewModel ed = eds.findById(id);
+			ed.setStatus(ints.findByName("WILL ATTEND"));
+			eds.updateModel(ed);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("Update Gagal");
+			// TODO: handle exception
+		}
+		return ResponseEntity.ok("Update Succes");
+	}
+	
+	@GetMapping("interview/rejected/{id}")
+	public ResponseEntity<?> updateReject(@PathVariable("id") String id){
+		try {
+			
+			ListofInterviewModel ed = eds.findById(id);
+			ed.setStatus(ints.findByName("Rejected"));
+			eds.updateModel(ed);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("Update Gagal");
+			// TODO: handle exception
+		}
+		return ResponseEntity.ok("Update Succes");
+	}
+	
+	@GetMapping("interview/request/{id}")
+	public ResponseEntity<?> updateRequest(@PathVariable("id") String id){
+		try {
+			
+			ListofInterviewModel ed = eds.findById(id);
+			ed.setStatus(ints.findByName("Request New Schedule"));
+			eds.updateModel(ed);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("Update Gagal");
+			// TODO: handle exception
+		}
+		return ResponseEntity.ok("Update Succes");
+	}
+	
 	@GetMapping("interview/get/{id}")
 	public ResponseEntity<?> getIntCd(@PathVariable("id") String id){
 		List<ListofInterviewModel> js = eds.findIntCd(id);
