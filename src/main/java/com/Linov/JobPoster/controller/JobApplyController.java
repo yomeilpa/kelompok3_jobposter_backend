@@ -67,7 +67,7 @@ public class JobApplyController {
 			JobApplyModel education = eds.findById(id);
 			State_AppliedModel s = education.getState();
 			String b = s.getState();
-			if(b!="ON INVITATION"|| b!="Rejected" || b!="Accepted") {
+			if(b!="ON INVITATION"||b!="Rejected" ||b!="Accepted") {
 				education.setState(st.findbyname("Reviewed"));
 			}
 			JobApplyModel ss = eds.insertModel(education);
