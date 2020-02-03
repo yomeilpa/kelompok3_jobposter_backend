@@ -68,10 +68,10 @@ public class JobApplyController {
 			if(s!= st.findbyname("Rejected")){
 				education.setState(st.findbyname("Reviewed"));
 			}
-//			if(s!= st.findbyname("Accepted")) {
-//				education.setState(st.findbyname("Reviewed"));
-//
-//			}
+			if(education.getState()!= st.findbyname("Accepted")) {
+				education.setState(st.findbyname("Reviewed"));
+
+			}
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
 			ss.setCandidate(cs);
