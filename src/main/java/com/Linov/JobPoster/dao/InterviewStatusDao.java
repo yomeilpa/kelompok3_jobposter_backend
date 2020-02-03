@@ -22,7 +22,7 @@ public class InterviewStatusDao extends CommonDao {
 	@SuppressWarnings("unchecked")
 	public InterviewStatusModel findbyid(String id) {
 		List<InterviewStatusModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "InterviewStatusModel where id=:id").setParameter("id", id).getResultList();
+				.createQuery("" + "FROM InterviewStatusModel where id=:id").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return new InterviewStatusModel();
 		} else
@@ -32,7 +32,7 @@ public class InterviewStatusDao extends CommonDao {
 	@SuppressWarnings("unchecked")
 	public InterviewStatusModel findbyname(String id) {
 		List<InterviewStatusModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "InterviewStatusModel where name=:id").setParameter("id", id).getResultList();
+				.createQuery("" + "FROM InterviewStatusModel where name=:id").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return new InterviewStatusModel();
 		} else
