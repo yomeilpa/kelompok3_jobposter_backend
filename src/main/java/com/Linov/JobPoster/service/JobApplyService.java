@@ -39,6 +39,10 @@ public class JobApplyService {
 		return acc.findByJobid(id);
 	}
 	
+	public List<JobApplyModel> findBAcc() {
+		return acc.findBAcc();
+	}
+	
 	public List<JobApplyModel> findbyCandidate(String id) {
 		return acc.findByCandidateId(id);
 	}

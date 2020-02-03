@@ -80,6 +80,17 @@ public class JobApplyDao  extends CommonDao{
 	}
 	
 	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<JobApplyModel> findBAcc() {
+		List<JobApplyModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From JobApplyModel where state.state='Accepted").getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return null;
+		} else
+			return lstCandidateModels;
+	}
+	
+	@Transactional
 	public Long countDocTypeTrue(String id) {
 		Long lstCandidateModels =  (Long) super.entityManager
 				.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id and state.state = 'Accepted'").setParameter("id", id).getSingleResult();	

@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Linov.JobPoster.Validasi.ApplyValidation;
 import com.Linov.JobPoster.model.CandidateModel;
-import com.Linov.JobPoster.model.EducationModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.model.State_AppliedModel;
 import com.Linov.JobPoster.service.JobApplyService;
@@ -167,6 +166,17 @@ public class JobApplyController {
 	@GetMapping("/jobapply/get/{id}")
 	public ResponseEntity<?> findByCandidate(@PathVariable("id") String id){
 		List<JobApplyModel> ls = eds.findbyCandidate(id);
+		for(JobApplyModel js:ls) {
+			CandidateModel cs = js.getCandidate();
+			cs.setPic(null);
+					js.setCandidate(cs);
+		}
+		return ResponseEntity.ok(ls);
+	}
+	
+	@GetMapping("/jobapply/get/acc")
+	public ResponseEntity<?> findByAcc(){
+		List<JobApplyModel> ls = eds.findBAcc();
 		for(JobApplyModel js:ls) {
 			CandidateModel cs = js.getCandidate();
 			cs.setPic(null);
