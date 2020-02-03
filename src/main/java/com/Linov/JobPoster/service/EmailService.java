@@ -1,5 +1,7 @@
 package com.Linov.JobPoster.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -30,8 +32,7 @@ public class EmailService {
 	
 	public void sendInvitation(ListofInterviewModel eg) throws MailException {
 		SimpleMailMessage mail = new SimpleMailMessage();
-		String date = eg.getDate().toString();
-		date.replaceAll("[\\d]", "");
+		Date date = eg.getDate();
 		mail.setTo(eg.getJob().getCandidate().getEmail());
 		mail.setSubject("Interview Invitation");
 		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
