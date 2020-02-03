@@ -38,7 +38,7 @@ public class EmailService {
 		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
 				+ "We Invited you to attend on interview \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
 				+"Date : "+date+"\n"+
-				"Time  : "+eg.getTime()+"\n\n\n"+"Best Regards, "+eg.getJob().getJob().getCandidate());	
+				"Time  : "+eg.getTime()+"\n\n\n"+"Best Regards, "+eg.getJob().getJob().getCandidate().getName());	
 		javaMailSender.send(mail);
 	}
 	
