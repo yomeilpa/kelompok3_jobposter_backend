@@ -1,6 +1,7 @@
 package com.Linov.JobPoster.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -188,6 +189,7 @@ public class JobController {
 	
 	@GetMapping("/jobposting")
 	public ResponseEntity<?> findAllJob(){
+		jobs.updateState();
 		List<JobPostingModel> ls = jobs.findAll();
 		for(JobPostingModel l:ls) {
 			CandidateModel s = l.getCandidate();
@@ -199,6 +201,7 @@ public class JobController {
 	
 	@GetMapping("/jobposting/poster/{id}")
 	public ResponseEntity<?> findbyPoster(@PathVariable("id") String id){
+		jobs.updateState();
 		List<JobPostingModel> ls = jobs.findAllbyPopster(id);
 		for(JobPostingModel l:ls) {
 			CandidateModel s = l.getCandidate();
@@ -212,6 +215,7 @@ public class JobController {
 	@GetMapping("/jobposting/poster//quota/{id}")
 	public ResponseEntity<?> findbyPosterandQuota(@PathVariable("id") String id){
 		List<List<Object>> objL = new ArrayList<List<Object>>();
+		jobs.updateState();
 		List<JobPostingModel> ls = jobs.findAllbyPopster(id);
 		for(JobPostingModel l:ls) {
 			CandidateModel s = l.getCandidate();

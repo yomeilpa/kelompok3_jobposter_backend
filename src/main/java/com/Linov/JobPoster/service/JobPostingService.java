@@ -42,5 +42,9 @@ public class JobPostingService {
 	public List<JobPostingModel> findbyFiletr(FilterJobPosting fg) {
 		return acc.finByFilter(fg);
 	}
+	
+	public void updateState() {
+		acc.updateState();
+	}
 
 }
