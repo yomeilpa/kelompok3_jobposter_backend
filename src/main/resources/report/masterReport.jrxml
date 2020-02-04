@@ -49,7 +49,7 @@
 			<subreport>
 				<reportElement x="44" y="12" width="200" height="200" uuid="5d579d26-b655-48f3-a3aa-51851de2d078"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["detail.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{detail}]]></subreportExpression>
 			</subreport>
 		</band>
 	</detail>
