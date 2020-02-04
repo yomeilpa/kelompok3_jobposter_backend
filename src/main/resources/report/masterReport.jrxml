@@ -4,7 +4,7 @@
 	
 	<field name="title" class="java.lang.String">
 	</field>
-	<field name="totalPos" class="java.lang.String">
+	<field name="totalPos" class="java.lang.Long">
 	</field>
 	<background>
 		<band splitType="Stretch"/>
