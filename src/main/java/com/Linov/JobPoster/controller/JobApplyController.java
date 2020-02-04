@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Linov.JobPoster.Validasi.ApplyValidation;
 import com.Linov.JobPoster.model.CandidateModel;
+import com.Linov.JobPoster.model.ContractModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.model.State_AppliedModel;
+import com.Linov.JobPoster.service.EmailService;
 import com.Linov.JobPoster.service.JobApplyService;
 import com.Linov.JobPoster.service.StateAplliedService;
 
@@ -35,6 +37,9 @@ public class JobApplyController {
 
 	@Autowired
 	StateAplliedService st;
+	
+	@Autowired
+	EmailService ems;
 	
 	@PostMapping("/jobapply")
 	public ResponseEntity<?> insertModel(@RequestBody JobApplyModel education){
@@ -76,6 +81,10 @@ public class JobApplyController {
 				return ResponseEntity.ok(education);
 
 			}
+			if(education.getState().equals(st.findbyname("ON Negotiation"))){
+				return ResponseEntity.ok(education);
+
+			}
 			else {
 				education.setDateReview(new Date());
 				education.setState(st.findbyname("Reviewed"));
@@ -108,13 +117,15 @@ public class JobApplyController {
 	}
 	
 	@GetMapping("/jobapply/nego/{id}")
-	public ResponseEntity<?> stateOnnegoation(@PathVariable("id") String id){
+	public ResponseEntity<?> stateOnnegoation(@PathVariable("id") String id,@RequestBody ContractModel con){
 		CandidateModel cs = new CandidateModel();
 		try {
 		
 			JobApplyModel education = eds.findById(id);
+			
 			education.setState(st.findbyname("ON Negotiation"));
 			education.setDateReview(new Date());
+			ems.sendContract(education, con);
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
 			ss.setCandidate(cs);

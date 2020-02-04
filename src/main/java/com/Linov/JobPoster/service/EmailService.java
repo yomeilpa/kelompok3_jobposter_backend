@@ -8,6 +8,8 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.Linov.JobPoster.model.ContractModel;
+import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.model.ListofInterviewModel;
 
 
@@ -27,6 +29,18 @@ public class EmailService {
 		mail.setSubject(subject);
 		mail.setText("Your username is : "+username+" \n"
 				+ "Your Password is : "+password);	
+		javaMailSender.send(mail);
+	}
+	
+	public void sendContract(JobApplyModel eg,ContractModel ct) throws MailException {
+		SimpleMailMessage mail = new SimpleMailMessage();
+		Date date = ct.getDate();
+		mail.setTo(eg.getCandidate().getEmail());
+		mail.setSubject("Contract Invitation");
+		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
+				+"\n Congrulations,"+ "We Invited you to attend on Contract Negoatiation for \n "+eg.getJob().getTitle()+" Postion at :  \n"
+				+"Date : "+date+"\n"+
+				"Time  : "+ct.getTime()+"\n\n\n"+"Best Regards, "+eg.getJob().getCandidate().getName());	
 		javaMailSender.send(mail);
 	}
 	
@@ -89,5 +103,7 @@ public class EmailService {
 				"\n\n"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getJob().getCandidate().getName());	
 		javaMailSender.send(mail);
 	}
+	
+	
 
 }
