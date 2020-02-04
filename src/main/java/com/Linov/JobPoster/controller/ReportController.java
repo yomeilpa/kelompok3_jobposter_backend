@@ -48,5 +48,30 @@ public class ReportController {
                 .body(resource);
     	
 	}
+	
+	@GetMapping("/report1/{id}/{format}")
+	public ResponseEntity<?> sub(@PathVariable("id") String id, @PathVariable String format, HttpServletRequest request) 
+			throws Exception {
+		
+		String fileName = js.header(format, id);
+		
+		// Load file as Resource
+        Resource resource = js.loadFileAsResource(fileName);
+
+        // Try to determine file's content type
+        String contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
+        
+
+        // Fallback to the default content type if type could not be determined
+        if(contentType == null) {
+            contentType = "application/octet-stream";
+        }
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
+                .body(resource);
+    	
+	}
 
 }

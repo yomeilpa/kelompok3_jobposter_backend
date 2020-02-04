@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
 import com.Linov.JobPoster.dao.ReportDao;
+import com.Linov.JobPoster.model.DetailReport;
+import com.Linov.JobPoster.model.HeaderReport;
 import com.Linov.JobPoster.model.JobPostingReport;
 
 import net.sf.jasperreports.engine.JRException;
@@ -65,6 +67,59 @@ public class JobPostingReportService {
 		if(reportFormat.equalsIgnoreCase("pdf")) {
 			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString()+"/ReportJobPosting.pdf");
 			fileName = "ReportJobPosting.pdf";
+		}
+		return fileName;
+	}
+	
+	public void detail() throws FileNotFoundException, JRException {
+//		Path p = Paths.get(fileStorage.toString());
+//		if(!Files.exists(p)) {
+//			try {
+//				Files.createDirectories(p);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+		
+		List<DetailReport> packages = pdDao.gg();
+	
+		//load file and compile it
+		File file = ResourceUtils.getFile("classpath:report/detail.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("createdBy", "Rizal");
+	
+	}
+	
+	public String header(String reportFormat,String id) throws FileNotFoundException, JRException {
+//		Path p = Paths.get(fileStorage.toString());
+//		if(!Files.exists(p)) {
+//			try {
+//				Files.createDirectories(p);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		
+		detail();
+		List<HeaderReport> packages = pdDao.As(id);
+		
+		//load file and compile it
+		File file = ResourceUtils.getFile("classpath:report/detail.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("createdBy", "Rizal");
+		String fileName = null;
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
+		if(reportFormat.equalsIgnoreCase("html")) {
+			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString()+"/header.html");
+			fileName = "header.html";
+		}
+		if(reportFormat.equalsIgnoreCase("pdf")) {
+			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString()+"/header.pdf");
+			fileName = "header.pdf";
 		}
 		return fileName;
 	}

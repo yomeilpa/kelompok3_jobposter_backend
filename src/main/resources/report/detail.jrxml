@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1bae01b2-e240-42ee-addf-9e3c7efc330c">
+	
+	<field name="ORDERID" class="java.lang.Integer">
+		
+	</field>
+	<field name="CUSTOMERID" class="java.lang.String">
+		
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="-20" y="10" width="100" height="30" uuid="b35e13e5-ebcb-4233-9b46-1037e8fe3256"/>
+				<textFieldExpression><![CDATA[$F{jobTitle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="-20" y="-20" width="100" height="30" uuid="65d8d420-83a9-4077-9643-baf3ab222272"/>
+				<text><![CDATA[EMPLOYEEID]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="10" width="100" height="30" uuid="e4249cc1-3325-4447-9c9e-91eaf9c11705"/>
+				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="80" y="-20" width="100" height="30" uuid="8a2431ec-c49b-45e2-8b1d-2e81546ad511"/>
+				<text><![CDATA[ORDERDATE]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
