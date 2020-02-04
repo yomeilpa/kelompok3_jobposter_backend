@@ -116,7 +116,7 @@ public class JobApplyController {
 		return ResponseEntity.ok("Update Rejected");
 	}
 	
-	@GetMapping("/jobapply/nego/{id}")
+	@PostMapping("/jobapply/nego/{id}")
 	public ResponseEntity<?> stateOnnegoation(@PathVariable("id") String id,@RequestBody ContractModel con){
 		CandidateModel cs = new CandidateModel();
 		try {
