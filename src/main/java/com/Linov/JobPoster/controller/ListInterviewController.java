@@ -45,6 +45,17 @@ public class ListInterviewController {
 		}
 		return ResponseEntity.ok(education);
 	}
+	
+	@PostMapping("interview/reinvite")
+	public ResponseEntity<?> reinvite(@RequestBody ListofInterviewModel education){
+		try {
+			eds.insertModel(education);
+			ems.sendInvitation(education);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok(education);
+	}
 	@PostMapping("interview/result")
 	public ResponseEntity<?> insertModelUpdate(@RequestBody ListofInterviewModel education){
 		try {

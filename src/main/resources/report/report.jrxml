@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Simple_Blue" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a8d927c3-fdda-4034-91ab-fdcc6d99d1c0">
+	
+	<field name="jobTitle" class="java.lang.String">
+	</field>
+	<field name="jobRec" class="java.lang.String">
+	</field>
+	
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="cc8b374c-3443-494a-b16d-29dc2dca1a91"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="972357af-2772-461e-92bd-ecc7eab1ae33"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Lawencon]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="390" y="30" width="180" height="20" forecolor="#FFFFFF" uuid="ff519065-498e-424a-8a5e-36732703de2f"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Report Job Posting]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30">
+			<staticText>
+				<reportElement x="0" y="0" width="278" height="30" uuid="44bd6a84-2d2f-4ae9-8934-66becd18bb5f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a5bae870-ebc1-455c-8a2f-d9f10c477367"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Job Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="278" y="0" width="277" height="30" uuid="ca301ee1-7c55-4025-b5ba-abb76f7903b9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ef9e67c-a833-49ab-87e4-c9b2866339fe"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Recruiter]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="31">
+			<textField>
+				<reportElement x="0" y="0" width="278" height="30" uuid="ea99ed03-ca9e-4075-9c55-5f53f76da658">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a5bae870-ebc1-455c-8a2f-d9f10c477367"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{jobTitle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="278" y="0" width="277" height="30" uuid="3bf9c582-4ff5-4d67-b964-f1e3551e1255">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="3ef9e67c-a833-49ab-87e4-c9b2866339fe"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{jobRec}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="51"/>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
