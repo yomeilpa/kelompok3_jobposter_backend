@@ -89,6 +89,9 @@ public class JobPostingReportService {
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
 		Map<String, Object> parameter = new HashMap<>();
 		parameter.put("createdBy", "Rizal");
+		String fileName = null;
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
+		
 	
 	}
 	
