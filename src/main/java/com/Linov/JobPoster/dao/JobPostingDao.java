@@ -40,9 +40,9 @@ public class JobPostingDao  extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<JobPostingModel> findAll() {
 		List<JobPostingModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobPostingModel where active = true").getResultList();
+				.createQuery("" + "From JobPostingModel where and active = 'true'").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
@@ -51,9 +51,9 @@ public class JobPostingDao  extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<JobPostingModel> findBycandidateid(String id) {
 		List<JobPostingModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobPostingModel where candidate.id =:id and active = true").setParameter("id", id).getResultList();
+				.createQuery("" + "From JobPostingModel where candidate.id =:id and active = 'true'").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
@@ -67,7 +67,7 @@ public class JobPostingDao  extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<JobPostingModel> finByFilter(FilterJobPosting eg) {
 		StringBuilder query = new StringBuilder();
-		query.append("FROM JobPostingModel jp where 1=1 and active = true");
+		query.append("FROM JobPostingModel jp where 1=1 and active = 'true'");
 		if(eg.getProvinsi() != null) {
 			query.append(" and jp.city.province.province =:a");
 		}
