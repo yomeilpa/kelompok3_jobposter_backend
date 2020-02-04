@@ -2,9 +2,9 @@
 <!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c541ed76-54a2-4bf2-8360-bd48d0f277bf">
 	
-	<field name="ORDERID" class="java.lang.String">
+	<field name=" title" class="java.lang.String">
 	</field>
-	<field name="CUSTOMERID" class="java.lang.String">
+	<field name="totalPos" class="java.lang.String">
 	</field>
 	<background>
 		<band splitType="Stretch"/>
@@ -38,11 +38,11 @@
 			</staticText>
 			<textField>
 				<reportElement x="130" y="0" width="140" height="30" uuid="0a200078-fa84-4601-abf9-ccfe94e4a5f8"/>
-				<textFieldExpression><![CDATA[$F{ORDERID}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="130" y="47" width="130" height="30" uuid="2e3f7cdb-431d-4082-a249-80dc8fcb1519"/>
-				<textFieldExpression><![CDATA[$F{CUSTOMERID}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{totalPos}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="212">

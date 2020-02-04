@@ -2,10 +2,10 @@
 <!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1bae01b2-e240-42ee-addf-9e3c7efc330c">
 	
-	<field name="ORDERID" class="java.lang.Integer">
+	<field name="jobTitle" class="java.lang.String">
 		
 	</field>
-	<field name="CUSTOMERID" class="java.lang.String">
+	<field name="total" class="java.lang.String">
 		
 	</field>
 	<background>
