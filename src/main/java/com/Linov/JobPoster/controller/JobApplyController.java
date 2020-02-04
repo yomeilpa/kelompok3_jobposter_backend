@@ -1,6 +1,5 @@
 package com.Linov.JobPoster.controller;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -98,6 +97,23 @@ public class JobApplyController {
 		
 			JobApplyModel education = eds.findById(id);
 			education.setState(st.findbyname("Rejected"));
+			education.setDateReview(new Date());
+			JobApplyModel ss = eds.insertModel(education);
+			 cs = ss.getCandidate();
+			ss.setCandidate(cs);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.ok("Update Rejected");
+	}
+	
+	@GetMapping("/jobapply/nego/{id}")
+	public ResponseEntity<?> stateOnnegoation(@PathVariable("id") String id){
+		CandidateModel cs = new CandidateModel();
+		try {
+		
+			JobApplyModel education = eds.findById(id);
+			education.setState(st.findbyname("ON Negotiation"));
 			education.setDateReview(new Date());
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
