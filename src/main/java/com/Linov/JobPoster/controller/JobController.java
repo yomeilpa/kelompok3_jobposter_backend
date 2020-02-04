@@ -1,5 +1,6 @@
 package com.Linov.JobPoster.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import com.Linov.JobPoster.model.JobKategoriModel;
 import com.Linov.JobPoster.model.JobPosition;
 import com.Linov.JobPoster.model.JobPostingModel;
 import com.Linov.JobPoster.model.JobRecruitmentModel;
+import com.Linov.JobPoster.service.JobApplyService;
 import com.Linov.JobPoster.service.JobDetailService;
 import com.Linov.JobPoster.service.JobPositionService;
 import com.Linov.JobPoster.service.JobPostingService;
@@ -46,6 +48,9 @@ public class JobController {
 	
 	@Autowired
 	private JobRecruitmentService jobrecs;
+	
+	@Autowired
+	private JobApplyService sk;
 	
 	//Job Kategori Serivce
 	@PostMapping("/jobkategori")
@@ -201,6 +206,24 @@ public class JobController {
 			l.setCandidate(s);
 		}
 		return ResponseEntity.ok(ls);
+	}
+	
+	
+	@GetMapping("/jobposting/poster//quota/{id}")
+	public ResponseEntity<?> findbyPosterandQuota(@PathVariable("id") String id){
+		List<List<Object>> objL = new ArrayList<List<Object>>();
+		List<JobPostingModel> ls = jobs.findAllbyPopster(id);
+		for(JobPostingModel l:ls) {
+			CandidateModel s = l.getCandidate();
+			s.setPic(null);
+			l.setCandidate(s);
+			List<Object> obj = new ArrayList<Object>();
+			Long qt = this.sk.countCandidate(l.getId());
+			obj.add(qt);
+			obj.add(l);
+			objL.add(obj);
+		}
+		return ResponseEntity.ok(objL);
 	}
 	
 	@PostMapping("/jobposting/filter")

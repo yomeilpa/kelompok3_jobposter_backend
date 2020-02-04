@@ -1,5 +1,6 @@
 package com.Linov.JobPoster.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -77,6 +78,7 @@ public class JobApplyController {
 
 			}
 			else {
+				education.setDateReview(new Date());
 				education.setState(st.findbyname("Reviewed"));
 
 			}
@@ -96,6 +98,7 @@ public class JobApplyController {
 		
 			JobApplyModel education = eds.findById(id);
 			education.setState(st.findbyname("Rejected"));
+			education.setDateReview(new Date());
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
 			ss.setCandidate(cs);
@@ -112,6 +115,7 @@ public class JobApplyController {
 		
 			JobApplyModel education = eds.findById(id);
 			education.setState(st.findbyname("Accepted"));
+			education.setDateReview(new Date());
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
 			ss.setCandidate(cs);
@@ -128,6 +132,7 @@ public class JobApplyController {
 			
 			JobApplyModel education = eds.findById(id); 
 			education.setState(st.findbyname("ON INVITATION"));
+			education.setDateReview(new Date());
 			JobApplyModel ss = eds.insertModel(education);
 			 cs = ss.getCandidate();
 			ss.setCandidate(cs);
@@ -157,6 +162,8 @@ public class JobApplyController {
 	
 		return ResponseEntity.ok(js);
 	}
+	
+	
 		
 	
 			
