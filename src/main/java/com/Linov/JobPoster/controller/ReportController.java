@@ -22,7 +22,7 @@ import com.Linov.JobPoster.service.JobPostingReportService;
 public class ReportController {
 	
 	@Autowired
-	JobPostingReportService js;
+	private JobPostingReportService js;
 	
 	@GetMapping("/report1/{format}")
 	public ResponseEntity<?> correctPerPackage(@PathVariable String format, HttpServletRequest request) 
