@@ -37,7 +37,7 @@ public class EmailService {
 		Date date = ct.getDate();
 		mail.setTo(eg.getCandidate().getEmail());
 		mail.setSubject("Contract Invitation");
-		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
+		mail.setText("Hello,"+ eg.getCandidate().getName()+ " \n"
 				+"\n Congrulations,"+ "We Invited you to attend on Contract Negoatiation for \n "+eg.getJob().getTitle()+" Postion at :  \n"
 				+"Date : "+date+"\n"+
 				"Time  : "+ct.getTime()+"\n\n\n"+"Best Regards, "+eg.getJob().getCandidate().getName());	
