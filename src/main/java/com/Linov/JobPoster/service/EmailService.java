@@ -96,7 +96,7 @@ public class EmailService {
 		mail.setSubject("Interview Invitation");
 		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
 				+ "We Invited you to attend on interview \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
-				+"Date : "+date+"\n"+"/n Lokasi : "+eg.getJob().getJob()+
+				+"Date : "+date+"\n"+"/n Lokasi : "+eg.getJob().getJob().getAddres()+
 				"Time  : "+eg.getTime()+"\n\n\n"+"Best Regards, "+eg.getJob().getJob().getCandidate().getName());	
 		javaMailSender.send(mail);
 	}
