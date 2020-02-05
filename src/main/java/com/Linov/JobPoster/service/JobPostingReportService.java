@@ -38,6 +38,10 @@ public class JobPostingReportService {
 
 	@Autowired
 	ReportDao pdDao;
+	
+	public List<JobPostingReport> as(){
+		return pdDao.oks();
+	}
 
 	@Value("${filestorage}")
 	private Path fileStorage;
@@ -103,9 +107,7 @@ public class JobPostingReportService {
 		return fileName;
 	}
 	
-	public List<DetailReport> as(){
-		return pdDao.gg();
-	}
+	
 
 	public void detail() throws FileNotFoundException, JRException {
 //		Path p = Paths.get(fileStorage.toString());
