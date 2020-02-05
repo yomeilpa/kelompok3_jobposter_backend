@@ -189,7 +189,7 @@ public class JobController {
 	
 	@GetMapping("/jobposting")
 	public ResponseEntity<?> findAllJob(){
-		//jobs.updateState();
+		jobs.updateState();
 		List<JobPostingModel> ls = jobs.findAll();
 		for(JobPostingModel l:ls) {
 			CandidateModel s = l.getCandidate();
