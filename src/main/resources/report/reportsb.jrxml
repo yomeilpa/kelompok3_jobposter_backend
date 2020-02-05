@@ -63,7 +63,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[ORDERID]]></text>
+				<text><![CDATA[Job Title]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="80" y="0" width="80" height="30" uuid="eb0188ca-0a9c-4838-adfc-6f511551b551">
@@ -78,7 +78,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[CUSTOMERID]]></text>
+				<text><![CDATA[Recruiter]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="160" y="0" width="80" height="30" uuid="c5856002-0371-487f-802a-76518a498f22">
@@ -93,7 +93,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[EMPLOYEEID]]></text>
+				<text><![CDATA[Start]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="240" y="0" width="80" height="30" uuid="9509f134-3319-42d7-a0c0-7e23321571f3">
@@ -108,7 +108,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[ORDERDATE]]></text>
+				<text><![CDATA[Ends]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="320" y="0" width="90" height="30" uuid="9ecd76dd-99a0-499b-84a8-03a9a28600ca">
@@ -123,7 +123,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[REQUIREDDATE]]></text>
+				<text><![CDATA[Accepted]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="410" y="0" width="80" height="30" uuid="46ffd366-bc54-4b85-b113-0ffb0240262d">
@@ -138,7 +138,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[SHIPPEDDATE]]></text>
+				<text><![CDATA[Rejected]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="490" y="0" width="55" height="30" uuid="e1ec5030-47ab-4fdb-bdc4-06afd8b25434">
@@ -154,7 +154,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[SHIPVIA]]></text>
+				<text><![CDATA[Total]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
