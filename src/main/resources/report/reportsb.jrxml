@@ -10,11 +10,11 @@
 	</field>
 	<field name="berakhir" class="java.lang.String">
 	</field>
-	<field name="acc" class="java.lang.Long">
+	<field name="acc" class="java.lang.Integer">
 	</field>
-	<field name="rj" class="java.lang.Long">
+	<field name="rj" class="java.lang.Integer">
 	</field>
-	<field name="toal" class="java.lang.Long">
+	<field name="toal" class="java.lang.Integer">
 	</field>
 	
 	<background>

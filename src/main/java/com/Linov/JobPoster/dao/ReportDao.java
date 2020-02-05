@@ -72,9 +72,9 @@ public class ReportDao extends CommonDao {
 			Long total = (Long) super.entityManager
 					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id").setParameter("id", ks.getId()).getSingleResult();	
 			
-			rp.setAcc(acc);
-			rp.setRj(rj);
-			rp.setToal(total);
+			rp.setAcc(acc.intValue());
+			rp.setRj(rj.intValue());
+			rp.setToal(total.intValue());
 		}
 		return ss;
 	}

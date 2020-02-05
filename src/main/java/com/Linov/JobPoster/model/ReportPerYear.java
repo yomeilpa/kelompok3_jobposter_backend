@@ -6,9 +6,9 @@ public class ReportPerYear {
 		private String recruiter;
 		private String mulai;
 		private String berakhir;
-		Long acc;
-		Long rj;
-		Long toal;
+		Integer acc;
+		Integer rj;
+		Integer toal;
 		public String getTitle() {
 			return title;
 		}
@@ -22,22 +22,22 @@ public class ReportPerYear {
 			this.recruiter = recruiter;
 		}
 		
-		public Long getAcc() {
+		public Integer  getAcc() {
 			return acc;
 		}
-		public void setAcc(Long acc) {
+		public void setAcc(Integer acc) {
 			this.acc = acc;
 		}
-		public Long getRj() {
+		public Integer getRj() {
 			return rj;
 		}
-		public void setRj(Long rj) {
+		public void setRj(Integer rj) {
 			this.rj = rj;
 		}
-		public Long getToal() {
+		public Integer getToal() {
 			return toal;
 		}
-		public void setToal(Long toal) {
+		public void setToal(Integer toal) {
 			this.toal = toal;
 		}
 		public String getMulai() {
