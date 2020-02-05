@@ -110,15 +110,13 @@ public class EmailService {
 
         Template template = emailConfig.getTemplate("invitationInterview.ftl");
         String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, mail.getModel());
-
         mimeMessageHelper.setTo(eg.getJob().getCandidate().getEmail());
         mimeMessageHelper.setText(html, true);
         mimeMessageHelper.setSubject("Invitation for Linov HR");
         mimeMessageHelper.setFrom("no-reply@gmail.com");
         javaMailSender.send(message);
-
     }
-	
+	as
 	public void sendInvReject(ListofInterviewModel eg) throws Exception {
 		SimpleMailMessage mail = new SimpleMailMessage();
 		Date date = eg.getDate();
