@@ -168,7 +168,7 @@ public class EmailService {
         model.put("date", strDate);
         model.put("time", strTime);
         model.put("position", eg.getJob().getJob().getTitle());
-        model.put("recruiter",eg.getJob().getJob().getCandidate().getName());
+        model.put("recruiter",eg.getJob().getCandidate().getName());
         mail.setModel(model); 
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
@@ -207,7 +207,7 @@ public class EmailService {
         model.put("date", strDate);
         model.put("time", strTime);
         model.put("position", eg.getJob().getJob().getTitle());
-        model.put("recruiter",eg.getJob().getJob().getCandidate().getName());
+        model.put("recruiter",eg.getJob().getCandidate().getName());
         mail.setModel(model); 
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
@@ -247,7 +247,7 @@ public class EmailService {
         model.put("date", strDate);
         model.put("time", strTime);
         model.put("position", eg.getJob().getJob().getTitle());
-        model.put("recruiter",eg.getJob().getJob().getCandidate().getName());
+        model.put("recruiter",eg.getJob().getCandidate().getName());
         mail.setModel(model); 
         MimeMessage message = javaMailSender.createMimeMessage();
         MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
