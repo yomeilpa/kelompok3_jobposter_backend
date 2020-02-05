@@ -98,10 +98,10 @@ public class EmailService {
 		Mail mail = new Mail();
         Map<String, String> model = new HashMap<String, String>();
         model.put("name",eg.getJob().getCandidate().getName());
+        model.put("lokasi",eg.getJob().getJob().getAddres());
         model.put("date", strDate);
         model.put("time", strTime);
         model.put("position", eg.getJob().getJob().getTitle());
-        model.put("lokasi",eg.getJob().getJob().getAddres());
         model.put("recruiter",eg.getJob().getJob().getCandidate().getName());
         mail.setModel(model); 
         MimeMessage message = javaMailSender.createMimeMessage();
