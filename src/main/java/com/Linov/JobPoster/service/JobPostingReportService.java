@@ -24,6 +24,7 @@ import com.Linov.JobPoster.model.DetailReport;
 import com.Linov.JobPoster.model.HeaderReport;
 import com.Linov.JobPoster.model.JobPostingReport;
 import com.Linov.JobPoster.model.ReportPerYear;
+import com.Linov.JobPoster.model.ReportbyPoster;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -91,6 +92,36 @@ public class JobPostingReportService {
 		//List<ReportPerYear> packages = pdDao.ReportPerYear();
 		List<ReportPerYear> packages = jobs.findforReport();
 		File file = ResourceUtils.getFile("classpath:report/reportsb.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("createdBy", "Rizal");
+		String fileName = null;
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
+		if (reportFormat.equalsIgnoreCase("html")) {
+			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.html");
+			fileName = "ReportJobPosting.html";
+		}
+		if (reportFormat.equalsIgnoreCase("pdf")) {
+			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.pdf");
+			fileName = "ReportJobPosting.pdf";
+		}
+		return fileName;
+	}
+	
+	public String ReportbyHr(String reportFormat,String id) throws FileNotFoundException, JRException {
+//		Path p = Paths.get(fileStorage.toString());
+//		if (!Files.exists(p)) {
+//			try {
+//				Files.createDirectories(p);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+
+		//List<ReportPerYear> packages = pdDao.ReportPerYear();
+		List<ReportbyPoster> packages = jobs.findforReportCd(id);
+		File file = ResourceUtils.getFile("classpath:report/reporthr.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
 		Map<String, Object> parameter = new HashMap<>();
