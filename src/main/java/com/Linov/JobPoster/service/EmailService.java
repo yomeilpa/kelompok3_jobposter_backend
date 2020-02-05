@@ -88,19 +88,7 @@ public class EmailService {
 				"Time  : "+ct.getTime()+"\n\n\n"+"Best Regards, "+eg.getJob().getCandidate().getName());	
 		javaMailSender.send(mail);
 	}
-	
-//	public void sendInvitation(ListofInterviewModel eg) throws Exception {
-//		SimpleMailMessage mail = new SimpleMailMessage();
-//		Date date = eg.getDate();
-//		mail.setTo(eg.getJob().getCandidate().getEmail());
-//		mail.setSubject("Interview Invitation");
-//		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
-//				+ "We Invited you to attend on interview \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
-//				+"Date : "+date+"\n"+"/n Lokasi : "+eg.getJob().getJob().getAddres()+
-//				"Time  : "+eg.getTime()+"\n\n\n"+"Best Regards, "+eg.getJob().getJob().getCandidate().getName());	
-//		javaMailSender.send(mail);
-//	}
-	
+
 	public void sendInvitation(ListofInterviewModel eg) throws MessagingException, IOException, TemplateException {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MMMM-dd");
 		DateFormat timeFormat = new SimpleDateFormat("HH:mm");
@@ -126,7 +114,8 @@ public class EmailService {
         mimeMessageHelper.setSubject("Invitation for Linov HR");
         mimeMessageHelper.setFrom("no-reply@gmail.com");
         javaMailSender.send(message);
-    }	
+    }
+	
 	public void sendInvReject(ListofInterviewModel eg) throws Exception {
 		SimpleMailMessage mail = new SimpleMailMessage();
 		Date date = eg.getDate();
