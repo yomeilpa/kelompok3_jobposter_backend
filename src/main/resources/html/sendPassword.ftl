@@ -34,11 +34,11 @@
     </tr>
     <tr>
         <td bgcolor="#ADD5F3" style="padding: 30px 30px 30px 30px;">
-        <p>Thank's You Linov HR 
-        </td>
         <hr>
         <hr>
         <p style="text-align: center">Lawencon Linov HR JobPoster</p>
+        </td>
+       
     </tr>
 </table>
 
