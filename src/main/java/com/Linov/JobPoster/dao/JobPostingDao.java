@@ -55,7 +55,7 @@ public class JobPostingDao  extends CommonDao{
 	public List<ReportPerYear> findforReport() {
 		List<ReportPerYear> as = new ArrayList<ReportPerYear>();
 		List<JobPostingModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobPostingModel").getResultList();
+				.createQuery("" + "From JobPostingModel MONTH(end) = '03'").getResultList();
 		for(JobPostingModel ss:lstCandidateModels) {
 			ReportPerYear se = new ReportPerYear();
 			se.setTitle(ss.getTitle());
