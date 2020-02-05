@@ -72,7 +72,7 @@ public class ReportController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);	
 	}
-	@GetMapping("/reportyear/{id}/{format}}")
+	@GetMapping("/reportyear/{id}/{format}")
 	public ResponseEntity<?> reportbyHr(@PathVariable("id") String id,@PathVariable String format, HttpServletRequest request) 
 			throws Exception {
 		
