@@ -1,4 +1,4 @@
-package configurationMail;
+package com.Linov.JobPoster.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,7 +11,7 @@ public class MailConfig {
 		 @Bean(name="emailConfigBean")
 		    public FreeMarkerConfigurationFactoryBean getFreeMarkerConfiguration(ResourceLoader resourceLoader) {
 		        FreeMarkerConfigurationFactoryBean bean = new FreeMarkerConfigurationFactoryBean();
-		        bean.setTemplateLoaderPath("classpath:/templates/");
+		        bean.setTemplateLoaderPath("classpath:/html/");
 		        return bean;
 		    }
 
