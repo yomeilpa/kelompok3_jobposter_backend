@@ -58,7 +58,6 @@ public class ReportDao extends CommonDao {
 	@SuppressWarnings("unchecked")
 	public List<JobPostingModel> ReportPerYear(){
 		List<JobPostingModel> ep = super.entityManager.createQuery("From JobPostingModel").getResultList();
-		List<ReportPerYear> ss = new ArrayList<ReportPerYear>();
 		
 		return ep;
 	}
