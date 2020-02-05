@@ -21,7 +21,7 @@
 <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
     <tr>
         <td align="center" bgcolor="#ADD5F3" style="padding: 40px 0 30px 0;">
-            <img src="https://raw.githubusercontent.com/yomeilpa/kelompok3_jobposter_frontend/master/src/assets/logolarge.png" alt="https://www.techmagister.info" style="display: block;" />
+            <img src="https://raw.githubusercontent.com/yomeilpa/kelompok3_jobposter_frontend/master/src/assets/logolarge.png" style="display: block;" />
         </td>
     </tr>
     <tr>
