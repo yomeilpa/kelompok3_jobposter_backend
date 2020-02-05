@@ -75,7 +75,7 @@ public class EmailService {
         javaMailSender.send(message);
 
     }
-
+a
 	
 	public void sendContract(JobApplyModel eg,ContractModel ct) throws Exception {
 		SimpleMailMessage mail = new SimpleMailMessage();
