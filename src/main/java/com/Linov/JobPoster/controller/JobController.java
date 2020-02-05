@@ -53,6 +53,7 @@ public class JobController {
 	@Autowired
 	private JobApplyService sk;
 	
+	
 	//Job Kategori Serivce
 	@PostMapping("/jobkategori")
 	public ResponseEntity<?> insertModel(@RequestBody JobKategoriModel education){
@@ -207,8 +208,13 @@ public class JobController {
 			Date date = new Date();
 			if(date.compareTo(l.getEnd()) > 0) {
 				l.setActive(false);
-				jobs.insertModel(l);
 			}
+			Long total = sk.countAcc(l.getId());
+			if(total >= l.getSaldo()) {
+				l.setActive(false);
+			}
+			jobs.insertModel(l);
+			
 		}
 		return ResponseEntity.ok(ls);
 	}
