@@ -39,6 +39,11 @@ public class JobPostingModel {
 	public JobPostingModel() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Column(name ="addres")
+	private String addres;
+	
+	
 
 	@Id
 	@Column(name = "id")
@@ -173,6 +178,14 @@ public class JobPostingModel {
 
 	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
+	}
+
+	public String getAddres() {
+		return addres;
+	}
+
+	public void setAddres(String addres) {
+		this.addres = addres;
 	}
 	
 }
