@@ -189,7 +189,7 @@ public class JobController {
 	
 	@GetMapping("/jobposting")
 	public ResponseEntity<?> findAllJob(){
-		jobs.updateState();
+		//jobs.updateState();
 		List<JobPostingModel> ls = jobs.findAll();
 		for(JobPostingModel l:ls) {
 			CandidateModel s = l.getCandidate();
@@ -201,7 +201,7 @@ public class JobController {
 	
 	@GetMapping("/jobposting/poster/{id}")
 	public ResponseEntity<?> findbyPoster(@PathVariable("id") String id){
-		jobs.updateState();
+		//jobs.updateState();
 		List<JobPostingModel> ls = jobs.findAllbyPopster(id);
 		for(JobPostingModel l:ls) {
 			CandidateModel s = l.getCandidate();
@@ -215,7 +215,7 @@ public class JobController {
 	@GetMapping("/jobposting/poster//quota/{id}")
 	public ResponseEntity<?> findbyPosterandQuota(@PathVariable("id") String id){
 		List<List<Object>> objL = new ArrayList<List<Object>>();
-		jobs.updateState();
+		//jobs.updateState();
 		List<JobPostingModel> ls = jobs.findAllbyPopster(id);
 		for(JobPostingModel l:ls) {
 			CandidateModel s = l.getCandidate();
