@@ -18,7 +18,6 @@ import javax.mail.internet.MimeMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -262,17 +261,37 @@ public class EmailService {
         javaMailSender.send(message);
     }
 	
-	public void sendResult(ListofInterviewModel eg) throws Exception {
-		SimpleMailMessage mail = new SimpleMailMessage();
-		mail.setTo(eg.getJob().getCandidate().getEmail());
-		mail.setSubject("Result for Your Invitattion : ");
-		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
-				+ "This is a result for your interview for " +": \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
-				+"Result :" +""+ eg.getResultInt()+"\n"+
-				"\n\n"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getJob().getCandidate().getName());	
-		javaMailSender.send(mail);
-	}
+//	public void sendResult(ListofInterviewModel eg) throws Exception {
+//		SimpleMailMessage mail = new SimpleMailMessage();
+//		mail.setTo(eg.getJob().getCandidate().getEmail());
+//		mail.setSubject("Result for Your Invitattion : ");
+//		mail.setText("Hello,"+ eg.getJob().getCandidate().getName()+ " \n"
+//				+ "This is a result for your interview for " +": \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
+//				+"Result :" +""+ eg.getResultInt()+"\n"+
+//				"\n\n"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getJob().getCandidate().getName());	
+//		javaMailSender.send(mail);
+//	}
 	
-	
+
+	public void sendResult(ListofInterviewModel eg) throws MessagingException, IOException, TemplateException {
+		Mail mail = new Mail();
+        Map<String, String> model = new HashMap<String, String>();
+        model.put("name",eg.getJob().getCandidate().getName());
+        model.put("result",eg.getResultInt());
+        model.put("position", eg.getJob().getJob().getTitle());
+        model.put("recruiter",eg.getJob().getJob().getCandidate().getName());
+        mail.setModel(model); 
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+        mimeMessageHelper.addInline("logo.png", new ClassPathResource("classpath:/lwcn-logo.jpeg"));
+
+        Template template = emailConfig.getTemplate("result.ftl");
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, mail.getModel());
+        mimeMessageHelper.setTo(eg.getJob().getCandidate().getEmail());
+        mimeMessageHelper.setText(html, true);
+        mimeMessageHelper.setSubject("Result Interview");
+        mimeMessageHelper.setFrom("no-reply@gmail.com");
+        javaMailSender.send(message);
+    }
 
 }
