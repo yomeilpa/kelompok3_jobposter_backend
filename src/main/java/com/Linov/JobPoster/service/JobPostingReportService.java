@@ -18,10 +18,12 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 
+import com.Linov.JobPoster.dao.JobPostingDao;
 import com.Linov.JobPoster.dao.ReportDao;
 import com.Linov.JobPoster.model.DetailReport;
 import com.Linov.JobPoster.model.HeaderReport;
 import com.Linov.JobPoster.model.JobPostingReport;
+import com.Linov.JobPoster.model.ReportPerYear;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -36,6 +38,9 @@ public class JobPostingReportService {
 
 	@Autowired
 	ReportDao pdDao;
+	
+	@Autowired
+	JobPostingDao jobs;
 	
 
 
@@ -84,7 +89,7 @@ public class JobPostingReportService {
 //		}
 
 		//List<ReportPerYear> packages = pdDao.ReportPerYear();
-		List<JobPostingReport> packages = pdDao.oks();
+		List<ReportPerYear> packages = jobs.findforReport();
 		File file = ResourceUtils.getFile("classpath:report/reportsb.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
