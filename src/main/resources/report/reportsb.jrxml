@@ -2,17 +2,17 @@
 <!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportYear" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c7f6f868-6964-4d1d-a482-330436a10419">
 	
-	<field name="title" class="java.lang.Integer">
+	<field name="title" class="java.lang.String">
 	</field>
 	<field name="recruiter" class="java.lang.String">
 	</field>
-	<field name="mulai" class="java.lang.Integer">
+	<field name="mulai" class="java.lang.String">
 	</field>
-	<field name="berakhir" class="java.sql.Timestamp">
+	<field name="berakhir" class="java.lang.String">
 	</field>
-	<field name="acc" class="java.sql.Timestamp">
+	<field name="acc" class="java.lang.Integer">
 	</field>
-	<field name="rj" class="java.sql.Timestamp">
+	<field name="rj" class="java.lang.Integer">
 	</field>
 	<field name="toal" class="java.lang.Integer">
 	</field>
