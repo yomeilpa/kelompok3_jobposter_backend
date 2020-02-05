@@ -231,6 +231,11 @@ public class JobController {
 		return ResponseEntity.ok(ls);
 	}
 	
+	@GetMapping("/haha")
+	public ResponseEntity<?> oks(){
+		return ResponseEntity.ok(jobs.oks());
+	}
+	
 	
 	@GetMapping("/jobposting/poster//quota/{id}")
 	public ResponseEntity<?> findbyPosterandQuota(@PathVariable("id") String id){

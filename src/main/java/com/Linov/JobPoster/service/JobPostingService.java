@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.Linov.JobPoster.dao.JobPostingDao;
 import com.Linov.JobPoster.model.FilterJobPosting;
 import com.Linov.JobPoster.model.JobPostingModel;
+import com.Linov.JobPoster.model.ReportPerYear;
 
 @Service
 public class JobPostingService {
@@ -45,6 +46,10 @@ public class JobPostingService {
 	
 	public void updateState() {
 		acc.updateState();
+	}
+	
+	public List<ReportPerYear> oks(){
+		return acc.findforReport();
 	}
 
 }

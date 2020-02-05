@@ -11,7 +11,6 @@ import com.Linov.JobPoster.model.DetailReport;
 import com.Linov.JobPoster.model.HeaderReport;
 import com.Linov.JobPoster.model.JobPostingModel;
 import com.Linov.JobPoster.model.JobPostingReport;
-import com.Linov.JobPoster.model.ReportPerYear;
 
 @Repository
 @Transactional

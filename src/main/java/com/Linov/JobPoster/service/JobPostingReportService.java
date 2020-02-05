@@ -21,9 +21,7 @@ import org.springframework.util.ResourceUtils;
 import com.Linov.JobPoster.dao.ReportDao;
 import com.Linov.JobPoster.model.DetailReport;
 import com.Linov.JobPoster.model.HeaderReport;
-import com.Linov.JobPoster.model.JobPostingModel;
 import com.Linov.JobPoster.model.JobPostingReport;
-import com.Linov.JobPoster.model.ReportPerYear;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -39,9 +37,7 @@ public class JobPostingReportService {
 	@Autowired
 	ReportDao pdDao;
 	
-	public List<JobPostingReport> as(){
-		return pdDao.oks();
-	}
+
 
 	@Value("${filestorage}")
 	private Path fileStorage;

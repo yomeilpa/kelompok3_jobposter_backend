@@ -1,5 +1,6 @@
 package com.Linov.JobPoster.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Query;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.Linov.JobPoster.model.FilterJobPosting;
 import com.Linov.JobPoster.model.JobPostingModel;
+import com.Linov.JobPoster.model.ReportPerYear;
 
 @Repository
 @Transactional
@@ -45,6 +47,22 @@ public class JobPostingDao  extends CommonDao{
 			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
+	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<ReportPerYear> findforReport() {
+		List<ReportPerYear> as = new ArrayList<ReportPerYear>();
+		List<JobPostingModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From JobPostingModel").getResultList();
+		for(JobPostingModel ss:lstCandidateModels) {
+			ReportPerYear se = new ReportPerYear();
+			se.setTitle(ss.getTitle());
+			se.setRecruiter(ss.getCandidate().getName());
+			as.add(se);
+		}
+			
+			return as;
 	}
 	
 	@Transactional
