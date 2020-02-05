@@ -59,7 +59,7 @@ public class JobPostingDao  extends CommonDao{
 	}
 	
 	public void updateState() {
-		super.entityManager.createQuery("update  From JobPostingModel set active=false where end <= current_date").executeUpdate();
+		super.entityManager.createQuery("update JobPostingModel set active=false where end <= current_date").executeUpdate();
 	}
 	
 	
