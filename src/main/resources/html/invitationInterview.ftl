@@ -25,22 +25,22 @@
         </td>
     </tr>
     <tr>
-        <td bgcolor="#E9FCFF" style="padding: 40px 30px 40px 30px;"
+        <td style="text-align: center" bgcolor="#E9FCFF" style="padding: 40px 30px 40px 30px;"
             <h3>Hello, ${name}</h3></td>
             <tr>
-            <td>
+            <td style="text-align: center">
                <p>We Invited You to Attend on Interview For ${position} Position at : </p>
             </td>
             </tr>
             <tr>
-            <td>
+            <td style="text-align: center">
             <p>Date     : ${date}</p>
             <p>Time     : ${time}</p>
             <p>Location : ${lokasi}</P>
             </td>
             </tr>
             <tr>
-            	<td>
+            	<td style="text-align:right">
             		Best Regards, ${recruiter}
             	</td>
             </tr>
@@ -49,8 +49,9 @@
     <tr>
         <td bgcolor="#ADD5F3" style="padding: 30px 30px 30px 30px;">
        <hr>
-        <hr>
         <p style="text-align: center">Lawencon Linov HR JobPoster</p>
+                <hr>
+
          </td>
         
     </tr>
