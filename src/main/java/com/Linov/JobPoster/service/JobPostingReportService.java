@@ -21,6 +21,7 @@ import org.springframework.util.ResourceUtils;
 import com.Linov.JobPoster.dao.ReportDao;
 import com.Linov.JobPoster.model.DetailReport;
 import com.Linov.JobPoster.model.HeaderReport;
+import com.Linov.JobPoster.model.JobPostingModel;
 import com.Linov.JobPoster.model.JobPostingReport;
 import com.Linov.JobPoster.model.ReportPerYear;
 
@@ -102,7 +103,7 @@ public class JobPostingReportService {
 		return fileName;
 	}
 	
-	public List<ReportPerYear> as(){
+	public List<JobPostingModel> as(){
 		return pdDao.ReportPerYear();
 	}
 

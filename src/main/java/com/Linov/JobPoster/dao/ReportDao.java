@@ -56,18 +56,11 @@ public class ReportDao extends CommonDao {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<ReportPerYear> ReportPerYear(){
+	public List<JobPostingModel> ReportPerYear(){
 		List<JobPostingModel> ep = super.entityManager.createQuery("From JobPostingModel").getResultList();
 		List<ReportPerYear> ss = new ArrayList<ReportPerYear>();
-		for(JobPostingModel ks:ep) {
-			ReportPerYear rp = new ReportPerYear();
-			rp.setTitle(ks.getTitle());
-			rp.setRecruiter(ks.getCandidate().getName());
-			rp.setMulai(ks.getStart().toString());
-			rp.setBerakhir(ks.getEnd().toString());
-			ss.add(rp);
-		}
-		return ss;
+		
+		return ep;
 	}
 	
 }
