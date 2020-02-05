@@ -9,6 +9,7 @@ import com.Linov.JobPoster.dao.JobPostingDao;
 import com.Linov.JobPoster.model.FilterJobPosting;
 import com.Linov.JobPoster.model.JobPostingModel;
 import com.Linov.JobPoster.model.ReportPerYear;
+import com.Linov.JobPoster.model.ReportbyPoster;
 
 @Service
 public class JobPostingService {
@@ -51,5 +52,10 @@ public class JobPostingService {
 	public List<ReportPerYear> oks(){
 		return acc.findforReport();
 	}
+	
+	public List<ReportbyPoster> byhr(String id){
+		return acc.findforReportCd(id);
+	}
+
 
 }

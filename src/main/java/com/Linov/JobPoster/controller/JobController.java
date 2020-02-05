@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.annotation.ApplicationScope;
 
 import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.FilterJobPosting;
@@ -231,9 +232,9 @@ public class JobController {
 		return ResponseEntity.ok(ls);
 	}
 	
-	@GetMapping("/haha")
-	public ResponseEntity<?> oks(){
-		return ResponseEntity.ok(jobs.oks());
+	@GetMapping("/haha/{id}")
+	public ResponseEntity<?> oks(@PathVariable("id") String id){
+		return ResponseEntity.ok(jobs.byhr(id));
 	}
 	
 	

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.Linov.JobPoster.model.FilterJobPosting;
 import com.Linov.JobPoster.model.JobPostingModel;
 import com.Linov.JobPoster.model.ReportPerYear;
+import com.Linov.JobPoster.model.ReportbyPoster;
 
 @Repository
 @Transactional
@@ -76,6 +77,41 @@ public class JobPostingDao  extends CommonDao{
 			
 			return as;
 	}
+	
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<ReportbyPoster> findforReportCd(String id) {
+		List<ReportbyPoster> as = new ArrayList<ReportbyPoster>();
+		List<JobPostingModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From JobPostingModel where candidate.id=:id").setParameter("id",id).getResultList();
+		for(JobPostingModel ss:lstCandidateModels) {
+			ReportbyPoster se = new ReportbyPoster();
+			se.setTitle(ss.getTitle());
+			se.setRecruiter(ss.getCandidate().getName());
+			se.setMulai(ss.getStart().toString());
+			se.setBerakhir(ss.getEnd().toString());
+			Long acc = (Long) super.entityManager
+					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id and state.state = 'Accepted'").setParameter("id", ss.getId()).getSingleResult();	
+			Long rj = (Long) super.entityManager
+					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id and state.state = 'Rejected'").setParameter("id", ss.getId()).getSingleResult();	
+			Long total = (Long) super.entityManager
+					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id").setParameter("id", ss.getId()).getSingleResult();	
+			Long sum = (Long) super.entityManager
+					.createQuery("" + "Select count(*) From JobPostingModel where candidate.id=:id").setParameter("id", ss.getCandidate().getId()).getSingleResult();	
+			se.setRec(ss.getCandidate().getName());
+			se.setSum(sum.intValue());
+			se.setAcc(acc.intValue());
+			se.setRj(rj.intValue());
+			se.setToal(total.intValue());
+			as.add(se);
+		}
+			
+			return as;
+	}
+	
+	
+	
 	
 	@Transactional
 	@SuppressWarnings("unchecked")
