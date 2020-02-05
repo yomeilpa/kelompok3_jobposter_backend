@@ -199,7 +199,7 @@ public class JobController {
 		return ResponseEntity.ok(ls);
 	}
 	
-	@GetMapping("/jobposting")
+	@GetMapping("/jobposting/upt")
 	public ResponseEntity<?> updateall(){
 		//jobs.updateState();
 		List<JobPostingModel> ls = jobs.findAll();
