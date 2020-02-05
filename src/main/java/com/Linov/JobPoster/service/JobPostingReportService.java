@@ -51,7 +51,7 @@ public class JobPostingReportService {
 			}
 		}
 
-		List<JobPostingReport> packages = pdDao.oks();
+		List<ReportPerYear> packages = pdDao.ReportPerYear();
 
 		// load file and compile it
 		File file = ResourceUtils.getFile("classpath:report/reportsb.jrxml");

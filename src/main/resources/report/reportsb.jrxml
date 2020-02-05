@@ -2,13 +2,19 @@
 <!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="075b4846-ae47-46e3-9c1a-dba7aabd382e">
 	
-	<field name="ORDERID" class="java.lang.Integer">
+	<field name="title" class="java.lang.String">
 	</field>
-	<field name="CUSTOMERID" class="java.lang.String">
+	<field name="recruiter" class="java.lang.String">
 	</field>
-	<field name="EMPLOYEEID" class="java.lang.Integer">
+	<field name="mulai" class="java.lang.String">
 	</field>
-	<field name="ORDERDATE" class="java.sql.Timestamp">
+	<field name="berakhir" class="java.lang.String">
+	</field>
+	<field name="acc" class="java.lang.Long">
+	</field>
+	<field name="rj" class="java.lang.Long">
+	</field>
+	<field name="toal" class="java.lang.Long">
 	</field>
 	
 	<background>
@@ -164,7 +170,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{ORDERDATE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="159" y="0" width="79" height="30" uuid="e8da1c75-9993-41ab-aea4-e758eb75aba6">
@@ -175,7 +181,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{ORDERDATE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{recruiter}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="80" y="0" width="79" height="30" uuid="7bc480bc-dce4-4d3c-9102-6d743c5e3bf3">
@@ -187,7 +193,7 @@
 					<bottomPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{ORDERID}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{mulai}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="317" y="0" width="79" height="30" uuid="dd252db5-8cbc-46ec-a00e-d53fcb60daa2">
@@ -199,7 +205,7 @@
 					<bottomPen lineWidth="1.0"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{ORDERID}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{berakhir}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="396" y="0" width="79" height="30" uuid="bf7c4cb5-0723-471e-a7b3-7338ee62a2c7">
@@ -210,7 +216,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{ORDERDATE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{acc}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="238" y="0" width="79" height="30" uuid="45245e3b-a052-4a41-a50d-d97fb6411066">
@@ -221,7 +227,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{ORDERDATE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rj}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="475" y="0" width="79" height="30" uuid="1ce0bc4b-20d8-4776-8e7f-6cc766b50a4c">
@@ -232,7 +238,7 @@
 					<rightPen lineWidth="0.0"/>
 				</box>
 				<textElement textAlignment="Center"/>
-				<textFieldExpression><![CDATA[$F{ORDERDATE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{toal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

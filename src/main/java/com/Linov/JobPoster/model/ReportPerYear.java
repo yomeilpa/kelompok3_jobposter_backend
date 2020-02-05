@@ -4,8 +4,8 @@ public class ReportPerYear {
 
 		private String title;
 		private String recruiter;
-		private String Starts;
-		private String ends;
+		private String mulai;
+		private String berakhir;
 		Long acc;
 		Long rj;
 		Long toal;
@@ -21,18 +21,7 @@ public class ReportPerYear {
 		public void setRecruiter(String recruiter) {
 			this.recruiter = recruiter;
 		}
-		public String getStart() {
-			return Starts;
-		}
-		public void setStart(String start) {
-			Starts = start;
-		}
-		public String getEnd() {
-			return ends;
-		}
-		public void setEnd(String end) {
-			this.ends = end;
-		}
+		
 		public Long getAcc() {
 			return acc;
 		}
@@ -50,6 +39,18 @@ public class ReportPerYear {
 		}
 		public void setToal(Long toal) {
 			this.toal = toal;
+		}
+		public String getMulai() {
+			return mulai;
+		}
+		public void setMulai(String mulai) {
+			this.mulai = mulai;
+		}
+		public String getBerakhir() {
+			return berakhir;
+		}
+		public void setBerakhir(String berakhir) {
+			this.berakhir = berakhir;
 		}
 		
 		

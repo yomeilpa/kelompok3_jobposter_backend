@@ -63,8 +63,8 @@ public class ReportDao extends CommonDao {
 			ReportPerYear rp = new ReportPerYear();
 			rp.setTitle(ks.getTitle());
 			rp.setRecruiter(ks.getCandidate().getName());
-			rp.setStart(ks.getStart().toString());
-			rp.setEnd(ks.getEnd().toString());
+			rp.setMulai(ks.getStart().toString());
+			rp.setBerakhir(ks.getEnd().toString());
 			Long acc = (Long) super.entityManager
 					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id and state.state = 'Accepted'").setParameter("id", ks.getId()).getSingleResult();	
 			Long rj = (Long) super.entityManager
