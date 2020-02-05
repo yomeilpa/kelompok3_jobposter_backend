@@ -103,8 +103,8 @@ public class JobPostingReportService {
 		return fileName;
 	}
 	
-	public List<JobPostingModel> as(){
-		return pdDao.ReportPerYear();
+	public List<DetailReport> as(){
+		return pdDao.gg();
 	}
 
 	public void detail() throws FileNotFoundException, JRException {
