@@ -22,6 +22,7 @@ import com.Linov.JobPoster.dao.ReportDao;
 import com.Linov.JobPoster.model.DetailReport;
 import com.Linov.JobPoster.model.HeaderReport;
 import com.Linov.JobPoster.model.JobPostingReport;
+import com.Linov.JobPoster.model.ReportPerYear;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -54,6 +55,36 @@ public class JobPostingReportService {
 
 		// load file and compile it
 		File file = ResourceUtils.getFile("classpath:report/report.jrxml");
+		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
+		Map<String, Object> parameter = new HashMap<>();
+		parameter.put("createdBy", "Rizal");
+		String fileName = null;
+		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
+		if (reportFormat.equalsIgnoreCase("html")) {
+			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.html");
+			fileName = "ReportJobPosting.html";
+		}
+		if (reportFormat.equalsIgnoreCase("pdf")) {
+			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.pdf");
+			fileName = "ReportJobPosting.pdf";
+		}
+		return fileName;
+	}
+	
+	public String ReportPerYears(String reportFormat) throws FileNotFoundException, JRException {
+//		Path p = Paths.get(fileStorage.toString());
+//		if (!Files.exists(p)) {
+//			try {
+//				Files.createDirectories(p);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+
+		
+		List<ReportPerYear> packages = pdDao.ReportPerYear();
+		File file = ResourceUtils.getFile("classpath:report/reportyear.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
 		Map<String, Object> parameter = new HashMap<>();

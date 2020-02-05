@@ -11,6 +11,7 @@ import com.Linov.JobPoster.model.DetailReport;
 import com.Linov.JobPoster.model.HeaderReport;
 import com.Linov.JobPoster.model.JobPostingModel;
 import com.Linov.JobPoster.model.JobPostingReport;
+import com.Linov.JobPoster.model.ReportPerYear;
 
 @Repository
 @Transactional
@@ -50,6 +51,30 @@ public class ReportDao extends CommonDao {
 			 jj.setJobTitle(ks.getCandidate().getName());
 			 jj.setJobTitle(ks.getTitle());
 			 ss.add(jj);
+		}
+		return ss;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ReportPerYear> ReportPerYear(){
+		List<JobPostingModel> ep = super.entityManager.createQuery("From JobPostingModel").getResultList();
+		List<ReportPerYear> ss = new ArrayList<ReportPerYear>();
+		for(JobPostingModel ks:ep) {
+			ReportPerYear rp = new ReportPerYear();
+			rp.setTitle(ks.getTitle());
+			rp.setRecruiter(ks.getCandidate().getName());
+			rp.setStart(ks.getStart().toString());
+			rp.setEnd(ks.getEnd().toString());
+			Long acc = (Long) super.entityManager
+					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id and state.state = 'Accepted'").setParameter("id", ks.getId()).getSingleResult();	
+			Long rj = (Long) super.entityManager
+					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id and state.state = 'Rejected'").setParameter("id", ks.getId()).getSingleResult();	
+			Long total = (Long) super.entityManager
+					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id").setParameter("id", ks.getId()).getSingleResult();	
+			
+			rp.setAcc(acc);
+			rp.setRj(rj);
+			rp.setToal(total);
 		}
 		return ss;
 	}
