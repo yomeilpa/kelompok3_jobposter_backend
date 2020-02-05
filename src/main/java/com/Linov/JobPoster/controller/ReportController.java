@@ -53,7 +53,7 @@ public class ReportController {
 	public ResponseEntity<?> reportPerYear(@PathVariable String format, HttpServletRequest request) 
 			throws Exception {
 		
-		String fileName = js.correctPerPackage(format);
+		String fileName = js.ReportPerYears(format);
 		
 		// Load file as Resource
         Resource resource = js.loadFileAsResource(fileName);
