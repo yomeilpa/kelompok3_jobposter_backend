@@ -10,7 +10,7 @@
 			<staticText>
 				<reportElement x="156" y="24" width="250" height="30" uuid="2861a48d-4643-4d08-9ba3-9feed9bfa391"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="&#xD;&#xA;SansSerif" size="20" isBold="true"/>
+					<font  size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Job Vacancies Report]]></text>
 			</staticText>
@@ -34,7 +34,7 @@
 			<staticText>
 				<reportElement x="125" y="7" width="310" height="30" uuid="4b7dc4ff-36c4-4537-94ad-752efc87de30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="&#xD;&#xA;SansSerif" size="14" isBold="true"/>
+					<font  size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[]]></text>
 			</staticText>
