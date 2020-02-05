@@ -4,6 +4,7 @@ import java.util.Date;
 import com.Linov.JobPoster.model.ContractModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.model.ListofInterviewModel;
+import com.Linov.JobPoster.model.Mail;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -50,10 +51,12 @@ public class EmailService {
 	
 	
 	public void sendNotid(String to,String password,String username) throws MessagingException, IOException, TemplateException {
-
+		
+		Mail mail = new Mail();
         Map<String, String> model = new HashMap<String, String>();
         model.put("username",username);
         model.put("password", password);
+        mail.setModel(model); 
         /**
          * Add below line if you need to create a token to verification emails and uncomment line:32 in "email.ftl"
          * model.put("token",UUID.randomUUID().toString());
@@ -69,7 +72,7 @@ public class EmailService {
         mimeMessageHelper.addInline("logo.png", new ClassPathResource("classpath:/lwcn-logo.jpeg"));
 
         Template template = emailConfig.getTemplate("sendPassword.ftl");
-        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, mail.getModel());
 
         mimeMessageHelper.setTo(to);
         mimeMessageHelper.setText(html, true);
