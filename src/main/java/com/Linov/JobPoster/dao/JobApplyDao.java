@@ -83,7 +83,7 @@ public class JobApplyDao  extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<JobApplyModel> findBAcc() {
 		List<JobApplyModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobApplyModel where state.state='ON Negotiation'").getResultList();
+				.createQuery("" + "From JobApplyModel where state.state='ON Negotiation' or state.state ='Accepted").getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return lstCandidateModels;
 		} else
