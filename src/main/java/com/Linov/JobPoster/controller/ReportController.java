@@ -75,6 +75,8 @@ public class ReportController {
 	
 	
 	
+	
+	
 	@GetMapping("/report1/{id}/{format}")
 	public ResponseEntity<?> sub(@PathVariable("id") String id, @PathVariable String format, HttpServletRequest request) 
 			throws Exception {
