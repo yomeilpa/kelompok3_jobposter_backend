@@ -4,8 +4,8 @@ public class ReportPerYear {
 
 		private String title;
 		private String recruiter;
-		private String Start;
-		private String end;
+		private String Starts;
+		private String ends;
 		Long acc;
 		Long rj;
 		Long toal;
@@ -22,16 +22,16 @@ public class ReportPerYear {
 			this.recruiter = recruiter;
 		}
 		public String getStart() {
-			return Start;
+			return Starts;
 		}
 		public void setStart(String start) {
-			Start = start;
+			Starts = start;
 		}
 		public String getEnd() {
-			return end;
+			return ends;
 		}
 		public void setEnd(String end) {
-			this.end = end;
+			this.ends = end;
 		}
 		public Long getAcc() {
 			return acc;
