@@ -25,7 +25,7 @@
         </td>
     </tr>
     <tr>
-        <td bgcolor="#E9FCFF" style="padding: 40px 30px 40px 30px;"
+        <td style="text-align: center" bgcolor="#E9FCFF" style="padding: 40px 30px 40px 30px;"
             <p>Thank's for Register on Linov HR Job Poster</p>
             <p>This is your username and your Password :</p>
             <p>username : ${username}</p>
