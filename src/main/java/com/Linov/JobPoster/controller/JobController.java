@@ -189,12 +189,26 @@ public class JobController {
 	
 	@GetMapping("/jobposting")
 	public ResponseEntity<?> findAllJob(){
-		jobs.updateState();
+		//jobs.updateState();
 		List<JobPostingModel> ls = jobs.findAll();
 		for(JobPostingModel l:ls) {
 			CandidateModel s = l.getCandidate();
 			s.setPic(null);
 			l.setCandidate(s);
+		}
+		return ResponseEntity.ok(ls);
+	}
+	
+	@PutMapping("/jobposting")
+	public ResponseEntity<?> updateall(){
+		//jobs.updateState();
+		List<JobPostingModel> ls = jobs.findAll();
+		for(JobPostingModel l:ls) {
+			Date date = new Date();
+			if(date.compareTo(l.getEnd()) > 0) {
+				l.setActive(false);
+				jobs.insertModel(l);
+			}
 		}
 		return ResponseEntity.ok(ls);
 	}
