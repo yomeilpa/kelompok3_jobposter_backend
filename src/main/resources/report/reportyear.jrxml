@@ -172,7 +172,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ORDERID}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="80" y="0" width="80" height="30" uuid="7965a078-2e75-4cd8-848d-919c81d0ac12">
@@ -184,7 +184,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{CUSTOMERID}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{recruiter}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="160" y="0" width="80" height="30" uuid="b6d9cb11-daec-4d01-802a-f3d062f865c5">
@@ -196,7 +196,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{EMPLOYEEID}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Starts}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="240" y="0" width="80" height="30" uuid="2c47e957-0235-47e2-85cb-1c729cd4f344">
@@ -208,7 +208,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{ORDERDATE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ends}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="320" y="0" width="90" height="30" uuid="6f00aee8-3984-4382-adea-812f26a3c5e2">
@@ -220,7 +220,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{REQUIREDDATE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{acc}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="410" y="0" width="80" height="30" uuid="b611345f-119f-4f01-a4ac-6bd31af9c127">
@@ -232,7 +232,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{SHIPPEDDATE}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rj}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="490" y="0" width="55" height="30" uuid="5d936c23-f82a-4f2c-a188-5a4c43d10e76">
@@ -244,7 +244,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{SHIPVIA}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{toal}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
