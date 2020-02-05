@@ -3,6 +3,8 @@ package com.Linov.JobPoster.service;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -12,25 +14,85 @@ import com.Linov.JobPoster.model.ContractModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.model.ListofInterviewModel;
 
+import freemarker.template.Configuration;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
+
+
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import freemarker.template.TemplateException;
+import freemarker.template.Template;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
+import org.springframework.mail.javamail.MimeMessageHelper;
+
+
 
 @Service
 public class EmailService {
-	private JavaMailSender javaMailSender;
 	private final String subject = "Password for Your Account in Linov JobPoster";
+	
+	
+	
+	@Autowired
+	private JavaMailSender javaMailSender;
+	
+	@Autowired
+	@Qualifier("emailConfigBean")
+	private Configuration emailConfig;
 	
 	@Autowired
 	public EmailService(JavaMailSender javaMailSender) {
 		this.javaMailSender = javaMailSender;
 		
 	}
-	public void sendNotid(String to,String password,String username) throws MailException {
-		SimpleMailMessage mail = new SimpleMailMessage();
-		mail.setTo(to);
-		mail.setSubject(subject);
-		mail.setText("Your username is : "+username+" \n"
-				+ "Your Password is : "+password);	
-		javaMailSender.send(mail);
-	}
+	
+	
+	public void sendNotid(String to,String password,String username) throws MessagingException, IOException, TemplateException {
+
+        Map model = new HashMap();
+        model.put("username",username);
+        model.put("password", password);
+        /**
+         * Add below line if you need to create a token to verification emails and uncomment line:32 in "email.ftl"
+         * model.put("token",UUID.randomUUID().toString());
+         */
+
+
+
+        //log.info("Sending Email to: " + mailModel.getTo());
+
+
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+        mimeMessageHelper.addInline("logo.png", new ClassPathResource("classpath:/lwcn-logo.jpeg"));
+
+        Template template = emailConfig.getTemplate("sendPassword.ftl");
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, model);
+
+        mimeMessageHelper.setTo(to);
+        mimeMessageHelper.setText(html, true);
+        mimeMessageHelper.setSubject("Password for Linov HR");
+        mimeMessageHelper.setFrom("no-reply@gmail.com");
+
+
+        javaMailSender.send(message);
+
+    }
+
+	
+	
+//	public void sendNotid(String to,String password,String username) throws MailException {
+//		SimpleMailMessage mail = new SimpleMailMessage();
+//		mail.setTo(to);
+//		mail.setSubject(subject);
+//		mail.setText("Your username is : "+username+" \n"
+//				+ "Your Password is : "+password);	
+//		javaMailSender.send(mail);
+//	}
 	
 	public void sendContract(JobApplyModel eg,ContractModel ct) throws MailException {
 		SimpleMailMessage mail = new SimpleMailMessage();
