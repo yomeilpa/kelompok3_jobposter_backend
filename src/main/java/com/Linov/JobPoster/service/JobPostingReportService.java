@@ -101,6 +101,10 @@ public class JobPostingReportService {
 		}
 		return fileName;
 	}
+	
+	public List<ReportPerYear> as(){
+		return pdDao.ReportPerYear();
+	}
 
 	public void detail() throws FileNotFoundException, JRException {
 //		Path p = Paths.get(fileStorage.toString());

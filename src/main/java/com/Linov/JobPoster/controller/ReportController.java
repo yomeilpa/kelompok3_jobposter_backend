@@ -74,6 +74,11 @@ public class ReportController {
     	
 	}
 	
+	@GetMapping("haha")
+	public ResponseEntity<?> egtAll(){
+		return ResponseEntity.ok(js.as());
+	}
+	
 	@GetMapping("/report1/{id}/{format}")
 	public ResponseEntity<?> sub(@PathVariable("id") String id, @PathVariable String format, HttpServletRequest request) 
 			throws Exception {
