@@ -84,7 +84,7 @@ public class JobPostingReportService {
 
 		
 		List<ReportPerYear> packages = pdDao.ReportPerYear();
-		File file = ResourceUtils.getFile("classpath:report/reportyear.jrxml");
+		File file = ResourceUtils.getFile("classpath:report/reportsb.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
 		Map<String, Object> parameter = new HashMap<>();
