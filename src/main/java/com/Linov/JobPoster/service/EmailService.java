@@ -1,6 +1,5 @@
 package com.Linov.JobPoster.service;
 
-import java.util.Date;
 import com.Linov.JobPoster.model.ContractModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.model.ListofInterviewModel;
@@ -77,17 +76,45 @@ public class EmailService {
     }
 
 	
-	public void sendContract(JobApplyModel eg,ContractModel ct) throws Exception {
-		SimpleMailMessage mail = new SimpleMailMessage();
-		Date date = ct.getDate();
-		mail.setTo(eg.getCandidate().getEmail());
-		mail.setSubject("Contract Invitation");
-		mail.setText("Hello,"+ eg.getCandidate().getName()+ " \n"
-				+"\n Congrulations,"+ "We Invited you to attend on Contract Negoatiation for \n "+eg.getJob().getTitle()+" Postion at :  \n"
-				+"Date : "+date+"\n"+
-				"Time  : "+ct.getTime()+"\n\n\n"+"Best Regards, "+eg.getJob().getCandidate().getName());	
-		javaMailSender.send(mail);
-	}
+//	public void sendContract(JobApplyModel eg,ContractModel ct) throws Exception {
+//		SimpleMailMessage mail = new SimpleMailMessage();
+//		Date date = ct.getDate();
+//		mail.setTo(eg.getCandidate().getEmail());
+//		mail.setSubject("Contract Invitation");
+//		mail.setText("Hello,"+ eg.getCandidate().getName()+ " \n"
+//				+"\n Congrulations,"+ "We Invited you to attend on Contract Negoatiation for \n "+eg.getJob().getTitle()+" Postion at :  \n"
+//				+"Date : "+date+"\n"+
+//				"Time  : "+ct.getTime()+"\n\n\n"+"Best Regards, "+eg.getJob().getCandidate().getName());	
+//		javaMailSender.send(mail);
+//	}
+	
+
+	public void sendContract(JobApplyModel  eg,ContractModel ct) throws MessagingException, IOException, TemplateException {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MMMM-dd");
+		DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+	    String strDate = dateFormat.format(ct.getDate());
+		String strTime = timeFormat.format(ct.getTime());
+		Mail mail = new Mail();
+        Map<String, String> model = new HashMap<String, String>();
+        model.put("name",eg.getCandidate().getName());
+        model.put("lokasi",eg.getJob().getAddres());
+        model.put("date", strDate);
+        model.put("time", strTime);
+        model.put("position", eg.getJob().getTitle());
+        model.put("recruiter",eg.getJob().getCandidate().getName());
+        mail.setModel(model); 
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+        mimeMessageHelper.addInline("logo.png", new ClassPathResource("classpath:/lwcn-logo.jpeg"));
+
+        Template template = emailConfig.getTemplate("contract.ftl");
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, mail.getModel());
+        mimeMessageHelper.setTo(eg.getCandidate().getEmail());
+        mimeMessageHelper.setText(html, true);
+        mimeMessageHelper.setSubject("Contract for Linov HR");
+        mimeMessageHelper.setFrom("no-reply@gmail.com");
+        javaMailSender.send(message);
+    }
 
 	public void sendInvitation(ListofInterviewModel eg) throws MessagingException, IOException, TemplateException {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MMMM-dd");
@@ -116,41 +143,124 @@ public class EmailService {
         javaMailSender.send(message);
     }
 	
-	public void sendInvReject(ListofInterviewModel eg) throws Exception {
-		SimpleMailMessage mail = new SimpleMailMessage();
-		Date date = eg.getDate();
-		mail.setTo(eg.getJob().getJob().getCandidate().getEmail());
-		mail.setSubject("Rejected Invitation");
-		mail.setText("Hello,"+ eg.getJob().getJob().getCandidate().getName()+ " \n"
-				+ "I'm sorry I did not plan to attend to meet the interview invitation for : \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
-				+"Date : "+date+"\n"+
-				"Time  : "+eg.getTime()+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
-		javaMailSender.send(mail);
-	}
+//	public void sendInvReject(ListofInterviewModel eg) throws Exception {
+//		SimpleMailMessage mail = new SimpleMailMessage();
+//		Date date = eg.getDate();
+//		mail.setTo(eg.getJob().getJob().getCandidate().getEmail());
+//		mail.setSubject("Rejected Invitation");
+//		mail.setText("Hello,"+ eg.getJob().getJob().getCandidate().getName()+ " \n"
+//				+ "I'm sorry I did not plan to attend to meet the interview invitation for : \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
+//				+"Date : "+date+"\n"+
+//				"Time  : "+eg.getTime()+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
+//		javaMailSender.send(mail);
+//	}
 	
-	public void sendReschedule(ListofInterviewModel eg) throws Exception {
-		SimpleMailMessage mail = new SimpleMailMessage();
-		Date date = eg.getDate();
-		mail.setTo(eg.getJob().getJob().getCandidate().getEmail());
-		mail.setSubject("Request New Schedule Invitation");
-		mail.setText("Hello,"+ eg.getJob().getJob().getCandidate().getName()+ " \n"
-				+ "Sorry I could not be present to fulfill the interview call for : \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
-				+"Date : "+date+"\n"+
-				"Time  : "+eg.getTime()+"\n\n"+"Can i request a Reschedule ?"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
-		javaMailSender.send(mail);
-	}
 	
-	public void sendAcc(ListofInterviewModel eg) throws Exception {
-		SimpleMailMessage mail = new SimpleMailMessage();
-		Date date = eg.getDate();
-		mail.setTo(eg.getJob().getJob().getCandidate().getEmail());
-		mail.setSubject("Accepted Invitation");
-		mail.setText("Hello,"+ eg.getJob().getJob().getCandidate().getName()+ " \n"
-				+ "I will be Attend the invitation  for : \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
-				+"Date : "+date+"\n"+
-				"Time  : "+eg.getTime()+"\n\n"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
-		javaMailSender.send(mail);
-	}
+	public void sendInvReject(ListofInterviewModel eg) throws MessagingException, IOException, TemplateException {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MMMM-dd");
+		DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+	    String strDate = dateFormat.format(eg.getDate());
+		String strTime = timeFormat.format(eg.getTime());
+		Mail mail = new Mail();
+        Map<String, String> model = new HashMap<String, String>();
+        model.put("name",eg.getJob().getJob().getCandidate().getName());
+        model.put("lokasi",eg.getJob().getJob().getAddres());
+        model.put("date", strDate);
+        model.put("time", strTime);
+        model.put("position", eg.getJob().getJob().getTitle());
+        model.put("recruiter",eg.getJob().getJob().getCandidate().getName());
+        mail.setModel(model); 
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+        mimeMessageHelper.addInline("logo.png", new ClassPathResource("classpath:/lwcn-logo.jpeg"));
+
+        Template template = emailConfig.getTemplate("reject.ftl");
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, mail.getModel());
+        mimeMessageHelper.setTo(eg.getJob().getJob().getCandidate().getEmail());
+        mimeMessageHelper.setText(html, true);
+        mimeMessageHelper.setSubject("Reject Interview Invitation for Linov HR");
+        mimeMessageHelper.setFrom("no-reply@gmail.com");
+        javaMailSender.send(message);
+    }
+	
+//	public void sendReschedule(ListofInterviewModel eg) throws Exception {
+//		SimpleMailMessage mail = new SimpleMailMessage();
+//		Date date = eg.getDate();
+//		mail.setTo(eg.getJob().getJob().getCandidate().getEmail());
+//		mail.setSubject("Request New Schedule Invitation");
+//		mail.setText("Hello,"+ eg.getJob().getJob().getCandidate().getName()+ " \n"
+//				+ "Sorry I could not be present to fulfill the interview call for : \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
+//				+"Date : "+date+"\n"+
+//				"Time  : "+eg.getTime()+"\n\n"+"Can i request a Reschedule ?"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
+//		javaMailSender.send(mail);
+//	}
+	
+	public void sendReschedule(ListofInterviewModel eg) throws MessagingException, IOException, TemplateException {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MMMM-dd");
+		DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+	    String strDate = dateFormat.format(eg.getDate());
+		String strTime = timeFormat.format(eg.getTime());
+		Mail mail = new Mail();
+        Map<String, String> model = new HashMap<String, String>();
+        model.put("name",eg.getJob().getJob().getCandidate().getName());
+        model.put("lokasi",eg.getJob().getJob().getAddres());
+        model.put("date", strDate);
+        model.put("time", strTime);
+        model.put("position", eg.getJob().getJob().getTitle());
+        model.put("recruiter",eg.getJob().getJob().getCandidate().getName());
+        mail.setModel(model); 
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+        mimeMessageHelper.addInline("logo.png", new ClassPathResource("classpath:/lwcn-logo.jpeg"));
+
+        Template template = emailConfig.getTemplate("reschedule.ftl");
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, mail.getModel());
+        mimeMessageHelper.setTo(eg.getJob().getJob().getCandidate().getEmail());
+        mimeMessageHelper.setText(html, true);
+        mimeMessageHelper.setSubject("Request Reschedule Invitation for Linov HR");
+        mimeMessageHelper.setFrom("no-reply@gmail.com");
+        javaMailSender.send(message);
+    }
+	
+	
+//	public void sendAcc(ListofInterviewModel eg) throws Exception {
+//		SimpleMailMessage mail = new SimpleMailMessage();
+//		Date date = eg.getDate();
+//		mail.setTo(eg.getJob().getJob().getCandidate().getEmail());
+//		mail.setSubject("Accepted Invitation");
+//		mail.setText("Hello,"+ eg.getJob().getJob().getCandidate().getName()+ " \n"
+//				+ "I will be Attend the invitation  for : \n "+eg.getJob().getJob().getTitle()+" Postion at :  \n"
+//				+"Date : "+date+"\n"+
+//				"Time  : "+eg.getTime()+"\n\n"+"\n\n\n\n\n"+"Best Regards :"+eg.getJob().getCandidate().getName());	
+//		javaMailSender.send(mail);
+//	}
+
+	public void sendAcc(ListofInterviewModel eg) throws MessagingException, IOException, TemplateException {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MMMM-dd");
+		DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+	    String strDate = dateFormat.format(eg.getDate());
+		String strTime = timeFormat.format(eg.getTime());
+		Mail mail = new Mail();
+        Map<String, String> model = new HashMap<String, String>();
+        model.put("name",eg.getJob().getJob().getCandidate().getName());
+        model.put("lokasi",eg.getJob().getJob().getAddres());
+        model.put("date", strDate);
+        model.put("time", strTime);
+        model.put("position", eg.getJob().getJob().getTitle());
+        model.put("recruiter",eg.getJob().getJob().getCandidate().getName());
+        mail.setModel(model); 
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper mimeMessageHelper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+        mimeMessageHelper.addInline("logo.png", new ClassPathResource("classpath:/lwcn-logo.jpeg"));
+
+        Template template = emailConfig.getTemplate("accept.ftl");
+        String html = FreeMarkerTemplateUtils.processTemplateIntoString(template, mail.getModel());
+        mimeMessageHelper.setTo(eg.getJob().getJob().getCandidate().getEmail());
+        mimeMessageHelper.setText(html, true);
+        mimeMessageHelper.setSubject("Accept Invitation for Linov HR");
+        mimeMessageHelper.setFrom("no-reply@gmail.com");
+        javaMailSender.send(message);
+    }
 	
 	public void sendResult(ListofInterviewModel eg) throws Exception {
 		SimpleMailMessage mail = new SimpleMailMessage();
