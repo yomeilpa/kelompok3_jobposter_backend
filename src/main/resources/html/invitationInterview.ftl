@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Password for Linov Job Poster</title>
+    <title>Interview Invitation Linov Job Poster</title>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -26,11 +26,25 @@
     </tr>
     <tr>
         <td bgcolor="#E9FCFF" style="padding: 40px 30px 40px 30px;"
-            <p>Thank's for Register on Linov HR Job Poster</p>
-            <p>This is your username and your Password :</p>
-            <p>username : ${username}</p>
-            <p>Password : ${password}</p>
-        </td>
+            <h3>Hello, ${name}</h3></td>
+            <tr>
+            <td>
+               <p>We Invited You to Attend on Interview For ${position} Position at : </p>
+            </td>
+            </tr>
+            <tr>
+            <td>
+            <p>Date     : ${date}</p>
+            <p>Time     : ${time}</p>
+            <p>Location : ${lokasi}</P>
+            </td>
+            </tr>
+            <tr>
+            	<td>
+            		Best Regards, ${recruiter}
+            	</td>
+            </tr>
+        
     </tr>
     <tr>
         <td bgcolor="#ADD5F3" style="padding: 30px 30px 30px 30px;">
