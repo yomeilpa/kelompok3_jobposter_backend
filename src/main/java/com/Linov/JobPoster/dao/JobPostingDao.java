@@ -59,6 +59,8 @@ public class JobPostingDao  extends CommonDao{
 			ReportPerYear se = new ReportPerYear();
 			se.setTitle(ss.getTitle());
 			se.setRecruiter(ss.getCandidate().getName());
+			se.setMulai(ss.getStart().toString());
+			se.setBerakhir(ss.getEnd().toString());
 			Long acc = (Long) super.entityManager
 					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id and state.state = 'Accepted'").setParameter("id", ss.getId()).getSingleResult();	
 			Long rj = (Long) super.entityManager
