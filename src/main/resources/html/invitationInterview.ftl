@@ -36,7 +36,7 @@
             <td style="text-align: center">
             <p>Date     : ${date}</p>
             <p>Time     : ${time}</p>
-            <p>Location : ${lokasi}</P>
+            <p>Location : </P>
             </td>
             </tr>
             <tr>
