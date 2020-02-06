@@ -42,7 +42,6 @@ public class ListInterviewController {
 	@PostMapping("interview")
 	public ResponseEntity<?> insertModel(@RequestBody ListofInterviewModel education){
 		try {
-			val.validasiidnull(education);
 			val.validasiNotFk(education);
 			eds.insertModel(education);
 			ems.sendInvitation(education);
@@ -55,7 +54,6 @@ public class ListInterviewController {
 	@PostMapping("interview/reinvite")
 	public ResponseEntity<?> reinvite(@RequestBody ListofInterviewModel education){
 		try {
-			val.validasiidnull(education);
 			val.validasiNotFk(education);
 			eds.insertModel(education);
 			ems.sendInvitation(education);
@@ -67,7 +65,6 @@ public class ListInterviewController {
 	@PostMapping("interview/result")
 	public ResponseEntity<?> insertModelUpdate(@RequestBody ListofInterviewModel education){
 		try {
-			val.validasiidnull(education);
 			val.validasiNotFk(education);
 			education.setStatus(ints.findByName("Attend"));
 			eds.insertModel(education);
