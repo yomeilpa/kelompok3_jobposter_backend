@@ -209,15 +209,9 @@ public class JobController {
 			if(date.compareTo(l.getEnd()) > 0) {
 				l.setActive(false);
 			}
-			if(l.getEnd().compareTo(date) > 0){
-				l.setActive(true);
-			}
 			Long total = sk.countAcc(l.getId());
 			if(total >= l.getSaldo()) {
 				l.setActive(false);
-			}
-			if(l.getSaldo() > total) {
-				l.setActive(true);
 			}
 			jobs.insertModel(l);
 			
