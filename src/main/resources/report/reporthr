@@ -6,7 +6,7 @@
 	</field>
 	<field name="recruiter" class="java.lang.String">
 	</field>
-	<field name="mulai" class="java.lang.String">
+	<field name="sum" class="java.lang.Integer">
 	</field>
 	<field name="acc" class="java.lang.Integer">
 	</field>
@@ -14,7 +14,7 @@
 	</field>
 	<field name="toal" class="java.lang.Integer">
 	</field>
-	<field name="sum" class="java.lang.Integer">
+	<field name="mulai" class="java.lang.String">
 	</field>
 	<background>
 		<band splitType="Stretch"/>
