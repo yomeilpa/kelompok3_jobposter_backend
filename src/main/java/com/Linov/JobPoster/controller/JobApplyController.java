@@ -189,7 +189,6 @@ public class JobApplyController {
 	
 		return ResponseEntity.ok(js);
 	}
-	
 	@GetMapping("job/app/getbyname/{id}")
 	public ResponseEntity<?>findbyname(@PathVariable("id") String id){
 		List<JobApplyModel> js = eds.findByname(id);
