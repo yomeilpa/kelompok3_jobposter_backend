@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Linov.JobPoster.Validasi.JobValidation;
 import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.FilterJobPosting;
 import com.Linov.JobPoster.model.JobDetailModel;
@@ -53,11 +54,16 @@ public class JobController {
 	@Autowired
 	private JobApplyService sk;
 	
+	@Autowired
+	private JobValidation jobsv;
+	
 	
 	//Job Kategori Serivce
 	@PostMapping("/jobkategori")
 	public ResponseEntity<?> insertModel(@RequestBody JobKategoriModel education){
 		try {
+			jobsv.validIdKategorinull(education);
+			jobsv.validasiFKkategori(education);
 			jobkate.insertModel(education);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -68,7 +74,9 @@ public class JobController {
 	@DeleteMapping("/jobkategori/{id}")
 	public ResponseEntity<?> deleteModel(@PathVariable("id") String id){
 		
-		try {			
+		try {
+			JobKategoriModel job = jobkate.findById(id);
+			jobsv.kategoriDoesnotExists(job);
 			jobkate.deleteModel(id);;
 			
 		} catch (Exception e) {
@@ -106,6 +114,8 @@ public class JobController {
 	@PostMapping("/jobposition")
 	public ResponseEntity<?> insertModel(@RequestBody JobPosition education){
 		try {
+			jobsv.validIdPositionnull(education);
+			jobsv.validasiFKPosition(education);
 			jobpos.insertModel(education);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -116,7 +126,9 @@ public class JobController {
 	@DeleteMapping("/jobposition/{id}")
 	public ResponseEntity<?> deleteModels(@PathVariable("id") String id){
 		
-		try {			
+		try {
+			JobPosition job = jobpos.findById(id);
+			jobsv.positionDoesnotExists(job);
 			jobpos.deleteModel(id);;
 			
 		} catch (Exception e) {
@@ -144,6 +156,8 @@ public class JobController {
 		try {
 			
 			ed.setId(id);
+			JobPosition job = jobpos.findById(id);
+			jobsv.positionDoesnotExists(job);
 			jobpos.updateModel(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");

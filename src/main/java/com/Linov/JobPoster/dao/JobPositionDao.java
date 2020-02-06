@@ -27,7 +27,6 @@ public class JobPositionDao extends CommonDao {
 		} else
 			return (JobPosition) lstCandidateModels.get(0);
 	}
-	
 	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<JobPosition> findKategoribyid(String id) {
@@ -38,6 +37,8 @@ public class JobPositionDao extends CommonDao {
 		} else
 			return lstCandidateModels;
 	}
+	
+	
 
 	@Transactional
 	public void deleteCandidate(String id) {

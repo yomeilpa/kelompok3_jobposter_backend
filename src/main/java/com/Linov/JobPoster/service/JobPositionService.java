@@ -31,6 +31,7 @@ public class JobPositionService {
 		JobPosition model = acc.findbyid(id);
 		return model;
 	}
+	
 	public List<JobPosition> findAll() {
 		return acc.findAll();
 	}
