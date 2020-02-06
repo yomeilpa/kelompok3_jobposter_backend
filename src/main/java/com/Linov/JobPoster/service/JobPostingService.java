@@ -49,8 +49,8 @@ public class JobPostingService {
 		acc.updateState();
 	}
 	
-	public List<ReportPerYear> oks(){
-		return acc.findforReport();
+	public List<ReportPerYear> oks(String year){
+		return acc.findforReport(year);
 	}
 	
 	public List<ReportbyPoster> byhr(String id){

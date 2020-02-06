@@ -1,5 +1,7 @@
 package com.Linov.JobPoster.dao;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,16 +54,20 @@ public class JobPostingDao  extends CommonDao{
 	
 	@Transactional
 	@SuppressWarnings("unchecked")
-	public List<ReportPerYear> findforReport() {
+	public List<ReportPerYear> findforReport(String year) {
 		List<ReportPerYear> as = new ArrayList<ReportPerYear>();
 		List<JobPostingModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobPostingModel s where to_char(s.end,'MM') = '02'").getResultList();
+				.createQuery("" + "From JobPostingModel s where to_char(s.start,'YYYY') =:year or to_char(s.end,'YYYY') =:year").setParameter("year", year).getResultList();
 		for(JobPostingModel ss:lstCandidateModels) {
 			ReportPerYear se = new ReportPerYear();
+			
+			DateFormat dateFormat = new SimpleDateFormat("yyyy");
+			String date = dateFormat.format(ss.getStart());
+			
 			se.setTitle(ss.getTitle());
 			se.setRecruiter(ss.getCandidate().getName());
-			se.setMulai(ss.getStart().toString());
-			se.setBerakhir(ss.getEnd().toString());
+			se.setMulai(date);
+			se.setBerakhir(date);
 			Long acc = (Long) super.entityManager
 					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id and state.state = 'Accepted'").setParameter("id", ss.getId()).getSingleResult();	
 			Long rj = (Long) super.entityManager

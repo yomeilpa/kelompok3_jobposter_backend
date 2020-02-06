@@ -43,43 +43,16 @@ public class JobPostingReportService {
 	@Autowired
 	JobPostingDao jobs;
 	
+	
+	
 
 
 	@Value("${filestorage}")
 	private Path fileStorage;
 
-	public String correctPerPackage(String reportFormat) throws FileNotFoundException, JRException {
-		Path p = Paths.get(fileStorage.toString());
-		if (!Files.exists(p)) {
-			try {
-				Files.createDirectories(p);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
 
-		List<JobPostingReport> packages = pdDao.oks();
-
-		// load file and compile it
-		File file = ResourceUtils.getFile("classpath:report/report.jrxml");
-		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
-		Map<String, Object> parameter = new HashMap<>();
-		parameter.put("createdBy", "Rizal");
-		String fileName = null;
-		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
-		if (reportFormat.equalsIgnoreCase("html")) {
-			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.html");
-			fileName = "ReportJobPosting.html";
-		}
-		if (reportFormat.equalsIgnoreCase("pdf")) {
-			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.pdf");
-			fileName = "ReportJobPosting.pdf";
-		}
-		return fileName;
-	}
 	
-	public String ReportPerYears(String reportFormat) throws FileNotFoundException, JRException {
+	public String ReportPerYears(String reportFormat,String year) throws FileNotFoundException, JRException {
 //		Path p = Paths.get(fileStorage.toString());
 //		if (!Files.exists(p)) {
 //			try {
@@ -90,8 +63,8 @@ public class JobPostingReportService {
 //		}
 
 		//List<ReportPerYear> packages = pdDao.ReportPerYear();
-		List<ReportPerYear> packages = jobs.findforReport();
-		File file = ResourceUtils.getFile("classpath:report/reportsb.jrxml");
+		List<ReportPerYear> packages = jobs.findforReport(year);
+		File file = ResourceUtils.getFile("classpath:report/reportYear.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
 		Map<String, Object> parameter = new HashMap<>();
@@ -141,59 +114,6 @@ public class JobPostingReportService {
 	
 	
 
-	public void detail() throws FileNotFoundException, JRException {
-//		Path p = Paths.get(fileStorage.toString());
-//		if(!Files.exists(p)) {
-//			try {
-//				Files.createDirectories(p);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-
-		List<DetailReport> packages = pdDao.gg();
-
-		// load file and compile it
-		File file = ResourceUtils.getFile("classpath:report/detail.jrxml");
-		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
-		Map<String, Object> parameter = new HashMap<>();
-		parameter.put("createdBy", "Rizal");
-		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
-		JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/detail.pdf");
-	}
-
-	public String header(String reportFormat, String id) throws FileNotFoundException, JRException {
-//		Path p = Paths.get(fileStorage.toString());
-//		if(!Files.exists(p)) {
-//			try {
-//				Files.createDirectories(p);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
-		detail();
-		List<HeaderReport> packages = pdDao.As(id);
-
-		// load file and compile it
-		File file = ResourceUtils.getFile("classpath:report/masterReport.jrxml");
-		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
-		Map<String, Object> parameter = new HashMap<>();
-		parameter.put("createdBy", "Rizal");
-		String fileName = null;
-		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
-		if (reportFormat.equalsIgnoreCase("html")) {
-			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString() + "/header.html");
-			fileName = "header.html";
-		}
-		if (reportFormat.equalsIgnoreCase("pdf")) {
-			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/header.pdf");
-			fileName = "header.pdf";
-		}
-		return fileName;
-	}
 
 	public Resource loadFileAsResource(String fileName) throws Exception {
 		try {

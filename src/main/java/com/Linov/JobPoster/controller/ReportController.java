@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Linov.JobPoster.service.JobPostingReportService;
+import com.Linov.JobPoster.service.JobPostingService;
 
 @Controller
 @RestController
@@ -24,36 +25,15 @@ public class ReportController {
 	@Autowired
 	private JobPostingReportService js;
 	
-	@GetMapping("/report1/{format}")
-	public ResponseEntity<?> correctPerPackage(@PathVariable String format, HttpServletRequest request) 
-			throws Exception {
-		
-		String fileName = js.correctPerPackage(format);
-		
-		// Load file as Resource
-        Resource resource = js.loadFileAsResource(fileName);
-
-        // Try to determine file's content type
-        String contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        
-
-        // Fallback to the default content type if type could not be determined
-        if(contentType == null) {
-            contentType = "application/octet-stream";
-        }
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-                .body(resource);
-    	
-	}
+	@Autowired
+	JobPostingService l;
 	
-	@GetMapping("/reportyear/{format}")
-	public ResponseEntity<?> reportPerYear(@PathVariable String format, HttpServletRequest request) 
+
+	@GetMapping("/reportyear/{year}/{format}")
+	public ResponseEntity<?> reportPerYear(@PathVariable("year") String year, @PathVariable String format, HttpServletRequest request) 
 			throws Exception {
 		
-		String fileName = js.ReportPerYears(format);
+		String fileName = js.ReportPerYears(format,year);
 		
 		// Load file as Resource
         Resource resource = js.loadFileAsResource(fileName);
@@ -72,7 +52,7 @@ public class ReportController {
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
                 .body(resource);	
 	}
-	@GetMapping("/reportyear/{id}/{format}")
+	@GetMapping("/reportbyhr/{id}/{format}")
 	public ResponseEntity<?> reportbyHr(@PathVariable("id") String id,@PathVariable String format, HttpServletRequest request) 
 			throws Exception {
 		
@@ -96,33 +76,11 @@ public class ReportController {
                 .body(resource);	
 	}
 	
-	
-	
-	
-	
-	@GetMapping("/report1/{id}/{format}")
-	public ResponseEntity<?> sub(@PathVariable("id") String id, @PathVariable String format, HttpServletRequest request) 
-			throws Exception {
-		
-		String fileName = js.header(format, id);
-		
-		// Load file as Resource
-        Resource resource = js.loadFileAsResource(fileName);
-
-        // Try to determine file's content type
-        String contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        
-
-        // Fallback to the default content type if type could not be determined
-        if(contentType == null) {
-            contentType = "application/octet-stream";
-        }
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
-                .body(resource);
-    	
+	@GetMapping("/hr")
+	public ResponseEntity<?> getyear(){
+		return ResponseEntity.ok(l.oks("2020"));
 	}
-
+	
+	
+	
 }

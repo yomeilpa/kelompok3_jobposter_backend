@@ -234,6 +234,17 @@ public class JobApplyController {
 		return ResponseEntity.ok(ls);
 	}
 	
+	@GetMapping("/jobapply/year")
+	public ResponseEntity<?> findyear(){
+		List<JobApplyModel> ls = eds.findyear("2020");
+		for(JobApplyModel js:ls) {
+			CandidateModel cs = js.getCandidate();
+			cs.setPic(null);
+					js.setCandidate(cs);
+		}
+		return ResponseEntity.ok(ls);
+	}
+	
 	@GetMapping("/jobapply")
 	public ResponseEntity<?> findAll(){
 		List<JobApplyModel> ls = eds.findAll();

@@ -35,6 +35,11 @@ public class JobApplyService {
 		return acc.findAll();
 	}
 	
+	public List<JobApplyModel> findyear(String year) {
+		return acc.findYear(year);
+	}
+	
+	
 	public List<JobApplyModel> findByJob(String id) {
 		return acc.findByJobid(id);
 	}

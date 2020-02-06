@@ -48,9 +48,22 @@ public class JobApplyDao  extends CommonDao{
 
 	@Transactional
 	@SuppressWarnings("unchecked")
+	public List<JobApplyModel> findYear(String year) {
+		List<JobApplyModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From JobApplyModel s where to_char(s.appDate,'YYYY') =:year"
+						+ "or to_char(s.reviewDate,'YYYY') =:year").setParameter("year", year).getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return lstCandidateModels;
+		} else
+			return lstCandidateModels;
+	}
+	
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
 	public List<JobApplyModel> findAll() {
 		List<JobApplyModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobApplyModel").getResultList();
+				.createQuery("" + "From JobApplyModel where ").getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return lstCandidateModels;
 		} else
