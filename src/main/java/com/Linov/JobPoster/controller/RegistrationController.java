@@ -274,9 +274,26 @@ public class RegistrationController {
 //		}
 //		
 //		return ResponseEntity.status(HttpStatus.OK).body(user);
-	
+		UserModel users;
+		try {
+			 users = this.account.findbyEmail(account.get("username"));
+				if(users != null) {
+					String password = users.getPassword();
+					if(password.equals(account.get("password"))) {
+					}
+					else {
+						return ResponseEntity.badRequest().body("Password Salah");
+					}			
+				}
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("Username Tidak Terdaftar");
+			// TODO: handle exception
+		}
 		List<Object> session = new ArrayList<Object>();
+		
 		UserModel user = userService.findbyEmail(account.get("username"));
+		
+			
 		session.add(user);
 		
 		authenticate(account.get("username"), account.get("password"));
