@@ -93,9 +93,10 @@ public class JobPostingDao  extends CommonDao{
 				.createQuery("" + "From JobPostingModel where candidate.id=:id").setParameter("id",id).getResultList();
 		for(JobPostingModel ss:lstCandidateModels) {
 			ReportbyPoster se = new ReportbyPoster();
+			DateFormat dateFormat = new SimpleDateFormat("dd-MMMM-yyyy");
 			se.setTitle(ss.getTitle());
 			se.setRecruiter(ss.getCandidate().getName());
-			se.setMulai(ss.getStart().toString());
+			se.setMulai(dateFormat.format(ss.getStart()));
 			se.setBerakhir(ss.getEnd().toString());
 			Long acc = (Long) super.entityManager
 					.createQuery("" + "Select count(*) From JobApplyModel where job.id=:id and state.state = 'Accepted'").setParameter("id", ss.getId()).getSingleResult();	

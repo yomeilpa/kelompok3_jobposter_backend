@@ -20,6 +20,7 @@ import org.springframework.util.ResourceUtils;
 
 import com.Linov.JobPoster.dao.JobPostingDao;
 import com.Linov.JobPoster.dao.ReportDao;
+import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.DetailReport;
 import com.Linov.JobPoster.model.HeaderReport;
 import com.Linov.JobPoster.model.JobPostingReport;
@@ -42,6 +43,9 @@ public class JobPostingReportService {
 	
 	@Autowired
 	JobPostingDao jobs;
+	
+	@Autowired
+	CandiateService cd;
 	
 	
 	
@@ -73,11 +77,11 @@ public class JobPostingReportService {
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
 		if (reportFormat.equalsIgnoreCase("html")) {
 			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.html");
-			fileName = "ReportJobPosting.html";
+			fileName = "Report-"+year+".html";
 		}
 		if (reportFormat.equalsIgnoreCase("pdf")) {
 			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.pdf");
-			fileName = "ReportJobPosting.pdf";
+			fileName = "Report-"+year+".pdf";
 		}
 		return fileName;
 	}
@@ -93,6 +97,8 @@ public class JobPostingReportService {
 //		}
 
 		//List<ReportPerYear> packages = pdDao.ReportPerYear();
+		CandidateModel cs = cd.findById(id);
+		String name = cs.getName();
 		List<ReportbyPoster> packages = jobs.findforReportCd(id);
 		File file = ResourceUtils.getFile("classpath:report/reporthr.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
@@ -103,11 +109,11 @@ public class JobPostingReportService {
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
 		if (reportFormat.equalsIgnoreCase("html")) {
 			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.html");
-			fileName = "ReportJobPosting.html";
+			fileName = "ReportJob-"+name+".html";
 		}
 		if (reportFormat.equalsIgnoreCase("pdf")) {
 			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.pdf");
-			fileName = "ReportJobPosting.pdf";
+			fileName = "ReportJob-"+name+".pdf";
 		}
 		return fileName;
 	}
