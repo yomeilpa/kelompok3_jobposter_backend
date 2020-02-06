@@ -59,22 +59,26 @@ public class JobController {
 	
 	@GetMapping("dt/del/{id}")
 	public ResponseEntity<?> deleteDetail(@PathVariable("id") String id){
+		Object gh = new Object();
 		try {
 			jobdetails.delete(id);
+			gh = "delete Succes";
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return ResponseEntity.ok("Delete Succes");
+		return ResponseEntity.ok(gh);
 	}
 	
 	@GetMapping("rec/del/{id}")
 	public ResponseEntity<?> deleteRec(@PathVariable("id") String id){
+		Object gh = new Object();
 		try {
+			gh = "delete Succes";
 			jobrecs.delete(id);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return ResponseEntity.ok("Delete Succes");
+		return ResponseEntity.ok(gh);
 	}
 	
 	
