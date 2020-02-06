@@ -41,7 +41,7 @@ public class JobDetailDao extends CommonDao{
 		List<JobDetailModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From JobDetailModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
@@ -51,9 +51,7 @@ public class JobDetailDao extends CommonDao{
 	public List<JobDetailModel> findbyIdjobPosting(String id) {
 		List<JobDetailModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From JobDetailModel where job.id =:id").setParameter("id", id).getResultList();
-		if (lstCandidateModels.size() == 0) {
-			return null;
-		} else
+	
 			return lstCandidateModels;
 	}
 
