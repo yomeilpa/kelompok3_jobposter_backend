@@ -39,6 +39,16 @@ public class JobApplyDao  extends CommonDao{
 		} else
 			return (JobApplyModel) lstCandidateModels.get(0);
 	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<JobApplyModel> CandidateAppbyName(String id) {
+		List<JobApplyModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From JobApplyModel where candidate.name like:id").setParameter("id","%"+ id+"%").getResultList();
+		
+		
+			return lstCandidateModels;
+	}
 
 	@Transactional
 	public void deleteCandidate(String id) {

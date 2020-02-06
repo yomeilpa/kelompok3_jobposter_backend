@@ -48,6 +48,10 @@ public class JobApplyService {
 		return acc.findBAcc();
 	}
 	
+	public List<JobApplyModel> findByname(String name) {
+		return acc.CandidateAppbyName(name);
+	}
+	
 	public List<JobApplyModel> findbyCandidate(String id) {
 		return acc.findByCandidateId(id);
 	}
@@ -63,6 +67,7 @@ public class JobApplyService {
 	public Long countCandidate(String id) {
 		return acc.countCandidate(id);
 	}
+	
 	
 	
 	
