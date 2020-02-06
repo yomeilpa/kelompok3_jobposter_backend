@@ -299,9 +299,10 @@ public class RegistrationController {
 				.loadUserByUsername(account.get("username"));
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		
-		session.add(token);
 		user.setPassword(null);
 		session.add(user);
+		session.add(token);
+
 	
 		return ResponseEntity.ok(session);
 		
