@@ -61,7 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity.csrf().disable()
 
-                .authorizeRequests().antMatchers("/jwt/login,/jobposting,/register/*").permitAll().
+                .authorizeRequests().antMatchers("/**").permitAll().
 
         anyRequest().authenticated().and().
 
