@@ -100,7 +100,7 @@ public class JobPostingReportService {
 		CandidateModel cs = cd.findById(id);
 		String name = cs.getName();
 		List<ReportbyPoster> packages = jobs.findforReportCd(id);
-		File file = ResourceUtils.getFile("classpath:report/reporthr.jrxml");
+		File file = ResourceUtils.getFile("classpath:report/hr.jrxml");
 		JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
 		JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(packages);
 		Map<String, Object> parameter = new HashMap<>();
