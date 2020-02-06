@@ -51,7 +51,7 @@ public class JobPositionDao extends CommonDao {
 		List<JobPosition> lstCandidateModels = super.entityManager
 				.createQuery("" + "From JobPosition").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
