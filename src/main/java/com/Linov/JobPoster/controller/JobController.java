@@ -59,10 +59,9 @@ public class JobController {
 	
 	@GetMapping("dt/del/{id}")
 	public ResponseEntity<?> deleteDetail(@PathVariable("id") String id){
-		Object gh = new Object();
-		try {
+JobPostingModel gh = new JobPostingModel();
+	try {
 			jobdetails.delete(id);
-			gh = "delete Succes";
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -71,9 +70,9 @@ public class JobController {
 	
 	@GetMapping("rec/del/{id}")
 	public ResponseEntity<?> deleteRec(@PathVariable("id") String id){
-		Object gh = new Object();
+		JobPostingModel gh = new JobPostingModel();
+
 		try {
-			gh = "delete Succes";
 			jobrecs.delete(id);
 		} catch (Exception e) {
 			// TODO: handle exception
