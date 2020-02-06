@@ -13,6 +13,7 @@ public class CandiateService {
 
 	@Autowired
 	CandidateDao candidate;
+	
 
 	public CandidateModel findById(String id) {
 		CandidateModel model = candidate.findbyid(id);

@@ -8,11 +8,31 @@ import org.springframework.stereotype.Service;
 import com.Linov.JobPoster.dao.AccountDao;
 import com.Linov.JobPoster.model.UserModel;
 
+import java.util.ArrayList;
+
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 @Service
-public class AccountService {
+public class AccountService implements UserDetailsService {
 	
 	@Autowired
 	AccountDao acc;
+	
+	@Autowired
+	private PasswordEncoder bcryptEncoder;
+	
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		UserModel user = acc.findusername(username);
+		if (user == null) {
+			throw new UsernameNotFoundException("User not found with username: " + username);
+		} 
+		String password = bcryptEncoder.encode(user.getPassword());
+		return new org.springframework.security.core.userdetails.User(user.getCandidate().getEmail(), password, new ArrayList<>());
+	}
 	
 	public void insertModel(UserModel model) {
 		acc.saveAccount(model);
@@ -43,4 +63,8 @@ public class AccountService {
 	public Long countCand() {
 		return acc.countCandidate();
 	}
+	
+	
+	
+	
 }
