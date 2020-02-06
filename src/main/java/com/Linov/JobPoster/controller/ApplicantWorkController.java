@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Linov.JobPoster.Validasi.CandidateWorkValidation;
 import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.WorkExperienceHeader;
 import com.Linov.JobPoster.service.CandiateService;
@@ -31,11 +32,15 @@ public class ApplicantWorkController {
 	@Autowired
 	CandiateService cds;
 	
+	@Autowired
+	CandidateWorkValidation val;
+	
 	@PostMapping("/experience/candidate/{id}")
 	public ResponseEntity<?> insertModel(@RequestBody WorkExperienceHeader education,@PathVariable("id") String id){
 		try {
 			CandidateModel cs = cds.findById(id);
 			education.setCandidate(cs);
+			val.validasinonBK(education);
 			cands.insertModel(education);
 			education.setCandidate(null);
 		} catch (Exception e) {
@@ -78,6 +83,7 @@ public class ApplicantWorkController {
 			
 			ed.setId(id);
 			ed.setCandidate(cands.findById(id).getCandidate());
+			val.validasinonBK(ed);
 			cands.updateModel(ed);
 			ed.setCandidate(null);
 		} catch (Exception e) {
