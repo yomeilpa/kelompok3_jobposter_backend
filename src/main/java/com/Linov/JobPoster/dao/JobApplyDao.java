@@ -44,7 +44,7 @@ public class JobApplyDao  extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<JobApplyModel> CandidateAppbyName(String id) {
 		List<JobApplyModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobApplyModel where candidate.name like:id").setParameter("id","%"+ id+"%").getResultList();
+				.createQuery("" + "From JobApplyModel where lower(candidate.name) like:id").setParameter("id","%"+ id.toLowerCase()+"%").getResultList();
 		
 		
 			return lstCandidateModels;
