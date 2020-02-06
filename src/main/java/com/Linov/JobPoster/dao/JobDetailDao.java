@@ -54,6 +54,10 @@ public class JobDetailDao extends CommonDao{
 	
 			return lstCandidateModels;
 	}
+	
+	public void deleteJb(String id) {
+		super.entityManager.createQuery("delete from JobDetailModel where job.id=:id").setParameter("id", id).executeUpdate();
+	}
 
 
 

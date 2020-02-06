@@ -38,6 +38,10 @@ public class JobDetailService {
 	public List<JobDetailModel> findbyJobP(String id) {
 		return acc.findbyIdjobPosting(id);
 	}
+	
+	public void delete(String id) {
+		acc.deleteJb(id);
+	}
 
 
 }

@@ -38,7 +38,7 @@ public class JobDetailModel {
 	
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "idjob", nullable = false)
-	@OnDelete(action = OnDeleteAction.NO_ACTION)
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	private JobPostingModel job;
 	

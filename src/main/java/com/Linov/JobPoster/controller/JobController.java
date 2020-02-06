@@ -1,4 +1,4 @@
-package com.Linov.JobPoster.controller;
+	package com.Linov.JobPoster.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -56,6 +56,26 @@ public class JobController {
 	
 	@Autowired
 	private JobValidation jobsv;
+	
+	@GetMapping("dt/del/{id}")
+	public ResponseEntity<?> deleteDetail(@PathVariable("id") String id){
+		try {
+			jobdetails.delete(id);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return ResponseEntity.ok("Delete Succes");
+	}
+	
+	@GetMapping("rec/del/{id}")
+	public ResponseEntity<?> deleteRec(@PathVariable("id") String id){
+		try {
+			jobrecs.delete(id);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return ResponseEntity.ok("Delete Succes");
+	}
 	
 	
 	//Job Kategori Serivce
@@ -175,7 +195,6 @@ public class JobController {
 	public ResponseEntity<?> insertModel(@RequestBody JobPostingModel education){
 		JobPostingModel jb = new JobPostingModel();
 		try {
-			jobsv.validasiPostingidnull(education);
 			jobsv.validasinotFKPosting(education);
 			jb =jobs.insertModel(education);
 		} catch (Exception e) {
