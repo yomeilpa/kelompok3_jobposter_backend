@@ -292,8 +292,6 @@ public class RegistrationController {
 		List<Object> session = new ArrayList<Object>();
 		
 		UserModel user = userService.findbyEmail(account.get("username"));
-		user.setPassword(null);
-		session.add(user);
 		
 		authenticate(account.get("username"), account.get("password"));
 		
@@ -302,7 +300,9 @@ public class RegistrationController {
 		final String token = jwtTokenUtil.generateToken(userDetails);
 		
 		session.add(token);
-			
+		user.setPassword(null);
+		session.add(user);
+	
 		return ResponseEntity.ok(session);
 		
 	}
