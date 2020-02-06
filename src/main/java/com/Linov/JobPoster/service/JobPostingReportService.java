@@ -76,11 +76,11 @@ public class JobPostingReportService {
 		String fileName = null;
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
 		if (reportFormat.equalsIgnoreCase("html")) {
-			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.html");
+			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString() + "/"+"Report-"+year+".html");
 			fileName = "Report-"+year+".html";
 		}
 		if (reportFormat.equalsIgnoreCase("pdf")) {
-			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/"+"Report-"+year+".pdf");
 			fileName = "Report-"+year+".pdf";
 		}
 		return fileName;
@@ -108,11 +108,11 @@ public class JobPostingReportService {
 		String fileName = null;
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameter, dataSource);
 		if (reportFormat.equalsIgnoreCase("html")) {
-			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.html");
+			JasperExportManager.exportReportToHtmlFile(jasperPrint, fileStorage.toString() + "/"+"ReportJob-"+name+".html");
 			fileName = "ReportJob-"+name+".html";
 		}
 		if (reportFormat.equalsIgnoreCase("pdf")) {
-			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/ReportJobPosting.pdf");
+			JasperExportManager.exportReportToPdfFile(jasperPrint, fileStorage.toString() + "/"+"ReportJob-"+name+".pdf");
 			fileName = "ReportJob-"+name+".pdf";
 		}
 		return fileName;
