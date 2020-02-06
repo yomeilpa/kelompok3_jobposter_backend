@@ -100,6 +100,7 @@ public class JobController {
 		try {
 				
 			ed.setId(id);
+			jobsv.validasiFKkategori(ed);
 			jobkate.updateModel(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
@@ -158,6 +159,7 @@ public class JobController {
 			ed.setId(id);
 			JobPosition job = jobpos.findById(id);
 			jobsv.positionDoesnotExists(job);
+			jobsv.validasiFKPosition(job);
 			jobpos.updateModel(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
@@ -173,6 +175,8 @@ public class JobController {
 	public ResponseEntity<?> insertModel(@RequestBody JobPostingModel education){
 		JobPostingModel jb = new JobPostingModel();
 		try {
+			jobsv.validasiPostingidnull(education);
+			jobsv.validasinotFKPosting(education);
 			jb =jobs.insertModel(education);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -288,6 +292,7 @@ public class JobController {
 		try {
 			
 			ed.setId(id);
+			jobsv.validasinotFKPosting(ed);
 			jobs.updateModel(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
