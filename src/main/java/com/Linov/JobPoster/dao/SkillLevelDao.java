@@ -49,7 +49,7 @@ public class SkillLevelDao extends CommonDao {
 		List<SkillLevelModel> lstCandidateModels = super.entityManager.createQuery("" + "From SkillLevelModel")
 				.getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}

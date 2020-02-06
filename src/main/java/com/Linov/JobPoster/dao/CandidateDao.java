@@ -22,7 +22,7 @@ public class CandidateDao extends CommonDao {
 		List<CandidateModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From CandidateModel where id=:id").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return new CandidateModel();
 		} else
 			return (CandidateModel) lstCandidateModels.get(0);
 	}
@@ -63,7 +63,7 @@ public class CandidateDao extends CommonDao {
 		List<CandidateModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From CandidateModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
@@ -74,7 +74,7 @@ public class CandidateDao extends CommonDao {
 		List<CandidateModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From CandidateModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}

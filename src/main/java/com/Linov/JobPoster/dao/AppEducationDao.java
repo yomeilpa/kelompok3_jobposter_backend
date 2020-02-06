@@ -52,7 +52,7 @@ public class AppEducationDao  extends CommonDao{
 		List<ApplicantEducationModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From ApplicantEducationModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}

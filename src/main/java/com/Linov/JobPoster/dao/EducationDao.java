@@ -41,7 +41,7 @@ public class EducationDao extends CommonDao {
 		List<EducationModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From EducationModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}

@@ -40,7 +40,7 @@ public class JobRequirmentDao  extends CommonDao{
 		List<JobRecruitmentModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From JobRecruitmentModel").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
@@ -51,7 +51,7 @@ public class JobRequirmentDao  extends CommonDao{
 		List<JobRecruitmentModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From JobRecruitmentModel where job.id =:id").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}

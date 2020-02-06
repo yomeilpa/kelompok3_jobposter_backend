@@ -52,7 +52,7 @@ public class WorkExperienceDao extends CommonDao {
 		List<WorkExperienceHeader> lstCandidateModels = super.entityManager
 				.createQuery("" + "From WorkExperienceHeader").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}

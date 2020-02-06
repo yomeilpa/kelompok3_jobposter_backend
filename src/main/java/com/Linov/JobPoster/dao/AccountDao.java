@@ -61,7 +61,7 @@ public class AccountDao extends CommonDao {
 		List<UserModel> lstCandidateModels = super.entityManager
 				.createQuery("" + "From UserModel us").getResultList();
 		if (lstCandidateModels.size() == 0) {
-			return null;
+			return lstCandidateModels;
 		} else
 			return lstCandidateModels;
 	}
