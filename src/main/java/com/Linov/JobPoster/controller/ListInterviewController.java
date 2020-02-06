@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.Linov.JobPoster.Validasi.InterviewValidation;
 import com.Linov.JobPoster.model.CandidateModel;
 import com.Linov.JobPoster.model.JobApplyModel;
 import com.Linov.JobPoster.model.ListofInterviewModel;
@@ -34,10 +35,15 @@ public class ListInterviewController {
 	
 	@Autowired
 	InterviewStatusService ints;
+	
+	@Autowired
+	InterviewValidation val;
 
 	@PostMapping("interview")
 	public ResponseEntity<?> insertModel(@RequestBody ListofInterviewModel education){
 		try {
+			val.validasiidnull(education);
+			val.validasiNotFk(education);
 			eds.insertModel(education);
 			ems.sendInvitation(education);
 		} catch (Exception e) {
@@ -49,6 +55,8 @@ public class ListInterviewController {
 	@PostMapping("interview/reinvite")
 	public ResponseEntity<?> reinvite(@RequestBody ListofInterviewModel education){
 		try {
+			val.validasiidnull(education);
+			val.validasiNotFk(education);
 			eds.insertModel(education);
 			ems.sendInvitation(education);
 		} catch (Exception e) {
@@ -59,6 +67,8 @@ public class ListInterviewController {
 	@PostMapping("interview/result")
 	public ResponseEntity<?> insertModelUpdate(@RequestBody ListofInterviewModel education){
 		try {
+			val.validasiidnull(education);
+			val.validasiNotFk(education);
 			education.setStatus(ints.findByName("Attend"));
 			eds.insertModel(education);
 			ems.sendResult(education);
@@ -90,6 +100,7 @@ public class ListInterviewController {
 		try {
 			
 			ed.setId(id);
+			val.validasiNotFk(ed);
 			eds.updateModel(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
@@ -104,6 +115,7 @@ public class ListInterviewController {
 		try {
 			
 			ListofInterviewModel ed = eds.findById(id);
+			val.validasiNotFk(ed);
 			ed.setStatus(ints.findByName("WILL ATTEND"));
 			eds.updateModel(ed);
 			ems.sendAcc(ed);
@@ -120,6 +132,7 @@ public class ListInterviewController {
 			
 			ListofInterviewModel ed = eds.findById(id);
 			ed.setStatus(ints.findByName("Rejected"));
+			val.validasiNotFk(ed);
 			eds.updateModel(ed);
 			ems.sendInvReject(ed);
 		} catch (Exception e) {
@@ -135,6 +148,7 @@ public class ListInterviewController {
 			
 			ListofInterviewModel ed = eds.findById(id);
 			ed.setStatus(ints.findByName("Request New Schedule"));
+			val.validasiNotFk(ed);
 			eds.updateModel(ed);
 			ems.sendReschedule(ed);
 		} catch (Exception e) {
