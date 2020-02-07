@@ -86,7 +86,7 @@ public class CandidateSkillController {
 			cands.updateModel(ed);
 			ed.setCandidate(null);
 		} catch (Exception e) {
-			return ResponseEntity.badRequest().body("Update Gagal");
+			return ResponseEntity.badRequest().body(e.getMessage());
 			// TODO: handle exception
 		}
 		return ResponseEntity.ok(cands);
