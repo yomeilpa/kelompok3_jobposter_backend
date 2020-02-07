@@ -298,8 +298,6 @@ public class RegistrationController {
 		final UserDetails userDetails = userService
 				.loadUserByUsername(account.get("username"));
 		final String token = jwtTokenUtil.generateToken(userDetails);
-		
-		user.setPassword(null);
 		session.add(user);
 		session.add(token);
 
