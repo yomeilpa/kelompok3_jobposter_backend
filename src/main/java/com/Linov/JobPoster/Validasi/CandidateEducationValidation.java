@@ -8,7 +8,7 @@ import com.Linov.JobPoster.model.ApplicantEducationModel;
 public class CandidateEducationValidation {
 
 	public void validasinonBk(ApplicantEducationModel ed) throws Exception{
-		if(ed.getName() == null) {
+		if(ed.getName() == null  || ed.getName().trim().equals("")) {
 			throw new Exception("Name of School or University must be filled");
 		}
 		if(ed.getEducation()== null) {
@@ -23,7 +23,7 @@ public class CandidateEducationValidation {
 		if(ed.getBerakhir() == null) {
 			throw new Exception("Your End Date Education Must Be Filled");
 		}
-		if(ed.getEducation() == null) {
+		if(ed.getCandidate() == null) {
 			throw new Exception("Candidate Must Assign");
 		}
 	}

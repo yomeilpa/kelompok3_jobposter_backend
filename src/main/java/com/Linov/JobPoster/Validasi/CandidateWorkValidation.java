@@ -8,10 +8,10 @@ import com.Linov.JobPoster.model.WorkExperienceHeader;
 public class CandidateWorkValidation {
 	
 	public void validasinonBK(WorkExperienceHeader work) throws Exception{
-		if(work.getName() == null) {
+		if(work.getName() == null || work.getName().trim().equals("")) {
 			throw new Exception("Name of your Company must be filled");
 		}
-		if(work.getPosition() == null) {
+		if(work.getPosition() == null || work.getPosition().trim().equals("")) {
 			throw new Exception("Position must be choosed");
 		}
 		

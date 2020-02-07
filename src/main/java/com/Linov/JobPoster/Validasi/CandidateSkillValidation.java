@@ -11,7 +11,7 @@ public class CandidateSkillValidation {
 		if(skill.getCandidate() == null) {
 			throw new Exception("Candidate Must Assign");
 		}
-		if(skill.getSkillname() == null) {
+		if(skill.getSkillname() == null || skill.getSkillname().trim().equals("")) {
 			throw new Exception("Your Skillname must be filled");
 		}
 		if(skill.getLevel() == null) {
