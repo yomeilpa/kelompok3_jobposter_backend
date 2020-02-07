@@ -41,8 +41,8 @@ public class ListInterviewService {
 		return acc.findAllbyPoster(id);
 	}
 	
-	public List<ListofInterviewModel> findAllAttend() {
-		return acc.findAllAttend();
+	public List<ListofInterviewModel> findAllAttend(String id) {
+		return acc.findAllAttend(id);
 	}
 	public List<ListofInterviewModel> findIntCd(String id) {
 		return acc.findInterviewCandidate(id);

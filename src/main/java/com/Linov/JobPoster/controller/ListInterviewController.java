@@ -180,9 +180,9 @@ public class ListInterviewController {
 		return ResponseEntity.ok(js);
 	}
 	
-	@GetMapping("/interview/attd")
-	public ResponseEntity<?> getIntAttend(){
-		List<ListofInterviewModel> js = eds.findAllAttend();
+	@GetMapping("/interview/attd/{id}")
+	public ResponseEntity<?> getIntAttend(@PathVariable("id") String id){
+		List<ListofInterviewModel> js = eds.findAllAttend(id);
 		for(ListofInterviewModel as:js) {
 			CandidateModel ss = as.getJob().getCandidate();
 			ss.setPic(null);
