@@ -94,6 +94,7 @@ public class ApplicanEducationController {
 			ed.setId(id);
 			CandidateModel ccds = cands.findById(id).getCandidate();
 			ed.setCandidate(ccds);
+			val.validasinonBk(ed);
 			cands.updateModel(ed);
 			ed.setCandidate(null);
 		} catch (Exception e) {
