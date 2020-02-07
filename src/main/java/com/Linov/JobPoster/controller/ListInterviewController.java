@@ -147,7 +147,6 @@ public class ListInterviewController {
 			ed.setStatus(ints.findByName("Rejected"));
 			val.validasiNotFk(ed);
 			eds.updateModel(ed);
-			ems.sendInvReject(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
 			// TODO: handle exception
