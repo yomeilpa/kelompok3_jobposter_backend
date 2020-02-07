@@ -85,7 +85,6 @@ JobPostingModel gh = new JobPostingModel();
 	@PostMapping("/jobkategori")
 	public ResponseEntity<?> insertModel(@RequestBody JobKategoriModel education){
 		try {
-			jobsv.validIdKategorinull(education);
 			jobsv.validasiFKkategori(education);
 			jobkate.insertModel(education);
 		} catch (Exception e) {
@@ -138,7 +137,6 @@ JobPostingModel gh = new JobPostingModel();
 	@PostMapping("/jobposition")
 	public ResponseEntity<?> insertModel(@RequestBody JobPosition education){
 		try {
-			jobsv.validIdPositionnull(education);
 			jobsv.validasiFKPosition(education);
 			jobpos.insertModel(education);
 		} catch (Exception e) {
