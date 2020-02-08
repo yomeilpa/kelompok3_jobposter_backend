@@ -21,9 +21,7 @@ import org.springframework.util.ResourceUtils;
 import com.Linov.JobPoster.dao.JobPostingDao;
 import com.Linov.JobPoster.dao.ReportDao;
 import com.Linov.JobPoster.model.CandidateModel;
-import com.Linov.JobPoster.model.DetailReport;
-import com.Linov.JobPoster.model.HeaderReport;
-import com.Linov.JobPoster.model.JobPostingReport;
+
 import com.Linov.JobPoster.model.ReportPerYear;
 import com.Linov.JobPoster.model.ReportbyPoster;
 

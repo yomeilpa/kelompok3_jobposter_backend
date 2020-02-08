@@ -10,7 +10,6 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,8 +45,7 @@ public class RegistrationController {
 	@Autowired
 	private AccountService userService;
 	
-	@Autowired
-	private PasswordEncoder encrypt;
+
 	
 	@Autowired
 	CandidateValidation cd;
@@ -298,6 +296,7 @@ public class RegistrationController {
 		final UserDetails userDetails = userService
 				.loadUserByUsername(account.get("username"));
 		final String token = jwtTokenUtil.generateToken(userDetails);
+		user.setPassword(null);
 		session.add(user);
 		session.add(token);
 
