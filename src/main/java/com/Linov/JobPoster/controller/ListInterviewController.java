@@ -43,6 +43,7 @@ public class ListInterviewController {
 	public ResponseEntity<?> insertModel(@RequestBody ListofInterviewModel education){
 		try {
 			val.validasiNotFk(education);
+			education.setStatus(ints.findByName("Invited"));
 			eds.insertModel(education);
 			ems.sendInvitation(education);
 		} catch (Exception e) {
