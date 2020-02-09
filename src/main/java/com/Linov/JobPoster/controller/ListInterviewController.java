@@ -124,6 +124,22 @@ public class ListInterviewController {
 		return ResponseEntity.ok("Update Succes");
 	}
 	
+	@GetMapping("/interview/hire/{id}")
+	public ResponseEntity<?> updateHire(@PathVariable("id") String id){
+		try {
+			
+			ListofInterviewModel ed = eds.findById(id);
+			val.validasiNotFk(ed);
+			ed.setStatus(ints.findByName("Accepted"));
+			eds.updateModel(ed);
+			ems.sendAcc(ed);
+		} catch (Exception e) {
+			return ResponseEntity.badRequest().body("Update Gagal");
+			// TODO: handle exception
+		}
+		return ResponseEntity.ok("Update Succes");
+	}
+	
 	@GetMapping("/interview/rejected/{id}")
 	public ResponseEntity<?> updateReject(@PathVariable("id") String id){
 		try {
