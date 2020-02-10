@@ -86,6 +86,7 @@ JobPostingModel gh = new JobPostingModel();
 	public ResponseEntity<?> insertModel(@RequestBody JobKategoriModel education){
 		try {
 			jobsv.validasiFKkategori(education);
+			jobsv.validasiKode(education);
 			jobkate.insertModel(education);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -123,6 +124,7 @@ JobPostingModel gh = new JobPostingModel();
 				
 			ed.setId(id);
 			jobsv.validasiFKkategori(ed);
+			jobsv.validasiKode(ed);
 			jobkate.updateModel(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");

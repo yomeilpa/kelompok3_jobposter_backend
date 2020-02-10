@@ -28,6 +28,17 @@ public class JobCategoryDao extends CommonDao{
 		} else
 			return (JobKategoriModel) lstCandidateModels.get(0);
 	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public JobKategoriModel findbyCode(String id) {
+		List<JobKategoriModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From JobKategoriModel where code=:id").setParameter("id", id).getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return new JobKategoriModel();
+		} else
+			return (JobKategoriModel) lstCandidateModels.get(0);
+	}
 
 	@Transactional
 	public void deleteCandidate(String id) {

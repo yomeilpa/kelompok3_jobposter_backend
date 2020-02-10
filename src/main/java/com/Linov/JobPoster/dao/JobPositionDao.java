@@ -27,6 +27,18 @@ public class JobPositionDao extends CommonDao {
 		} else
 			return (JobPosition) lstCandidateModels.get(0);
 	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public JobPosition findbyCode(String id) {
+		List<JobPosition> lstCandidateModels = super.entityManager
+				.createQuery("" + "From JobPosition where id=:id").setParameter("id", id).getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return new JobPosition();
+		} else
+			return (JobPosition) lstCandidateModels.get(0);
+	}
+	
 	@Transactional
 	@SuppressWarnings("unchecked")
 	public List<JobPosition> findKategoribyid(String id) {

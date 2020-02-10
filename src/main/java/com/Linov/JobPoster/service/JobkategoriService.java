@@ -33,5 +33,11 @@ public class JobkategoriService {
 	public List<JobKategoriModel> findAll() {
 		return acc.findAll();
 	}
+	
+	public JobKategoriModel findByCode(String id) {
+		JobKategoriModel model = acc.findbyCode(id);
+		return model;
+	}
+	
 
 }
