@@ -124,7 +124,6 @@ JobPostingModel gh = new JobPostingModel();
 				
 			ed.setId(id);
 			jobsv.validasiFKkategori(ed);
-			jobsv.validasiKode(ed);
 			jobkate.updateModel(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
