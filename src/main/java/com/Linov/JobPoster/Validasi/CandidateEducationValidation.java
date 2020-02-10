@@ -1,11 +1,18 @@
 package com.Linov.JobPoster.Validasi;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Linov.JobPoster.model.ApplicantEducationModel;
+import com.Linov.JobPoster.service.AppEducationService;
 
 @Service
 public class CandidateEducationValidation {
+	
+	@Autowired
+	AppEducationService eps;
 
 	public void validasinonBk(ApplicantEducationModel ed) throws Exception{
 		if(ed.getName() == null  || ed.getName().trim().equals("")) {
@@ -25,6 +32,12 @@ public class CandidateEducationValidation {
 		}
 		if(ed.getCandidate() == null) {
 			throw new Exception("Candidate Must Assign");
+		}
+	}
+	public void validaUnq(ApplicantEducationModel ed) throws Exception{
+		List<ApplicantEducationModel> eq = eps.findUnq(ed.getCandidate().getId(), ed.getEducation().getId());
+		if(eq.size() != 0) {
+			throw new Exception("Education for this Level has been registered");
 		}
 	}
 }

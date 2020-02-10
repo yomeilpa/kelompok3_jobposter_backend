@@ -39,6 +39,17 @@ public class AppEducationDao  extends CommonDao{
 		} else
 			return lstCandidateModels;
 	}
+	
+	@Transactional
+	@SuppressWarnings("unchecked")
+	public List<ApplicantEducationModel> findcandidateandEduation(String id,String is) {
+		List<ApplicantEducationModel> lstCandidateModels = super.entityManager
+				.createQuery("" + "From ApplicantEducationModel where candidate.id=:id and education.id=:is").setParameter("is", is).setParameter("id", id).getResultList();
+		if (lstCandidateModels.size() == 0) {
+			return lstCandidateModels;
+		} else
+			return lstCandidateModels;
+	}
 
 	@Transactional
 	public void deleteCandidate(String id) {

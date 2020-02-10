@@ -40,6 +40,7 @@ public class ApplicanEducationController {
 			CandidateModel cs = cds.findById(id);
 			education.setCandidate(cs);
 			val.validasinonBk(education);
+			val.validaUnq(education);
 			cands.insertModel(education);
 			education.setCandidate(null);
 		} catch (Exception e) {
