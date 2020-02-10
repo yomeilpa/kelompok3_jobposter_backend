@@ -58,7 +58,7 @@ public class JobValidation {
 	
 	public void validasiKode(JobKategoriModel job) throws Exception {
 		JobKategoriModel jk =kategori.findByCode(job.getCode());
-		if(jk != null) {
+		if(jk.getCode() != null) {
 			throw new Exception("Code is Registered");
 		}
 		
