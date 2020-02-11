@@ -45,7 +45,7 @@ public class JobPostingDao  extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<JobPostingModel> findAll() {
 		List<JobPostingModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobPostingModel where active is true").getResultList();
+				.createQuery("" + "From JobPostingModel where active is true order by start").getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return lstCandidateModels;
 		} else
