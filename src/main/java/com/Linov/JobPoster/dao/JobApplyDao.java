@@ -44,7 +44,7 @@ public class JobApplyDao  extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public JobApplyModel CandidateAcc(String id) {
 		List<JobApplyModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobApplyModel where job.id=:id and state.state ='Accepted'").setParameter("id", id).getResultList();
+				.createQuery("" + "From JobApplyModel where candidate.id=:id and state.state ='Accepted'").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
 			JobApplyModel sk = new JobApplyModel();
 			sk.setId("x");
