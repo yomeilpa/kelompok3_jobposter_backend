@@ -45,5 +45,11 @@ public class ApplyValidation {
 		}
 		
 	}
+	public void cekAcc(JobApplyModel job) throws Exception{
+		JobApplyModel jb = jobs.findAcc(job.getCandidate().getId());
+		if(jb.getId() != "x") {
+			throw new Exception("You can't Apply because you has agree to work on "+jb.getJob().getTitle());
+		}
+	}
 
 }
