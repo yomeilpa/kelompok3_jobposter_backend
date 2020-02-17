@@ -313,7 +313,6 @@ JobPostingModel gh = new JobPostingModel();
 		try {
 			
 			ed.setId(id);
-			jobsv.validasinotFKPosting(ed);
 			jobs.updateModel(ed);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body("Update Gagal");
