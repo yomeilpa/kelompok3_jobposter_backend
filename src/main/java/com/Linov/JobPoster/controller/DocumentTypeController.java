@@ -87,7 +87,7 @@ public class DocumentTypeController {
 			cs.setPic(null);
 			c.setPic(null);
 			c.setCandidate(cs);
-			obj.add(cs);
+			obj.add(c);
 			obj.add(ls);
 			back.add(obj);
 		}
