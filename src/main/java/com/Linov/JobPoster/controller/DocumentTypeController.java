@@ -91,7 +91,7 @@ public class DocumentTypeController {
 			obj.add(ls);
 			back.add(obj);
 		}
-		return ResponseEntity.ok(doc);
+		return ResponseEntity.ok(back);
 	}
 	@PutMapping("/doctype/{id}")
 	public ResponseEntity<?> updateModel(@PathVariable("id") String id,@RequestBody DocumentTypeModel ed){
