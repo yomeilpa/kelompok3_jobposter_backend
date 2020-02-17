@@ -315,7 +315,7 @@ JobPostingModel gh = new JobPostingModel();
 			ed.setId(id);
 			jobs.updateModel(ed);
 		} catch (Exception e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
+			return ResponseEntity.badRequest().body(e.getMessage()		);
 			// TODO: handle exception
 		}
 		CandidateModel cs = ed.getCandidate();

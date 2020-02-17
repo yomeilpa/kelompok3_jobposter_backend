@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import com.Linov.JobPoster.model.CandidateDocument;
+import com.Linov.JobPoster.model.CandidateModel;
 
 @Repository
 @Transactional
@@ -54,6 +55,9 @@ public class OtherDocumentDao extends CommonDao {
 		if (lstCandidateModels.size() == 0) {
 			CandidateDocument cds = new CandidateDocument();
 			cds.setId("1");
+			CandidateModel ss = new CandidateModel();
+			ss.setId("1");
+			cds.setCandidate(ss);
 			return cds;
 		} else
 			return lstCandidateModels.get(0);
