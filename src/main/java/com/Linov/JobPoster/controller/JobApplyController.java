@@ -190,6 +190,19 @@ public class JobApplyController {
 	
 		return ResponseEntity.ok(js);
 	}
+	
+	@GetMapping("job/app/poster/{id}")
+	public ResponseEntity<?>getByJobposter(@PathVariable("id") String id){
+		List<JobApplyModel> js = eds.findbyPoster(id);
+		for(JobApplyModel ss:js) {
+			CandidateModel sk = ss.getCandidate();
+			sk.setPic(null);
+			ss.setCandidate(sk);
+		}
+	
+		return ResponseEntity.ok(js);
+	}
+	
 	@GetMapping("job/app/getbyname/{id}")
 	public ResponseEntity<?>findbyname(@PathVariable("id") String id){
 		List<JobApplyModel> js = eds.findByname(id);
