@@ -120,7 +120,7 @@ public class JobApplyDao  extends CommonDao{
 	@SuppressWarnings("unchecked")
 	public List<JobApplyModel> findByPoster(String id) {
 		List<JobApplyModel> lstCandidateModels = super.entityManager
-				.createQuery("" + "From JobApplyModel where job.candidate.id=:id").setParameter("id", id).getResultList();
+				.createQuery("" + "From JobApplyModel where job.candidate.id=:id and (job.state ='Reviewed' or job.state='Not Reviewed')").setParameter("id", id).getResultList();
 		if (lstCandidateModels.size() == 0) {
 			return lstCandidateModels;
 		} else
